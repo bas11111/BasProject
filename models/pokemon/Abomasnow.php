@@ -1,7 +1,4 @@
 <?php
-
-namespace pokemon;
-
 use pokemon\PokemonMove\Avalanche;
 use pokemon\PokemonMove\BulletSeed;
 use pokemon\PokemonMove\DragonBreath;
