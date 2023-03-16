@@ -1,5 +1,5 @@
 <?php
-include 'PokemonCommand.php';
+require 'PokemonCommand.php';
 $models = glob('models/' . '/*.php');
 
 foreach ($models as $file) {

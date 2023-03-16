@@ -1,6 +1,5 @@
 <?php
-
-namespace pokemon;
+require 'Pokemon.php';
 
 use pokemon\PokemonMove\Hex;
 use pokemon\PokemonMove\Snarl;

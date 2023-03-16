@@ -1,7 +1,5 @@
 <?php
-
-namespace pokemon;
-
+require 'Pokemon.php';
 use pokemon\PokemonMove\Charm;
 use pokemon\PokemonMove\Confusion;
 use pokemon\PokemonMove\DazzlingDream;

@@ -1,7 +1,5 @@
 <?php
-
-namespace pokemon;
-
+require 'Pokemon.php';
 use pokemon\PokemonMove\DragonBreath;
 use pokemon\PokemonMove\Earthquake;
 use pokemon\PokemonMove\FireBreath;

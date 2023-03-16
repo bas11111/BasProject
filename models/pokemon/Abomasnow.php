@@ -1,4 +1,5 @@
 <?php
+require 'Pokemon.php';
 use pokemon\PokemonMove\Avalanche;
 use pokemon\PokemonMove\BulletSeed;
 use pokemon\PokemonMove\DragonBreath;

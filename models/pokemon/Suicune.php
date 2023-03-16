@@ -1,6 +1,5 @@
 <?php
-
-namespace pokemon;
+require 'Pokemon.php';
 
 use pokemon\PokemonMove\HydroPump;
 use pokemon\PokemonMove\IceKick;
