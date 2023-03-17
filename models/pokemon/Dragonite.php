@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\AirSlash;
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\DracoMeteor;
-use pokemon\PokemonMove\DragonBreath;
+
+namespace models\pokemon;
+
+use models\moves\AirSlash;
+use models\moves\BulletPunch;
+use models\moves\DracoMeteor;
+use models\moves\DragonBreath;
 
 class Dragonite extends Pokemon
 {

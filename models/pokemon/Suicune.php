@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\HydroPump;
-use pokemon\PokemonMove\IceKick;
-use pokemon\PokemonMove\Snarl;
-use pokemon\PokemonMove\WaterGun;
+namespace models\pokemon;
+
+use models\moves\HydroPump;
+use models\moves\IceKick;
+use models\moves\Snarl;
+use models\moves\WaterGun;
 
 class Suicune extends Pokemon
 {

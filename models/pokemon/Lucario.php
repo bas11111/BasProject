@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\Counter;
-use pokemon\PokemonMove\Cut;
-use pokemon\PokemonMove\FocusBlast;
+namespace models\pokemon;
+
+use models\moves\BulletPunch;
+use models\moves\Counter;
+use models\moves\Cut;
+use models\moves\FocusBlast;
 
 class Lucario extends Pokemon
 {

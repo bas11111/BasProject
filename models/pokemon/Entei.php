@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\FireBreath;
-use pokemon\PokemonMove\FlameBlast;
-use pokemon\PokemonMove\MudSlap;
+
+namespace models\pokemon;
+
+use models\moves\BulletPunch;
+use models\moves\FireBreath;
+use models\moves\FlameBlast;
+use models\moves\MudSlap;
 
 class Entei extends Pokemon
 {

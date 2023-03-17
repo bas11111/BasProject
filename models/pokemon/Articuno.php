@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\AirSlash;
-use pokemon\PokemonMove\Avalanche;
-use pokemon\PokemonMove\IceKick;
-use pokemon\PokemonMove\WaterGun;
+
+namespace models\pokemon;
+
+use models\moves\AirSlash;
+use models\moves\Avalanche;
+use models\moves\IceKick;
+use models\moves\WaterGun;
 
 class Articuno extends Pokemon
 {

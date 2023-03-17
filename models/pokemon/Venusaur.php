@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\Acid;
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\BulletSeed;
-use pokemon\PokemonMove\SolarBeam;
+namespace models\pokemon;
+
+use models\moves\Acid;
+use models\moves\BulletPunch;
+use models\moves\BulletSeed;
+use models\moves\SolarBeam;
 
 class Venusaur extends Pokemon
 {

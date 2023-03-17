@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\AirSlash;
-use pokemon\PokemonMove\DragonBreath;
-use pokemon\PokemonMove\FireBreath;
-use pokemon\PokemonMove\FlameBlast;
+
+namespace models\pokemon;
+
+use models\moves\AirSlash;
+use models\moves\DragonBreath;
+use models\moves\FireBreath;
+use models\moves\FlameBlast;
 
 class Charizard extends Pokemon
 {

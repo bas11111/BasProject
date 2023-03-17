@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\Counter;
-use pokemon\PokemonMove\FocusBlast;
-use pokemon\PokemonMove\Snarl;
+namespace models\pokemon;
+
+use models\moves\BulletPunch;
+use models\moves\Counter;
+use models\moves\FocusBlast;
+use models\moves\Snarl;
 
 class Machamp extends Pokemon
 {

@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\DragonBreath;
-use pokemon\PokemonMove\Earthquake;
-use pokemon\PokemonMove\FireBreath;
-use pokemon\PokemonMove\MudSlap;
+
+namespace models\pokemon;
+
+use models\moves\DragonBreath;
+use models\moves\Earthquake;
+use models\moves\FireBreath;
+use models\moves\MudSlap;
 
 class Garchomp extends Pokemon
 {

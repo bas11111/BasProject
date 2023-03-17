@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\Charm;
-use pokemon\PokemonMove\Confusion;
-use pokemon\PokemonMove\DazzlingDream;
-use pokemon\PokemonMove\Hex;
+
+namespace models\pokemon;
+
+use models\moves\Charm;
+use models\moves\Confusion;
+use models\moves\DazzlingDream;
+use models\moves\Hex;
 
 class Gardevoir extends Pokemon
 {

@@ -1,14 +1,14 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\Confusion;
-use pokemon\PokemonMove\FutureSight;
-use pokemon\PokemonMove\LegendaryBurst;
-use pokemon\PokemonMove\LegendarySmash;
+namespace models\pokemon;
+
+use models\moves\Confusion;
+use models\moves\FutureSight;
+use models\moves\LegendaryBurst;
+use models\moves\LegendarySmash;
 
 class Mewtwo extends Pokemon
 {
-
     protected int $health = 550;
     protected int $maxHealth = 550;
 

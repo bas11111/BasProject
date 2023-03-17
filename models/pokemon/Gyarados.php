@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\DragonBreath;
-use pokemon\PokemonMove\HydroPump;
-use pokemon\PokemonMove\Snarl;
-use pokemon\PokemonMove\WaterGun;
+
+namespace models\pokemon;
+
+use models\moves\DragonBreath;
+use models\moves\HydroPump;
+use models\moves\Snarl;
+use models\moves\WaterGun;
 
 class Gyarados extends Pokemon
 {

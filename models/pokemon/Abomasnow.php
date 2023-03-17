@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\Avalanche;
-use pokemon\PokemonMove\BulletSeed;
-use pokemon\PokemonMove\DragonBreath;
-use pokemon\PokemonMove\IceKick;
+
+namespace models\pokemon;
+
+use models\moves\Avalanche;
+use models\moves\BulletSeed;
+use models\moves\DragonBreath;
+use models\moves\IceKick;
 
 class Abomasnow extends Pokemon
 {

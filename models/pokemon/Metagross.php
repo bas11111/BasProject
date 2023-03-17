@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\Confusion;
-use pokemon\PokemonMove\HeavySlam;
-use pokemon\PokemonMove\MudSlap;
+namespace models\pokemon;
+
+use models\moves\BulletPunch;
+use models\moves\Confusion;
+use models\moves\HeavySlam;
+use models\moves\MudSlap;
 
 class Metagross extends Pokemon
 {

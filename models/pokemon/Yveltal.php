@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\AirSlash;
-use pokemon\PokemonMove\Confusion;
-use pokemon\PokemonMove\Hurricane;
-use pokemon\PokemonMove\Snarl;
+namespace models\pokemon;
+
+use models\moves\AirSlash;
+use models\moves\Confusion;
+use models\moves\Hurricane;
+use models\moves\Snarl;
 
 class Yveltal extends Pokemon
 {

@@ -1,9 +1,11 @@
 <?php
-require 'Pokemon.php';
-use pokemon\PokemonMove\Acid;
-use pokemon\PokemonMove\Hex;
-use pokemon\PokemonMove\Poltergeist;
-use pokemon\PokemonMove\Snarl;
+
+namespace models\pokemon;
+
+use models\moves\Acid;
+use models\moves\Hex;
+use models\moves\Poltergeist;
+use models\moves\Snarl;
 
 class Gengar extends Pokemon
 {

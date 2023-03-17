@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\BulletSeed;
-use pokemon\PokemonMove\MudSlap;
-use pokemon\PokemonMove\RockThrow;
-use pokemon\PokemonMove\SolarBeam;
+namespace models\pokemon;
+
+use models\moves\BulletSeed;
+use models\moves\MudSlap;
+use models\moves\RockThrow;
+use models\moves\SolarBeam;
 
 class Meganium extends Pokemon
 {

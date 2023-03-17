@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\Hex;
-use pokemon\PokemonMove\Snarl;
-use pokemon\PokemonMove\Spark;
-use pokemon\PokemonMove\ThunderBolt;
+namespace models\pokemon;
+
+use models\moves\Hex;
+use models\moves\Snarl;
+use models\moves\Spark;
+use models\moves\ThunderBolt;
 
 class Raikou extends Pokemon
 {

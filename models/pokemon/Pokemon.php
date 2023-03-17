@@ -1,5 +1,6 @@
 <?php
 
+namespace models\pokemon;
 
 abstract class Pokemon
 {
@@ -7,29 +8,9 @@ abstract class Pokemon
     protected int $health;
     protected int $maxHealth;
 
-    public function getName(): string
-    {
-        return get_class($this);
-    }
-
     public function getType(): array
     {
         return $this->type;
-    }
-
-    public function getHealth()
-    {
-        return $this->health;
-    }
-
-    public function getMaxHealth()
-    {
-        return $this->maxHealth;
-    }
-
-    public function setHealth(int $health)
-    {
-        $this->health = $health;
     }
 
     public function isWeakAgainst(array $types)
@@ -43,6 +24,8 @@ abstract class Pokemon
         return false;
     }
 
+    abstract public function getWeakAgainst(): array;
+
     public function getheal(Pokemon $pokemon)
     {
         $pokemon->setHealth(min($pokemon->getHealth() + 10, $pokemon->getMaxHealth()));
@@ -51,9 +34,27 @@ abstract class Pokemon
         echo("-------");
     }
 
-    abstract public function getMoves(): array;
+    public function getHealth()
+    {
+        return $this->health;
+    }
 
-    abstract public function getWeakAgainst(): array;
+    public function setHealth(int $health)
+    {
+        $this->health = $health;
+    }
+
+    public function getMaxHealth()
+    {
+        return $this->maxHealth;
+    }
+
+    public function getName(): string
+    {
+        return get_class($this);
+    }
+
+    abstract public function getMoves(): array;
 
     abstract public function getCombatPower(): int;
 

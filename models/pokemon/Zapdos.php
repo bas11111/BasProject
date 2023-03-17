@@ -1,14 +1,14 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\AirSlash;
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\Spark;
-use pokemon\PokemonMove\ThunderBolt;
+namespace models\pokemon;
+
+use models\moves\AirSlash;
+use models\moves\BulletPunch;
+use models\moves\Spark;
+use models\moves\ThunderBolt;
 
 class Zapdos extends Pokemon
 {
-
     protected int $health = 389;
     protected int $maxHealth = 389;
 

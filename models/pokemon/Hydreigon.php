@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\DracoMeteor;
-use pokemon\PokemonMove\DragonBreath;
-use pokemon\PokemonMove\Snarl;
+namespace models\pokemon;
+
+use models\moves\BulletPunch;
+use models\moves\DracoMeteor;
+use models\moves\DragonBreath;
+use models\moves\Snarl;
 
 class Hydreigon extends Pokemon
 {

@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\RockThrow;
-use pokemon\PokemonMove\Snarl;
-use pokemon\PokemonMove\StoneEdge;
+namespace models\pokemon;
+
+use models\moves\BulletPunch;
+use models\moves\RockThrow;
+use models\moves\Snarl;
+use models\moves\StoneEdge;
 
 class Tyranitar extends Pokemon
 {

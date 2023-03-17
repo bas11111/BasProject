@@ -1,10 +1,11 @@
 <?php
-require 'Pokemon.php';
 
-use pokemon\PokemonMove\BulletPunch;
-use pokemon\PokemonMove\Confusion;
-use pokemon\PokemonMove\Cut;
-use pokemon\PokemonMove\HornAttack;
+namespace models\pokemon;
+
+use models\moves\BulletPunch;
+use models\moves\Confusion;
+use models\moves\Cut;
+use models\moves\HornAttack;
 
 class Snorlax extends Pokemon
 {
