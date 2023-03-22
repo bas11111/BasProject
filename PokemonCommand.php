@@ -62,12 +62,12 @@ class PokemonCommand
     private function calculateDamage(Move $move, Pokemon $target)
     {
         if ($move->isCharged()) {
-            Console::echo("A charged attack, ".$move->getName().", was used!");
+            Console::info("A charged attack, ".$move->getName().", was used!");
             if ($move->isEffectiveAgainst($target->getType())) {
-                Console::echo("It was very effective!");
+                Console::succes("It was very effective!");
                 $damage = $move->getDamage() + rand(30, 40);
             } elseif ($move->isNotEffectiveAgainst($target->getType())) {
-                Console::echo("It wasn't very effective...");
+                Console::error("It wasn't very effective...");
                 $damage = $move->getDamage() - rand(30, 40);
                 if ($damage < 20) {
                     $damage = 20;
@@ -76,12 +76,12 @@ class PokemonCommand
                 $damage = $move->getDamage();
             }
         } else {
-            Console::echo($move->getName()." was used!");
+            Console::info($move->getName()." was used!");
             if ($move->isEffectiveAgainst($target->getType())) {
-                Console::echo("It was very effective!");
+                Console::succes("It was very effective!");
                 $damage = $move->getDamage() + rand(10, 20);
             } elseif ($move->isNotEffectiveAgainst($target->getType())) {
-                Console::echo("It wasn't very effective...");
+                Console::error("It wasn't very effective...");
                 $damage = $move->getDamage() - rand(5, 10);
                 if ($damage < 10) {
                     $damage = 1;
@@ -98,8 +98,8 @@ class PokemonCommand
     {
         $targetHealth = $target->getHealth();
         $targetHealth -= $this->calculateDamage($move, $target);
-        Console::echo($target->getName()." now has ".$targetHealth." HP left!");
-        Console::echo("-------------------------------");
+        Console::info($target->getName()." now has ".$targetHealth." HP left!");
+        Console::info("-------------------------------");
         $target->setHealth($targetHealth);
     }
 
@@ -107,19 +107,19 @@ class PokemonCommand
     {
         $targetHealth = $target->getHealth();
         $targetHealth -= $this->calculateDamage($move, $target);
-        Console::echo($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
-        Console::echo("---------------------------------");
+        Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
+        Console::info("---------------------------------");
         $target->setHealth($targetHealth);
         if ($targetHealth <= 0) {
-            Console::echo($target->getName().spl_object_id($target)." has fallen!");
-            Console::echo("---------------------------------");
+            Console::error($target->getName().spl_object_id($target)." has fallen!");
+            Console::info("---------------------------------");
         }
     }
 
     private function getAlive($pokemon)
     {
         if ($pokemon->getHealth() > 0) {
-            Console::echo($pokemon->getName().spl_object_id($pokemon)." has survived this battle with ".$pokemon->getHealth()." left!");
+            Console::succes($pokemon->getName().spl_object_id($pokemon)." has survived this battle with ".$pokemon->getHealth()." left!");
         }
     }
 
@@ -127,28 +127,27 @@ class PokemonCommand
     {
         if (rand(1, 10) === 10) {
             $pokemon->setHealth(min($pokemon->getHealth() + 100, $pokemon->getMaxHealth()));
-            Console::echo("The trainer has used a potion to heal 100 health back to ".$pokemon->getName().spl_object_id($pokemon));
-            Console::echo("-------------------------------");
+            Console::info("The trainer has used a potion to heal 100 health back to ".$pokemon->getName().spl_object_id($pokemon));
+            Console::info("-------------------------------");
         } else {
             $pokemon->setHealth(min($pokemon->getHealth() + 50, $pokemon->getMaxHealth()));
-            Console::echo("The trainer has used a potion to heal 50 health back to ".$pokemon->getName().spl_object_id($pokemon));
-            Console::echo("-------------------------------");
+            Console::info("The trainer has used a potion to heal 50 health back to ".$pokemon->getName().spl_object_id($pokemon));
+            Console::info("-------------------------------");
         }
     }
 
     private function battle(Pokemon $pokemon1, Pokemon $pokemon2, bool $recursive = true)
     {
-        //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA TEEEEST
         $moves1 = $pokemon1->getMoves();
         $moves2 = $pokemon2->getMoves();
         if ($pokemon1->getHealth() > 0) {
-            Console::echo($pokemon1->getName()." attacks!");
-            Console::echo("-------------------------------");
+            Console::info($pokemon1->getName()." attacks!");
+            Console::info("-------------------------------");
             $this->attackType($moves1[array_rand($moves1)], $pokemon2);
         }
         if ($pokemon2->getHealth() > 0) {
-            Console::echo($pokemon2->getName()." attacks!");
-            Console::echo("-------------------------------");
+            Console::info($pokemon2->getName()." attacks!");
+            Console::info("-------------------------------");
             $this->attackType($moves2[array_rand($moves2)], $pokemon1);
         }
         if ($pokemon1->getHealth() > 0 && $pokemon2->getHealth() > 0) {
@@ -157,13 +156,13 @@ class PokemonCommand
             }
         } else {
             if ($pokemon2->getHealth() <= 0) { // Pokemon1 wins
-                Console::echo($pokemon1->getName().spl_object_id($pokemon1)." wins this battle with ".$pokemon1->getHealth()
+                Console::succes($pokemon1->getName().spl_object_id($pokemon1)." wins this battle with ".$pokemon1->getHealth()
                     ." HP left!");
-                Console::echo($pokemon2->getName().spl_object_id($pokemon2)." has been defeated.");
+                Console::error($pokemon2->getName().spl_object_id($pokemon2)." has been defeated.");
             } else { // Pokemon2 wins
-                Console::echo($pokemon2->getName().spl_object_id($pokemon2)." wins this battle with ".$pokemon2->getHealth()
+                Console::succes($pokemon2->getName().spl_object_id($pokemon2)." wins this battle with ".$pokemon2->getHealth()
                     ." HP left!");
-                Console::echo($pokemon1->getName().spl_object_id($pokemon1)." has been defeated.");
+                Console::error($pokemon1->getName().spl_object_id($pokemon1)." has been defeated.");
             }
         }
     }
@@ -182,7 +181,7 @@ class PokemonCommand
         if ($startOfBattle) {
             $boss->setHealth(4750);
             if (rand(1,2) === 2) {
-                Console::echo($pokemon1->getName()."has MEGA-evolved");
+                Console::info($pokemon1->getName()."has MEGA-evolved");
             }
         }
         foreach ($array as $pokemon) {
@@ -192,18 +191,18 @@ class PokemonCommand
                     if (rand(1, 3) === 3) {
                         $this->usePotion($pokemon);
                     } else {
-                        Console::echo($pokemon->getName().spl_object_id($pokemon)." attacks!");
+                        Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
                         $this->raidAttackType($moves[array_rand($moves)], $boss);
                     }
                 } else {
-                    Console::echo($pokemon->getName().spl_object_id($pokemon)." attacks!");
+                    Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
                     $this->raidAttackType($moves[array_rand($moves)], $boss);
                 }
             }
         }
         if ($boss->gethealth() <= 0) {
-            Console::echo($boss->getName().spl_object_id($boss)." has been defeated, the attackers have won this raid!");
-            Console::echo("---------------------------------");
+            Console::succes($boss->getName().spl_object_id($boss)." has been defeated, the attackers have won this raid!");
+            Console::info("---------------------------------");
             foreach ($array as $pokemon) {
                 $this->getAlive($pokemon);
             }
@@ -212,7 +211,7 @@ class PokemonCommand
         foreach ($array as $pokemon) {
             $bossmoves = $boss->getMoves();
             if ($pokemon->getHealth() > 0) {
-                Console::echo($boss->getName().spl_object_id($boss)." attacks!");
+                Console::info($boss->getName().spl_object_id($boss)." attacks!");
                 $this->raidAttackType($bossmoves[array_rand($bossmoves)], $pokemon);
             }
         }
@@ -220,7 +219,7 @@ class PokemonCommand
             && $pokemon5->getHealth() <= 0
             && $pokemon6->getHealth() <= 0
         ) {
-            Console::echo("All of your pokemon have fallen, ".$boss->getName()." has won this raid with ".$boss->gethealth()."HP left!");
+            Console::error("All of your pokemon have fallen, ".$boss->getName()." has won this raid with ".$boss->gethealth()."HP left!");
             die;
         }
         $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, false);
@@ -231,7 +230,7 @@ class PokemonCommand
         $pokemon1 = $team1[0];
         $pokemon2 = $team2[0];
         if (!$pokemon1 instanceof Pokemon) {
-            Console::echo("error");
+            Console::error("error");
             die;
         }
         $this->battle($pokemon1, $pokemon2, false);
@@ -240,20 +239,20 @@ class PokemonCommand
             unset($team1[0]);
             $team1 = array_values($team1);
             if (!empty($team1)) {
-                Console::echo("Team 1 sends out ".$team1[0]->getName());
+                Console::info("Team 1 sends out ".$team1[0]->getName());
             }
         }
         if ($pokemon2->getHealth() <= 0) {
             unset($team2[0]);
             $team2 = array_values($team2);
             if (!empty($team2)) {
-                Console::echo("Team 2 sends out ".$team2[0]->getName());
+                Console::info("Team 2 sends out ".$team2[0]->getName());
             }
         }
         if (empty($team1)) {
-            Console::echo("Team 2 wins");
+            Console::succes("Team 2 wins");
         } elseif (empty($team2)) {
-            Console::echo("Team 1 wins");
+            Console::succes("Team 1 wins");
         } else {
             $this->teamBattle($team1, $team2);
         }
