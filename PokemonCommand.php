@@ -138,6 +138,7 @@ class PokemonCommand
 
     private function battle(Pokemon $pokemon1, Pokemon $pokemon2, bool $recursive = true)
     {
+        //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA TEEEEST
         $moves1 = $pokemon1->getMoves();
         $moves2 = $pokemon2->getMoves();
         if ($pokemon1->getHealth() > 0) {
