@@ -52,17 +52,17 @@ class PokemonCommand
             new Tyranitar(), //20
         ];
 //        $this->raid($pokemons[array_rand($pokemons)], $pokemons[0], $pokemons[10], $pokemons[4], $pokemons[12], $pokemons[6], $pokemons[11]);
-        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-            clone $pokemons[array_rand($pokemons)]);
-//        $this->battle($pokemons[9], clone $pokemons[5]);
+//        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
+//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
+//            clone $pokemons[array_rand($pokemons)]);
+        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
     }
 
     private function calculateDamage(Move $move, Pokemon $target)
     {
         if ($move->isCharged()) {
-            Console::info("A charged attack, ".$move->getName().", was used!");
+            Console::info("A charged attack, " . $move->getName() . ", was used!");
             if ($move->isEffectiveAgainst($target->getType())) {
                 Console::succes("It was very effective!");
                 $damage = $move->getDamage() + rand(30, 40);
@@ -76,7 +76,7 @@ class PokemonCommand
                 $damage = $move->getDamage();
             }
         } else {
-            Console::info($move->getName()." was used!");
+            Console::info($move->getName() . " was used!");
             if ($move->isEffectiveAgainst($target->getType())) {
                 Console::succes("It was very effective!");
                 $damage = $move->getDamage() + rand(10, 20);
@@ -98,7 +98,7 @@ class PokemonCommand
     {
         $targetHealth = $target->getHealth();
         $targetHealth -= $this->calculateDamage($move, $target);
-        Console::info($target->getName()." now has ".$targetHealth." HP left!");
+        Console::info($target->getName() . " now has " . $targetHealth . " HP left!");
         Console::info("-------------------------------");
         $target->setHealth($targetHealth);
     }
@@ -107,11 +107,11 @@ class PokemonCommand
     {
         $targetHealth = $target->getHealth();
         $targetHealth -= $this->calculateDamage($move, $target);
-        Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
+        Console::info($target->getName() . spl_object_id($target) . " now has " . $targetHealth . " HP left!");
         Console::info("---------------------------------");
         $target->setHealth($targetHealth);
         if ($targetHealth <= 0) {
-            Console::error($target->getName().spl_object_id($target)." has fallen!");
+            Console::error($target->getName() . spl_object_id($target) . " has fallen!");
             Console::info("---------------------------------");
         }
     }
@@ -119,7 +119,7 @@ class PokemonCommand
     private function getAlive($pokemon)
     {
         if ($pokemon->getHealth() > 0) {
-            Console::succes($pokemon->getName().spl_object_id($pokemon)." has survived this battle with ".$pokemon->getHealth()." left!");
+            Console::succes($pokemon->getName() . spl_object_id($pokemon) . " has survived this battle with " . $pokemon->getHealth() . " left!");
         }
     }
 
@@ -127,42 +127,78 @@ class PokemonCommand
     {
         if (rand(1, 10) === 10) {
             $pokemon->setHealth(min($pokemon->getHealth() + 100, $pokemon->getMaxHealth()));
-            Console::info("The trainer has used a potion to heal 100 health back to ".$pokemon->getName().spl_object_id($pokemon));
+            Console::info("The trainer has used a potion to heal 100 health back to " . $pokemon->getName() . spl_object_id($pokemon));
             Console::info("-------------------------------");
         } else {
             $pokemon->setHealth(min($pokemon->getHealth() + 50, $pokemon->getMaxHealth()));
-            Console::info("The trainer has used a potion to heal 50 health back to ".$pokemon->getName().spl_object_id($pokemon));
+            Console::info("The trainer has used a potion to heal 50 health back to " . $pokemon->getName() . spl_object_id($pokemon));
             Console::info("-------------------------------");
         }
     }
 
-    private function battle(Pokemon $pokemon1, Pokemon $pokemon2, bool $recursive = true)
+    private function getWeather()
     {
+        $dice = rand(1, 8);
+        if ($dice === 1) {
+            Console::info("The weather is sunny! Grass, ground and fire type attacks are now boosted!");
+            Console::info("-------------------------------");
+        }
+        if ($dice === 2) {
+            Console::info("The weather is rainy! Water, electric and bug type attacks are now boosted!");
+            Console::info("-------------------------------");
+        }
+        if ($dice === 3) {
+            Console::info("The weather is windy! Dragon, flying and psychic type attacks are now boosted!");
+            Console::info("-------------------------------");
+        }
+        if ($dice === 4) {
+            Console::info("The weather is snowy! Ice and steel type attacks are now boosted!");
+            Console::info("-------------------------------");
+        }
+        if ($dice === 5) {
+            Console::info("The weather is foggy! Ghost and dark type attacks are now boosted!");
+            Console::info("-------------------------------");
+        }
+        if ($dice === 6) {
+            Console::info("The weather is cloudy! Fairy, fighting and poison type attacks are now boosted!");
+            Console::info("-------------------------------");
+        }
+        if ($dice === 7) {
+            Console::info("The weather is partly cloudy! Normal and rock type attacks are now boosted!");
+            Console::info("-------------------------------");
+        }
+    }
+
+    private function battle(Pokemon $pokemon1, Pokemon $pokemon2, bool $recursive = true, bool $startofbattle = true)
+    {
+        if ($startofbattle) {
+            $this->getWeather();
+        }
         $moves1 = $pokemon1->getMoves();
         $moves2 = $pokemon2->getMoves();
         if ($pokemon1->getHealth() > 0) {
-            Console::info($pokemon1->getName()." attacks!");
+            Console::info($pokemon1->getName() . " attacks!");
             Console::info("-------------------------------");
             $this->attackType($moves1[array_rand($moves1)], $pokemon2);
         }
         if ($pokemon2->getHealth() > 0) {
-            Console::info($pokemon2->getName()." attacks!");
+            Console::info($pokemon2->getName() . " attacks!");
             Console::info("-------------------------------");
             $this->attackType($moves2[array_rand($moves2)], $pokemon1);
         }
         if ($pokemon1->getHealth() > 0 && $pokemon2->getHealth() > 0) {
             if ($recursive) {
-                $this->battle($pokemon1, $pokemon2, $recursive);
+                $this->battle($pokemon1, $pokemon2, $recursive, false);
             }
         } else {
             if ($pokemon2->getHealth() <= 0) { // Pokemon1 wins
-                Console::succes($pokemon1->getName().spl_object_id($pokemon1)." wins this battle with ".$pokemon1->getHealth()
-                    ." HP left!");
-                Console::error($pokemon2->getName().spl_object_id($pokemon2)." has been defeated.");
+                Console::succes($pokemon1->getName() . spl_object_id($pokemon1) . " wins this battle with " . $pokemon1->getHealth()
+                    . " HP left!");
+                Console::error($pokemon2->getName() . spl_object_id($pokemon2) . " has been defeated.");
             } else { // Pokemon2 wins
-                Console::succes($pokemon2->getName().spl_object_id($pokemon2)." wins this battle with ".$pokemon2->getHealth()
-                    ." HP left!");
-                Console::error($pokemon1->getName().spl_object_id($pokemon1)." has been defeated.");
+                Console::succes($pokemon2->getName() . spl_object_id($pokemon2) . " wins this battle with " . $pokemon2->getHealth()
+                    . " HP left!");
+                Console::error($pokemon1->getName() . spl_object_id($pokemon1) . " has been defeated.");
             }
         }
     }
@@ -175,13 +211,14 @@ class PokemonCommand
         Pokemon $pokemon4,
         Pokemon $pokemon5,
         Pokemon $pokemon6,
-        bool $startOfBattle = true
-    ) {
+        bool    $startOfBattle = true
+    )
+    {
         $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6];
         if ($startOfBattle) {
             $boss->setHealth(4750);
-            if (rand(1,2) === 2) {
-                Console::info($pokemon1->getName()."has MEGA-evolved");
+            if (rand(1, 2) === 2) {
+                Console::info($pokemon1->getName() . "has MEGA-evolved");
             }
         }
         foreach ($array as $pokemon) {
@@ -191,17 +228,17 @@ class PokemonCommand
                     if (rand(1, 3) === 3) {
                         $this->usePotion($pokemon);
                     } else {
-                        Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
+                        Console::info($pokemon->getName() . spl_object_id($pokemon) . " attacks!");
                         $this->raidAttackType($moves[array_rand($moves)], $boss);
                     }
                 } else {
-                    Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
+                    Console::info($pokemon->getName() . spl_object_id($pokemon) . " attacks!");
                     $this->raidAttackType($moves[array_rand($moves)], $boss);
                 }
             }
         }
         if ($boss->gethealth() <= 0) {
-            Console::succes($boss->getName().spl_object_id($boss)." has been defeated, the attackers have won this raid!");
+            Console::succes($boss->getName() . spl_object_id($boss) . " has been defeated, the attackers have won this raid!");
             Console::info("---------------------------------");
             foreach ($array as $pokemon) {
                 $this->getAlive($pokemon);
@@ -211,7 +248,7 @@ class PokemonCommand
         foreach ($array as $pokemon) {
             $bossmoves = $boss->getMoves();
             if ($pokemon->getHealth() > 0) {
-                Console::info($boss->getName().spl_object_id($boss)." attacks!");
+                Console::info($boss->getName() . spl_object_id($boss) . " attacks!");
                 $this->raidAttackType($bossmoves[array_rand($bossmoves)], $pokemon);
             }
         }
@@ -219,7 +256,7 @@ class PokemonCommand
             && $pokemon5->getHealth() <= 0
             && $pokemon6->getHealth() <= 0
         ) {
-            Console::error("All of your pokemon have fallen, ".$boss->getName()." has won this raid with ".$boss->gethealth()."HP left!");
+            Console::error("All of your pokemon have fallen, " . $boss->getName() . " has won this raid with " . $boss->gethealth() . "HP left!");
             die;
         }
         $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, false);
@@ -239,14 +276,14 @@ class PokemonCommand
             unset($team1[0]);
             $team1 = array_values($team1);
             if (!empty($team1)) {
-                Console::info("Team 1 sends out ".$team1[0]->getName());
+                Console::info("Team 1 sends out " . $team1[0]->getName());
             }
         }
         if ($pokemon2->getHealth() <= 0) {
             unset($team2[0]);
             $team2 = array_values($team2);
             if (!empty($team2)) {
-                Console::info("Team 2 sends out ".$team2[0]->getName());
+                Console::info("Team 2 sends out " . $team2[0]->getName());
             }
         }
         if (empty($team1)) {
