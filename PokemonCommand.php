@@ -244,11 +244,11 @@ class PokemonCommand
                         $this->usePotion($pokemon);
                     } else {
                         Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
-                        $this->raidAttackType($moves[array_rand($moves)], $boss);
+                        $this->raidAttackType($moves[array_rand($moves)],$pokemon, $boss);
                     }
                 } else {
                     Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
-                    $this->raidAttackType($moves[array_rand($moves)], $boss);
+                    $this->raidAttackType($moves[array_rand($moves)], $pokemon, $boss);
                 }
             }
         }
@@ -264,7 +264,7 @@ class PokemonCommand
             $bossmoves = $boss->getMoves();
             if ($pokemon->getHealth() > 0) {
                 Console::info($boss->getName().spl_object_id($boss)." attacks!");
-                $this->raidAttackType($bossmoves[array_rand($bossmoves)], $pokemon);
+                $this->raidAttackType($bossmoves[array_rand($bossmoves)], $pokemon, $pokemon);
             }
         }
         if ($pokemon1->getHealth() <= 0 && $pokemon2->getHealth() <= 0 && $pokemon3->getHealth() <= 0 && $pokemon4->getHealth() <= 0
