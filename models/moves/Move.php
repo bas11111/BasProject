@@ -6,6 +6,16 @@ abstract class Move
 {
     protected string $type;
 
+    protected static array $weatherBoostedTypes = [
+        "sunny" => ["ground", "fire", "grass"],
+        "rainy" => ["water", "electric", "bug"],
+        "windy" => ["dragon", "fly", "psychic"],
+        "snowy" => ["ice", "steel"],
+        "foggy" => ["ghost", "dark"],
+        "cloudy" => ["fairy", "fighting", "poison"],
+        "partly cloudy" => ["normal", "rock"],
+    ];
+
     protected bool $charged;
 
     public function getType(): string
@@ -45,6 +55,11 @@ abstract class Move
         }
 
         return false;
+    }
+
+    public function isBoosted(string $weather): bool
+    {
+        return array_key_exists($weather, static::$weatherBoostedTypes) && in_array($this->type, static::$weatherBoostedTypes[$weather]);
     }
 
     abstract function getNotEffectiveAgainst(): array;
