@@ -9,10 +9,9 @@ use models\moves\MudSlap;
 
 class Entei extends Pokemon
 {
-
     protected int $health = 411;
     protected int $maxHealth = 411;
-
+    protected int $CP = 3681;
     protected array $type = ["fire"];
 
     public function getWeakAgainst(): array
@@ -20,17 +19,7 @@ class Entei extends Pokemon
         return ["fly", "water", "ground", "legendary"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 3681;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 122;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

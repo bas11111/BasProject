@@ -11,7 +11,7 @@ class Hydreigon extends Pokemon
 {
     protected int $health = 294;
     protected int $maxHealth = 294;
-
+    protected int $CP = 3849;
     protected array $type = ["dragon"];
 
     public function getWeakAgainst(): array
@@ -19,17 +19,7 @@ class Hydreigon extends Pokemon
         return ["dragon", "fairy", "legendary"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 3849;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 130;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

@@ -11,7 +11,7 @@ class Metagross extends Pokemon
 {
     protected int $health = 513;
     protected int $maxHealth = 513;
-
+    protected int $CP = 4031;
     protected array $type = ["steel"];
 
     public function getWeakAgainst(): array
@@ -19,19 +19,9 @@ class Metagross extends Pokemon
         return ["fighting", "fire", "ground", "legendary"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 4031;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 110;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array

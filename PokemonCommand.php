@@ -3,10 +3,13 @@
 use models\moves\Move;
 use models\pokemon\Abomasnow;
 use models\pokemon\Articuno;
+use models\pokemon\Buzzwole;
 use models\pokemon\Charizard;
 use models\pokemon\Dragonite;
 use models\pokemon\Entei;
 use models\pokemon\Garchomp;
+use models\pokemon\Gardevoir;
+use models\pokemon\Gengar;
 use models\pokemon\Gyarados;
 use models\pokemon\Hydreigon;
 use models\pokemon\Lucario;
@@ -52,11 +55,15 @@ class PokemonCommand
             new Raikou(), //18
             new Suicune(), //19
             new Tyranitar(), //20
+            new Gardevoir(), //21
+            new Buzzwole(), //22
+            new Gengar(), //23
         ];
-//        $this->raid($pokemons[array_rand($pokemons)], $pokemons[0], $pokemons[10], $pokemons[4], $pokemons[12], $pokemons[6], $pokemons[11]);
+//        $this->raid($pokemons[5], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9],
+//            clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9]);
 //        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
 //            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-//            clone $pokemons[array_rand($pokemons)]);
+//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
         $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
     }
@@ -111,7 +118,7 @@ class PokemonCommand
         $target->setHealth($targetHealth);
     }
 
-    private function raidAttackType(Move $move, Pokemon$attacker, Pokemon $target)
+    private function raidAttackType(Move $move, Pokemon $attacker, Pokemon $target)
     {
         $targetHealth = $target->getHealth();
         $targetHealth -= $this->calculateDamage($move, $attacker, $target);
@@ -185,10 +192,23 @@ class PokemonCommand
         }
     }
 
+    private function setMega(Pokemon $pokemon)
+    {
+        $calc = round($pokemon->getCombatPower() / 2);
+        if ($pokemon->hasMegaEvolve()) {
+            if (rand(1, 10) === 1) {
+                Console::info($pokemon->getName().spl_object_id($pokemon)." Has mega evolved");
+                $pokemon->setCombatPower($pokemon->getCombatPower() + $calc);
+            }
+        }
+    }
+
     private function battle(Pokemon $pokemon1, Pokemon $pokemon2, bool $recursive = true, bool $startofbattle = true)
     {
         if ($startofbattle) {
             $this->setWeather();
+            $this->setMega($pokemon1);
+            $this->setMega($pokemon2);
         }
         $moves1 = $pokemon1->getMoves();
         $moves2 = $pokemon2->getMoves();
@@ -227,14 +247,18 @@ class PokemonCommand
         Pokemon $pokemon4,
         Pokemon $pokemon5,
         Pokemon $pokemon6,
+        Pokemon $pokemon7,
+        Pokemon $pokemon8,
+        Pokemon $pokemon9,
         bool $startOfBattle = true
     ) {
-        $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6];
+        $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, $pokemon8, $pokemon9];
         if ($startOfBattle) {
-            $boss->setHealth(4750);
-            if (rand(1, 2) === 2) {
-                Console::info($pokemon1->getName()."has MEGA-evolved");
+            $boss->setHealth(4500);
+            foreach ($array as $pokemon) {
+                $this->setMega($pokemon);
             }
+            $this->setWeather();
         }
         foreach ($array as $pokemon) {
             $moves = $pokemon->getmoves();
@@ -244,7 +268,7 @@ class PokemonCommand
                         $this->usePotion($pokemon);
                     } else {
                         Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
-                        $this->raidAttackType($moves[array_rand($moves)],$pokemon, $boss);
+                        $this->raidAttackType($moves[array_rand($moves)], $pokemon, $boss);
                     }
                 } else {
                     Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
@@ -274,7 +298,7 @@ class PokemonCommand
             Console::error("All of your pokemon have fallen, ".$boss->getName()." has won this raid with ".$boss->gethealth()."HP left!");
             die;
         }
-        $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, false);
+        $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, $pokemon8, $pokemon9, false);
     }
 
     private function teamBattle(array $team1, array $team2)

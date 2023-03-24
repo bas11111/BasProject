@@ -11,25 +11,15 @@ class Meganium extends Pokemon
 {
     protected int $health = 455;
     protected int $maxHealth = 455;
+    protected int $CP = 2524;
     protected array $type = ["grass"];
-
 
     public function getWeakAgainst(): array
     {
         return ["fire", "normal", "legendary"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 2524;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 82;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

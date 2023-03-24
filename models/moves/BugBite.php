@@ -15,7 +15,7 @@ class BugBite extends Move
 
     function getNotEffectiveAgainst(): array
     {
-        return ["fairy", "fighting", "fly", "fire", "ghost", "poison", "steel"];
+        return ["fairy", "fighting", "fly", "fire", "ghost", "poison", "steel", "legendary"];
     }
 
     public function getDamage(): int

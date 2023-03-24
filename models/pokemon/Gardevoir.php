@@ -11,6 +11,7 @@ class Gardevoir extends Pokemon
 {
     protected int $health = 381;
     protected int $maxHealth = 381;
+    protected int $CP = 3267;
     protected array $type = ["fairy", "psychic"];
 
     public function getWeakAgainst(): array
@@ -18,14 +19,9 @@ class Gardevoir extends Pokemon
         return ["poison", "steel", "legendary"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 3267;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 111;
+        return true;
     }
 
     public function getMoves(): array

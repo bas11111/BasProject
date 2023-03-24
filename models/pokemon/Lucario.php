@@ -9,10 +9,9 @@ use models\moves\FocusBlast;
 
 class Lucario extends Pokemon
 {
-
     protected int $health = 418;
     protected int $maxHealth = 418;
-
+    protected int $CP = 4061;
     protected array $type = ["fighting"];
 
     public function getWeakAgainst(): array
@@ -20,19 +19,9 @@ class Lucario extends Pokemon
         return ["fly", "fairy"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 4061;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 120;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array

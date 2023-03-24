@@ -9,10 +9,9 @@ use models\moves\WaterGun;
 
 class Articuno extends Pokemon
 {
-
     protected int $health = 397;
     protected int $maxHealth = 397;
-
+    protected int $CP = 3223;
     protected array $type = ["ice", "fly"];
 
     public function getWeakAgainst(): array
@@ -20,17 +19,7 @@ class Articuno extends Pokemon
         return ["fire", "fighting", "legendary", "rock", "normal", "dark", "fly", "electric"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 3223;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 118;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

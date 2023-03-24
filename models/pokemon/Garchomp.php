@@ -11,7 +11,7 @@ class Garchomp extends Pokemon
 {
     protected int $health = 471;
     protected int $maxHealth = 471;
-
+    protected int $CP = 4218;
     protected array $type = ["dragon", "ground"];
 
     public function getWeakAgainst(): array
@@ -19,19 +19,9 @@ class Garchomp extends Pokemon
         return ["dragon", "fairy", "legendary"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 4218;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 124;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array

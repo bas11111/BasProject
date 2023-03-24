@@ -11,7 +11,7 @@ class Mewtwo extends Pokemon
 {
     protected int $health = 550;
     protected int $maxHealth = 550;
-
+    protected int $CP = 4452;
     protected array $type = ["legendary"];
 
     public function getWeakAgainst(): array
@@ -19,19 +19,9 @@ class Mewtwo extends Pokemon
         return ["fighting"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 4452;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 140;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array

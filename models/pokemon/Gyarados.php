@@ -9,31 +9,19 @@ use models\moves\WaterGun;
 
 class Gyarados extends Pokemon
 {
-
     protected int $health = 330;
     protected int $maxHealth = 330;
-
+    protected int $CP = 3594;
     protected array $type = ["water", "dragon"];
-
 
     public function getWeakAgainst(): array
     {
         return ["grass", "ice", "dragon", "legendary", "electric"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 3594;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 110;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array

@@ -11,25 +11,15 @@ class Dragonite extends Pokemon
 {
     protected int $health = 386;
     protected int $maxHealth = 386;
+    protected int $CP = 4032;
     protected array $type = ["dragon"];
-
 
     public function getWeakAgainst(): array
     {
         return ["dragon", "fairy", "legendary"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 4032;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 106;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

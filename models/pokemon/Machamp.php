@@ -9,29 +9,17 @@ use models\moves\Snarl;
 
 class Machamp extends Pokemon
 {
-
     protected int $health = 401;
     protected int $maxHealth = 401;
-
+    protected int $CP = 3226;
     protected array $type = ["fighting"];
-
 
     public function getWeakAgainst(): array
     {
         return ["fly"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 3226;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 90;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

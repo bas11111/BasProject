@@ -7,6 +7,7 @@ abstract class Pokemon
     protected array $type;
     protected int $health;
     protected int $maxHealth;
+    protected int $CP;
 
     public function getType(): array
     {
@@ -44,6 +45,16 @@ abstract class Pokemon
         $this->health = $health;
     }
 
+    public function getCombatPower()
+    {
+        return $this->CP;
+    }
+
+    public function setCombatPower(int $CP)
+    {
+        $this->CP = $CP;
+    }
+
     public function getMaxHealth()
     {
         return $this->maxHealth;
@@ -56,7 +67,4 @@ abstract class Pokemon
 
     abstract public function getMoves(): array;
 
-    abstract public function getCombatPower(): int;
-
-    abstract public function getChargedAttack(): int;
 }

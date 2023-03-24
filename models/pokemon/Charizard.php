@@ -11,7 +11,7 @@ class Charizard extends Pokemon
 {
     protected int $health = 360;
     protected int $maxHealth = 360;
-
+    protected int $CP = 3045;
     protected array $type = ["fire"];
 
     public function getWeakAgainst(): array
@@ -19,19 +19,9 @@ class Charizard extends Pokemon
         return ["water", "ground", "rock", "fly", "normal", "legendary", "electric"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 3045;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 114;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array

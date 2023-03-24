@@ -9,31 +9,19 @@ use models\moves\StoneEdge;
 
 class Tyranitar extends Pokemon
 {
-
     protected int $health = 531;
     protected int $maxHealth = 531;
-
+    protected int $CP = 4079;
     protected array $type = ["rock", "dark"];
-
 
     public function getWeakAgainst(): array
     {
         return ["grass", "fly", "fairy", "legendary"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 4079;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 118;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array

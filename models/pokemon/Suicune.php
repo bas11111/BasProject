@@ -9,10 +9,9 @@ use models\moves\WaterGun;
 
 class Suicune extends Pokemon
 {
-
     protected int $health = 381;
     protected int $maxHealth = 381;
-
+    protected int $CP = 3147;
     protected array $type = ["water"];
 
     public function getWeakAgainst(): array
@@ -20,17 +19,7 @@ class Suicune extends Pokemon
         return ["electric", "grass", "ice", "legendary"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 3147;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 114;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

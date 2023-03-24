@@ -9,24 +9,23 @@ use models\moves\HornAttack;
 
 class Buzzwole extends Pokemon
 {
+    protected int $health = 455;
+    protected int $maxHealth = 455;
+    protected int $CP = 3670;
+    protected array $type = ["bug"];
 
     public function getWeakAgainst(): array
     {
-        return ["fire", "rock", "fly"];
+        return ["fire", "rock", "fly", "legendary"];
+    }
+
+    public function hasMegaEvolve(): bool
+    {
+        return false;
     }
 
     public function getMoves(): array
     {
         return [new BugBite(), new BulletSeed(), new HornAttack(), new BugBuzz()];
-    }
-
-    public function getCombatPower(): int
-    {
-        return 3670;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 110;
     }
 }

@@ -11,26 +11,15 @@ class Snorlax extends Pokemon
 {
     protected int $health = 775;
     protected int $maxHealth = 775;
-
+    protected int $CP = 2190;
     protected array $type = ["normal"];
-
 
     public function getWeakAgainst(): array
     {
         return ["ice", "rock", "legendary", "fighting"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 2190;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 32;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

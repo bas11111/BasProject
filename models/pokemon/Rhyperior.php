@@ -9,32 +9,21 @@ use models\moves\StoneEdge;
 
 class Rhyperior extends Pokemon
 {
-
     protected int $health = 536;
     protected int $maxHealth = 536;
-
+    protected int $CP = 3968;
     protected array $type = ["rock", "ground"];
-
 
     public function getWeakAgainst(): array
     {
         return ["water", "dark", "legendary"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 3968;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 96;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }
+
 
     public function getMoves(): array
     {

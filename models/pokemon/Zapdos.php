@@ -11,7 +11,7 @@ class Zapdos extends Pokemon
 {
     protected int $health = 389;
     protected int $maxHealth = 389;
-
+    protected int $CP = 3741;
     protected array $type = ["electric", "fly"];
 
     public function getWeakAgainst(): array
@@ -19,17 +19,7 @@ class Zapdos extends Pokemon
         return ["electric", "ground", "dragon", "grass", "legendary"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 3741;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 122;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

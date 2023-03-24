@@ -9,28 +9,17 @@ use models\moves\SolarBeam;
 
 class Venusaur extends Pokemon
 {
-
     protected int $health = 418;
     protected int $maxHealth = 418;
+    protected int $CP = 2862;
     protected array $type = ["grass"];
-
 
     public function getWeakAgainst(): array
     {
         return ["fire", "normal", "legendary", "poison"];
     }
 
-    public function getCombatPower(): int
-    {
-        return 2862;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 92;
-    }
-
-    public function hasArtifact(): bool
+    public function hasMegaEvolve(): bool
     {
         return false;
     }

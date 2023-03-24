@@ -11,28 +11,17 @@ class Abomasnow extends Pokemon
 {
     protected int $health = 420;
     protected int $maxHealth = 420;
-
+    protected int $CP = 2472;
     protected array $type = ["ice", "grass"];
-
 
     public function getWeakAgainst(): array
     {
         return ["electric", "legendary", "grass"];
     }
 
-    public function getCombatPower(): int
+    public function hasMegaEvolve(): bool
     {
-        return 2472;
-    }
-
-    public function getChargedAttack(): int
-    {
-        return 116;
-    }
-
-    public function hasArtifact(): bool
-    {
-        return false;
+        return true;
     }
 
     public function getMoves(): array
