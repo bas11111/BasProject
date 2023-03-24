@@ -9,8 +9,8 @@ use models\moves\Hex;
 
 class Gardevoir extends Pokemon
 {
-    protected int $health = 381;
-    protected int $maxHealth = 381;
+    protected int $health = 349;
+    protected int $maxHealth = 349;
     protected int $CP = 3267;
     protected array $type = ["fairy", "psychic"];
 

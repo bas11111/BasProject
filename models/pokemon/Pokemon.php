@@ -67,4 +67,5 @@ abstract class Pokemon
 
     abstract public function getMoves(): array;
 
+    abstract public function hasMegaEvolve(): bool;
 }

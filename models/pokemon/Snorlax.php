@@ -9,8 +9,8 @@ use models\moves\HornAttack;
 
 class Snorlax extends Pokemon
 {
-    protected int $health = 775;
-    protected int $maxHealth = 775;
+    protected int $health = 520;
+    protected int $maxHealth = 520;
     protected int $CP = 2190;
     protected array $type = ["normal"];
 

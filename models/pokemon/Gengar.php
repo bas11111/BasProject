@@ -9,14 +9,14 @@ use models\moves\Snarl;
 
 class Gengar extends Pokemon
 {
-    protected int $health = 443;
-    protected int $maxHealth = 443;
+    protected int $health = 325;
+    protected int $maxHealth = 325;
     protected int $CP = 3027;
     protected array $type = ["ghost", "poison"];
 
     public function getWeakAgainst(): array
     {
-        return ["poison", "ghost", "rock", "ground", "steel", "normal", "dark", "legendary"];
+        return ["ghost", "ground", "dark", "psychic", "legendary"];
     }
 
     public function hasMegaEvolve(): bool

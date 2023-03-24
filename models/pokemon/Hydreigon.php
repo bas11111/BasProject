@@ -9,8 +9,8 @@ use models\moves\Snarl;
 
 class Hydreigon extends Pokemon
 {
-    protected int $health = 294;
-    protected int $maxHealth = 294;
+    protected int $health = 409;
+    protected int $maxHealth = 409;
     protected int $CP = 3849;
     protected array $type = ["dragon"];
 

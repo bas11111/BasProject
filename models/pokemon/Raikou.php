@@ -9,8 +9,8 @@ use models\moves\ThunderBolt;
 
 class Raikou extends Pokemon
 {
-    protected int $health = 396;
-    protected int $maxHealth = 496;
+    protected int $health = 390;
+    protected int $maxHealth = 390;
     protected int $CP = 3660;
     protected array $type = ["electric"];
 

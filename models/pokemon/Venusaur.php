@@ -9,8 +9,8 @@ use models\moves\SolarBeam;
 
 class Venusaur extends Pokemon
 {
-    protected int $health = 418;
-    protected int $maxHealth = 418;
+    protected int $health = 307;
+    protected int $maxHealth = 307;
     protected int $CP = 2862;
     protected array $type = ["grass"];
 

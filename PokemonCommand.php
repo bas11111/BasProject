@@ -26,6 +26,17 @@ use models\pokemon\Tyranitar;
 use models\pokemon\Venusaur;
 use models\pokemon\Yveltal;
 use models\pokemon\Zapdos;
+use models\pokemon\Alakazam;
+use models\pokemon\Arceus;
+use models\pokemon\Darkrai;
+use models\pokemon\Gigalith;
+use models\pokemon\Glastrier;
+use models\pokemon\Groudon;
+use models\pokemon\Pinsir;
+use models\pokemon\Silvally;
+use models\pokemon\Spectrier;
+use models\pokemon\Tornadus;
+use models\pokemon\Xerneas;
 
 class PokemonCommand
 {
@@ -58,13 +69,24 @@ class PokemonCommand
             new Gardevoir(), //21
             new Buzzwole(), //22
             new Gengar(), //23
+            new Alakazam(), //24
+            new Arceus(), //25
+            new Darkrai(), //26
+            new Gigalith(), //27
+            new Glastrier(), //28
+            new Groudon(), //29
+            new Pinsir(), //30
+            new Silvally(), //31
+            new Spectrier(), //32
+            new Tornadus(), //33
+            new Xerneas(), //34
         ];
 //        $this->raid($pokemons[5], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9],
 //            clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9]);
 //        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
 //            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
 //            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
-        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
+        $this->battle($pokemons[29], clone $pokemons[5]);
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
     }
 

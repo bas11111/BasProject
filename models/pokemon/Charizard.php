@@ -9,8 +9,8 @@ use models\moves\FlameBlast;
 
 class Charizard extends Pokemon
 {
-    protected int $health = 360;
-    protected int $maxHealth = 360;
+    protected int $health = 326;
+    protected int $maxHealth = 326;
     protected int $CP = 3045;
     protected array $type = ["fire"];
 

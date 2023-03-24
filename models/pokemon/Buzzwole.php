@@ -9,8 +9,8 @@ use models\moves\HornAttack;
 
 class Buzzwole extends Pokemon
 {
-    protected int $health = 455;
-    protected int $maxHealth = 455;
+    protected int $health = 391;
+    protected int $maxHealth = 391;
     protected int $CP = 3670;
     protected array $type = ["bug"];
 

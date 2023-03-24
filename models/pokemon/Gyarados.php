@@ -9,8 +9,8 @@ use models\moves\WaterGun;
 
 class Gyarados extends Pokemon
 {
-    protected int $health = 330;
-    protected int $maxHealth = 330;
+    protected int $health = 383;
+    protected int $maxHealth = 383;
     protected int $CP = 3594;
     protected array $type = ["water", "dragon"];
 

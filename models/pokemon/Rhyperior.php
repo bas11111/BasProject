@@ -16,7 +16,7 @@ class Rhyperior extends Pokemon
 
     public function getWeakAgainst(): array
     {
-        return ["water", "dark", "legendary"];
+        return ["grass", "ice", "water", "dark", "legendary"];
     }
 
     public function hasMegaEvolve(): bool

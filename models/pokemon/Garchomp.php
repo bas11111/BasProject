@@ -16,7 +16,7 @@ class Garchomp extends Pokemon
 
     public function getWeakAgainst(): array
     {
-        return ["dragon", "fairy", "legendary"];
+        return ["dragon", "fairy", "grass", "ice", "water", "legendary"];
     }
 
     public function hasMegaEvolve(): bool
