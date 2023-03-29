@@ -13,6 +13,7 @@ class Gyarados extends Pokemon
     protected int $maxHealth = 383;
     protected int $CP = 3594;
     protected array $type = ["water", "dragon"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

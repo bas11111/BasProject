@@ -13,6 +13,7 @@ class Zapdos extends Pokemon
     protected int $maxHealth = 398;
     protected int $CP = 3741;
     protected array $type = ["electric", "fly"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

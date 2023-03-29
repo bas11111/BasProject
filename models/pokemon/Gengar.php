@@ -13,6 +13,7 @@ class Gengar extends Pokemon
     protected int $maxHealth = 325;
     protected int $CP = 3027;
     protected array $type = ["ghost", "poison"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

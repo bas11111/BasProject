@@ -13,6 +13,7 @@ class Dragonite extends Pokemon
     protected int $maxHealth = 428;
     protected int $CP = 4032;
     protected array $type = ["dragon"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

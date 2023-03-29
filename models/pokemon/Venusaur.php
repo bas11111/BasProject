@@ -13,6 +13,7 @@ class Venusaur extends Pokemon
     protected int $maxHealth = 307;
     protected int $CP = 2862;
     protected array $type = ["grass"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

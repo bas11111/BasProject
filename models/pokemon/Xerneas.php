@@ -13,6 +13,7 @@ class Xerneas extends Pokemon
     protected int $maxHealth = 427;
     protected int $CP = 4020;
     protected array $type = ["fairy"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

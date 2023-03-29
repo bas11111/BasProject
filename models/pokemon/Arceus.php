@@ -13,6 +13,7 @@ class Arceus extends Pokemon
     protected int $maxHealth = 451;
     protected int $CP = 4512;
     protected array $type = ["legendary"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

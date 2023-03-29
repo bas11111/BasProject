@@ -13,6 +13,7 @@ class Glastrier extends Pokemon
     protected int $maxHealth = 440;
     protected int $CP = 4147;
     protected array $type = ["ice"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

@@ -13,6 +13,7 @@ class Articuno extends Pokemon
     protected int $maxHealth = 345;
     protected int $CP = 3223;
     protected array $type = ["ice", "fly"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

@@ -13,6 +13,8 @@ class Groudon extends Pokemon
     protected int $maxHealth = 465;
     protected int $CP = 4386;
     protected array $type = ["ground"];
+    protected int $shields = 2;
+
     public function getWeakAgainst(): array
     {
         return ["grass", "ice", "water", "legendary"];

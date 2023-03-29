@@ -13,6 +13,7 @@ class Buzzwole extends Pokemon
     protected int $maxHealth = 391;
     protected int $CP = 3670;
     protected array $type = ["bug"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

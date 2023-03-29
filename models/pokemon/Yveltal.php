@@ -13,6 +13,7 @@ class Yveltal extends Pokemon
     protected int $maxHealth = 427;
     protected int $CP = 4020;
     protected array $type = ["dark", "fly"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

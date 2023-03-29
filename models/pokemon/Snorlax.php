@@ -13,6 +13,7 @@ class Snorlax extends Pokemon
     protected int $maxHealth = 520;
     protected int $CP = 2190;
     protected array $type = ["normal"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

@@ -13,6 +13,7 @@ class Hydreigon extends Pokemon
     protected int $maxHealth = 409;
     protected int $CP = 3849;
     protected array $type = ["dragon"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

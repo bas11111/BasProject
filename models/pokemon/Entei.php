@@ -13,6 +13,7 @@ class Entei extends Pokemon
     protected int $maxHealth = 392;
     protected int $CP = 3681;
     protected array $type = ["fire"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

@@ -14,6 +14,8 @@ class Gigalith extends Pokemon
     protected int $maxHealth = 365;
     protected int $CP = 3416;
     protected array $type = ["rock"];
+    protected int $shields = 2;
+
     public function getWeakAgainst(): array
     {
         return ["fighting", "grass" , "ground", "steel", "water", "legendary"];

@@ -13,6 +13,7 @@ class Machamp extends Pokemon
     protected int $maxHealth = 345;
     protected int $CP = 3226;
     protected array $type = ["fighting"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

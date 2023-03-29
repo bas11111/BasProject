@@ -86,10 +86,9 @@ class PokemonCommand
 //        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
 //            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
 //            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
-        $this->battle($pokemons[29], clone $pokemons[5]);
+        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
     }
-
     private function calculateDamage(Move $move, Pokemon $attacker, Pokemon $target)
     {
         Console::info($move->getName()." was used!");
@@ -119,6 +118,19 @@ class PokemonCommand
         }
         $CP = round($attacker->getCombatPower() / 200);
         $damage += $CP;
+
+
+        $targetShields = $target->getShields();
+        if ($move->isCharged()) {
+            if ($target->getShields() > 0) {
+                if (rand(1, 1) === 1) {
+                    Console::succes($target->getName() . " has used a shield to block the incoming attack");
+                    $damage = 0;
+                    $target->setShields($targetShields - 1);
+                    Console::info($target->getName() . " now has " . $target->getShields() . " shield left!");
+                }
+            }
+        }
 
         return $damage;
     }

@@ -13,6 +13,7 @@ class Spectrier extends Pokemon
     protected int $maxHealth = 382;
     protected int $CP = 3580;
     protected array $type = ["ghost"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

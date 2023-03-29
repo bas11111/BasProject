@@ -13,6 +13,8 @@ class Darkrai extends Pokemon
     protected int $maxHealth = 422;
     protected int $CP = 3970;
     protected array $type = ["dark"];
+    protected int $shields = 2;
+
     public function getWeakAgainst(): array
     {
         return ["bug", "fairy", "fighting"];

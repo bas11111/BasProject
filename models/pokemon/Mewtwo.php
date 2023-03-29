@@ -13,6 +13,7 @@ class Mewtwo extends Pokemon
     protected int $maxHealth = 472;
     protected int $CP = 4452;
     protected array $type = ["legendary"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

@@ -13,6 +13,8 @@ class Tornadus extends Pokemon
     protected int $maxHealth = 378;
     protected int $CP = 3540;
     protected array $type = ["fly"];
+    protected int $shields = 2;
+
     public function getWeakAgainst(): array
     {
         return ["electric", "ice", "rock"];

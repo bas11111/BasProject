@@ -14,6 +14,7 @@ class Pinsir extends Pokemon
     protected int $maxHealth = 334;
     protected int $CP = 3119;
     protected array $type = ["bug"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

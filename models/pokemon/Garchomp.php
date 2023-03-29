@@ -13,6 +13,7 @@ class Garchomp extends Pokemon
     protected int $maxHealth = 471;
     protected int $CP = 4218;
     protected array $type = ["dragon", "ground"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

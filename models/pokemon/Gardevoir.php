@@ -13,6 +13,7 @@ class Gardevoir extends Pokemon
     protected int $maxHealth = 349;
     protected int $CP = 3267;
     protected array $type = ["fairy", "psychic"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

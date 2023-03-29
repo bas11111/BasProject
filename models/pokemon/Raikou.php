@@ -13,6 +13,7 @@ class Raikou extends Pokemon
     protected int $maxHealth = 390;
     protected int $CP = 3660;
     protected array $type = ["electric"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {

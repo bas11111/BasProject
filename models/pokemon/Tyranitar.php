@@ -13,6 +13,7 @@ class Tyranitar extends Pokemon
     protected int $maxHealth = 433;
     protected int $CP = 4079;
     protected array $type = ["rock", "dark"];
+    protected int $shields = 2;
 
     public function getWeakAgainst(): array
     {
