@@ -83,18 +83,18 @@ class PokemonCommand
         ];
 //        $this->raid($pokemons[5], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9],
 //            clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9]);
-        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
+//        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
+//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
+//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
 
-//        $path = 'test.csv';
-//        $handle = fopen($path, "r"); // open in readonly mode
-//        while (($row = fgetcsv($handle)) !== false) {
-//            var_dump($row);
-//        }
-//        fclose($handle);
+        $path = 'test.csv';
+        $handle = fopen($path, "r"); // open in readonly mode
+        while (($row = fgetcsv($handle)) !== false) {
+            var_dump($row);
+        }
+        fclose($handle);
     }
 
     private function calculateDamage(Move $move, Pokemon $attacker, Pokemon $target)
