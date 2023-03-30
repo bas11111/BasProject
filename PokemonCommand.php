@@ -2,14 +2,20 @@
 
 use models\moves\Move;
 use models\pokemon\Abomasnow;
+use models\pokemon\Alakazam;
+use models\pokemon\Arceus;
 use models\pokemon\Articuno;
 use models\pokemon\Buzzwole;
 use models\pokemon\Charizard;
+use models\pokemon\Darkrai;
 use models\pokemon\Dragonite;
 use models\pokemon\Entei;
 use models\pokemon\Garchomp;
 use models\pokemon\Gardevoir;
 use models\pokemon\Gengar;
+use models\pokemon\Gigalith;
+use models\pokemon\Glastrier;
+use models\pokemon\Groudon;
 use models\pokemon\Gyarados;
 use models\pokemon\Hydreigon;
 use models\pokemon\Lucario;
@@ -17,26 +23,20 @@ use models\pokemon\Machamp;
 use models\pokemon\Meganium;
 use models\pokemon\Metagross;
 use models\pokemon\Mewtwo;
+use models\pokemon\Pinsir;
 use models\pokemon\Pokemon;
 use models\pokemon\Raikou;
 use models\pokemon\Rhyperior;
+use models\pokemon\Silvally;
 use models\pokemon\Snorlax;
+use models\pokemon\Spectrier;
 use models\pokemon\Suicune;
+use models\pokemon\Tornadus;
 use models\pokemon\Tyranitar;
 use models\pokemon\Venusaur;
+use models\pokemon\Xerneas;
 use models\pokemon\Yveltal;
 use models\pokemon\Zapdos;
-use models\pokemon\Alakazam;
-use models\pokemon\Arceus;
-use models\pokemon\Darkrai;
-use models\pokemon\Gigalith;
-use models\pokemon\Glastrier;
-use models\pokemon\Groudon;
-use models\pokemon\Pinsir;
-use models\pokemon\Silvally;
-use models\pokemon\Spectrier;
-use models\pokemon\Tornadus;
-use models\pokemon\Xerneas;
 
 class PokemonCommand
 {
@@ -86,9 +86,17 @@ class PokemonCommand
 //        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
 //            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
 //            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
-        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
+//        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
+
+        $path = 'test.csv';
+        $handle = fopen($path, "r"); // open in readonly mode
+        while (($row = fgetcsv($handle)) !== false) {
+            var_dump($row);
+        }
+        fclose($handle);
     }
+
     private function calculateDamage(Move $move, Pokemon $attacker, Pokemon $target)
     {
         Console::info($move->getName()." was used!");
@@ -124,15 +132,15 @@ class PokemonCommand
         if ($move->isCharged()) {
             if ($target->getShields() > 0) {
                 if (rand(1, 1) === 1) {
-                    Console::succes($target->getName() . " has used a shield to block the incoming attack");
+                    Console::succes($target->getName()." has used a shield to block the incoming attack");
                     $damage = 0;
                     $target->setShields($targetShields - 1);
-                    Console::info($target->getName() . " now has " . $target->getShields() . " shield left!");
+                    Console::info($target->getName()." now has ".$target->getShields()." shield left!");
                 }
-            }
-        }
+    }
+}
 
-        return $damage;
+return $damage;
     }
 
     private function setHP(Move $move, Pokemon $attacker, Pokemon $target)
@@ -240,8 +248,12 @@ class PokemonCommand
         $moves2 = $pokemon2->getMoves();
         if ($pokemon1->getHealth() > 0) {
             if ($pokemon1->getHealth() < 150) {
-                if (rand(1 ,3) === 3) {
+                if (rand(1, 3) === 3) {
                     $this->usePotion($pokemon1);
+                } else {
+                    Console::info($pokemon1->getName()." attacks!");
+                    Console::info("-------------------------------");
+                    $this->setHP($moves1[array_rand($moves1)], $pokemon1, $pokemon2);
                 }
             } else {
                 Console::info($pokemon1->getName()." attacks!");
@@ -253,6 +265,10 @@ class PokemonCommand
             if ($pokemon2->getHealth() < 150) {
                 if (rand(1, 3) === 3) {
                     $this->usePotion($pokemon2);
+                } else {
+                    Console::info($pokemon2->getName()." attacks!");
+                    Console::info("-------------------------------");
+                    $this->setHP($moves2[array_rand($moves2)], $pokemon2, $pokemon1);
                 }
             } else {
                 Console::info($pokemon2->getName()." attacks!");
@@ -293,6 +309,7 @@ class PokemonCommand
         $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, $pokemon8, $pokemon9];
         if ($startOfBattle) {
             $boss->setHealth(4500);
+            $boss->setShields(0);
             foreach ($array as $pokemon) {
                 $this->setMega($pokemon);
             }
@@ -339,7 +356,7 @@ class PokemonCommand
         $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, $pokemon8, $pokemon9, false);
     }
 
-    private function teamBattle(array $team1, array $team2)
+    private function teamBattle(array $team1, array $team2, bool $startofbattle = true)
     {
         $pokemon1 = $team1[0];
         $pokemon2 = $team2[0];
@@ -347,7 +364,13 @@ class PokemonCommand
             Console::error("error");
             die;
         }
-        $this->battle($pokemon1, $pokemon2, false);
+
+        if ($startofbattle) {
+            $this->setWeather();
+            $this->setMega($pokemon1);
+            $this->setMega($pokemon2);
+        }
+        $this->battle($pokemon1, $pokemon2, false, false);
 
         if ($pokemon1->getHealth() <= 0) {
             unset($team1[0]);
@@ -368,7 +391,7 @@ class PokemonCommand
         } elseif (empty($team2)) {
             Console::succes("Team 1 wins");
         } else {
-            $this->teamBattle($team1, $team2);
+            $this->teamBattle($team1, $team2, false);
         }
     }
 }
