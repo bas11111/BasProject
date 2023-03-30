@@ -83,18 +83,18 @@ class PokemonCommand
         ];
 //        $this->raid($pokemons[5], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9],
 //            clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9]);
-//        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
+        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
+            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
+            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
 
-        $path = 'test.csv';
-        $handle = fopen($path, "r"); // open in readonly mode
-        while (($row = fgetcsv($handle)) !== false) {
-            var_dump($row);
-        }
-        fclose($handle);
+//        $path = 'test.csv';
+//        $handle = fopen($path, "r"); // open in readonly mode
+//        while (($row = fgetcsv($handle)) !== false) {
+//            var_dump($row);
+//        }
+//        fclose($handle);
     }
 
     private function calculateDamage(Move $move, Pokemon $attacker, Pokemon $target)
@@ -302,11 +302,9 @@ return $damage;
         Pokemon $pokemon5,
         Pokemon $pokemon6,
         Pokemon $pokemon7,
-        Pokemon $pokemon8,
-        Pokemon $pokemon9,
         bool $startOfBattle = true
     ) {
-        $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, $pokemon8, $pokemon9];
+        $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7];
         if ($startOfBattle) {
             $boss->setHealth(4500);
             $boss->setShields(0);
@@ -353,7 +351,7 @@ return $damage;
             Console::error("All of your pokemon have fallen, ".$boss->getName()." has won this raid with ".$boss->gethealth()."HP left!");
             die;
         }
-        $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, $pokemon8, $pokemon9, false);
+        $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, false);
     }
 
     private function teamBattle(array $team1, array $team2, bool $startofbattle = true)
