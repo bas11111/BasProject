@@ -1,5 +1,6 @@
-﻿Id,Naam,Bedrijf,Prijs,Voorraad
-1234,Voetbal,Bol.com,$11.99,154
-1235,Zwemband,Bol.com,$6.99,211
-1236,Fietspomp,Bol.com,$21.00,67
-1237,Toetsenbord,Coolblue,$66.50,545
+﻿Trainer naam;Pokemon 1;Pokemon 2;Pokemon 3;Pokemon 4;Pokemon 5;Pokemon 6
+Bas;Charizard;Lucario;Mewtwo;Arceus;Tyranitar;Hydreigon
+Melvin;Yveltal;Tornadus;Metagross;Suicune;Entei;Raikou
+Gerlof;Rhyperior;Pinsir;Buzzwole;Abomasnow;Articuno;Darkrai
+Arjen;Dragonite;Garchomp;Gardevoir;Gengar;Gigalith;Glastrier
+Brandon;Groudon;Gyarados;Machamp;Meganium;Silvally;Huppelfantje

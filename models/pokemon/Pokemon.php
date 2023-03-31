@@ -2,6 +2,8 @@
 
 namespace models\pokemon;
 
+use ReflectionClass;
+
 abstract class Pokemon
 {
     protected array $type;
@@ -73,7 +75,8 @@ abstract class Pokemon
 
     public function getName(): string
     {
-        return get_class($this);
+        $reflect = new ReflectionClass($this);
+        return $reflect->getShortName();
     }
 
     abstract public function getMoves(): array;

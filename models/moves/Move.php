@@ -2,6 +2,8 @@
 
 namespace models\moves;
 
+use ReflectionClass;
+
 abstract class Move
 {
     protected string $type;
@@ -25,7 +27,8 @@ abstract class Move
 
     public function getName(): string
     {
-        return get_class($this);
+        $reflect = new ReflectionClass($this);
+        return $reflect->getShortName();
     }
 
     public function isCharged(): bool

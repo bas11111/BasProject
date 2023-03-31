@@ -90,12 +90,29 @@ class PokemonCommand
 //        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
 
         $path = 'test.csv';
-        $handle = fopen($path, "r"); // open in readonly mode
-        while (($row = fgetcsv($handle)) !== false) {
-            var_dump($row);
+        $handle = fopen($path, "r");
+        $headers = fgetcsv($handle, 0, ";");
+        foreach ($headers as $index => $value) {
+            $value = trim($value);
+            $value = str_replace('﻿', '', $value);
+            $headers[$index] = $value;
+        }
+        $headers = array_flip($headers);
+        $teams = [];
+        while (($row = fgetcsv($handle, 1000, ";")) !== false) {
+            $team = [];
+            for ($i = 1; $i <= 6; $i++) {
+                $class = 'models\pokemon\\'.$row[$headers['Pokemon '.$i]];
+                $team[] = new $class();
+            }
+            $teams[$row[$headers["Trainer naam"]]] = $team;
         }
         fclose($handle);
+        $trainer1 = 'Gerlof';
+        $trainer2 = 'Melvin';
+        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
     }
+
 
     private function calculateDamage(Move $move, Pokemon $attacker, Pokemon $target)
     {
@@ -137,10 +154,10 @@ class PokemonCommand
                     $target->setShields($targetShields - 1);
                     Console::info($target->getName()." now has ".$target->getShields()." shield left!");
                 }
-    }
-}
+            }
+        }
 
-return $damage;
+        return $damage;
     }
 
     private function setHP(Move $move, Pokemon $attacker, Pokemon $target)
@@ -354,7 +371,7 @@ return $damage;
         $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, false);
     }
 
-    private function teamBattle(array $team1, array $team2, bool $startofbattle = true)
+    private function teamBattle(array $team1, string $trainer1, array $team2, string $trainer2, bool $startofbattle = true)
     {
         $pokemon1 = $team1[0];
         $pokemon2 = $team2[0];
@@ -374,22 +391,22 @@ return $damage;
             unset($team1[0]);
             $team1 = array_values($team1);
             if (!empty($team1)) {
-                Console::info("Team 1 sends out ".$team1[0]->getName());
+                Console::info($trainer1." sends out ".$team1[0]->getName());
             }
         }
         if ($pokemon2->getHealth() <= 0) {
             unset($team2[0]);
             $team2 = array_values($team2);
             if (!empty($team2)) {
-                Console::info("Team 2 sends out ".$team2[0]->getName());
+                Console::info($trainer2." sends out ".$team2[0]->getName());
             }
         }
         if (empty($team1)) {
-            Console::succes("Team 2 wins");
+            Console::succes($trainer2." wins");
         } elseif (empty($team2)) {
-            Console::succes("Team 1 wins");
+            Console::succes($trainer1." wins");
         } else {
-            $this->teamBattle($team1, $team2, false);
+            $this->teamBattle($team1, $trainer1, $team2, $trainer2, false);
         }
     }
 }
