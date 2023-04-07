@@ -9,9 +9,6 @@ use models\moves\Snarl;
 
 class Gengar extends Pokemon
 {
-    protected int $health = 325;
-    protected int $maxHealth = 325;
-    protected int $CP = 3027;
     protected array $type = ["ghost", "poison"];
     protected int $shields = 2;
 

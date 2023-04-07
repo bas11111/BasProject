@@ -9,9 +9,6 @@ use models\moves\WaterGun;
 
 class Suicune extends Pokemon
 {
-    protected int $health = 337;
-    protected int $maxHealth = 337;
-    protected int $CP = 3147;
     protected array $type = ["water"];
     protected int $shields = 2;
 

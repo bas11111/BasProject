@@ -8,9 +8,18 @@ abstract class Pokemon
 {
     protected array $type;
     protected int $health;
+    protected int $level;
     protected int $maxHealth;
     protected int $CP;
     protected int $shields;
+
+    public function __construct(int $level, int $CP, int $health, int $maxHealth)
+    {
+        $this->level = $level;
+        $this->CP = $CP;
+        $this->health = $health;
+        $this->maxHealth = $maxHealth;
+    }
 
     public function getType(): array
     {

@@ -9,9 +9,6 @@ use models\moves\IceKick;
 
 class Abomasnow extends Pokemon
 {
-    protected int $health = 267;
-    protected int $maxHealth = 267;
-    protected int $CP = 2472;
     protected array $type = ["ice", "grass"];
     protected int $shields = 2;
 

@@ -9,9 +9,6 @@ use models\moves\DragonBreath;
 
 class Dragonite extends Pokemon
 {
-    protected int $health = 428;
-    protected int $maxHealth = 428;
-    protected int $CP = 4032;
     protected array $type = ["dragon"];
     protected int $shields = 2;
 

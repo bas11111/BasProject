@@ -9,9 +9,6 @@ use models\moves\LegendarySmash;
 
 class Arceus extends Pokemon
 {
-    protected int $health = 451;
-    protected int $maxHealth = 451;
-    protected int $CP = 4512;
     protected array $type = ["legendary"];
     protected int $shields = 2;
 

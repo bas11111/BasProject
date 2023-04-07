@@ -9,9 +9,6 @@ use models\moves\Snarl;
 
 class Tornadus extends Pokemon
 {
-    protected int $health = 378;
-    protected int $maxHealth = 378;
-    protected int $CP = 3540;
     protected array $type = ["fly"];
     protected int $shields = 2;
 

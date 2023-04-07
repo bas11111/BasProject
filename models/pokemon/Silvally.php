@@ -9,9 +9,6 @@ use models\moves\Snarl;
 
 class Silvally extends Pokemon
 {
-    protected int $health = 333;
-    protected int $maxHealth = 333;
-    protected int $CP = 3113;
     protected array $type = ["poison"];
     protected int $shields = 2;
 

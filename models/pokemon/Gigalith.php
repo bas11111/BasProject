@@ -10,9 +10,6 @@ use models\moves\StoneEdge;
 
 class Gigalith extends Pokemon
 {
-    protected int $health = 365;
-    protected int $maxHealth = 365;
-    protected int $CP = 3416;
     protected array $type = ["rock"];
     protected int $shields = 2;
 

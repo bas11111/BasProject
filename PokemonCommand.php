@@ -44,52 +44,8 @@ class PokemonCommand
 
     public function actionIndex()
     {
-        $pokemons = [
-            new Charizard(), //0
-            new Snorlax(), //1
-            new Gyarados(), //2
-            new Rhyperior(), //3
-            new Yveltal(), //4
-            new Mewtwo(), //5
-            new Hydreigon(), //6
-            new Dragonite(), //7
-            new Venusaur(), //8
-            new Lucario(), //9
-            new Articuno(), //10
-            new Zapdos(), //11
-            new Entei(), //12
-            new Garchomp(), //13
-            new Abomasnow(), //14
-            new Machamp(), //15
-            new Meganium(), //16
-            new Metagross(), //17
-            new Raikou(), //18
-            new Suicune(), //19
-            new Tyranitar(), //20
-            new Gardevoir(), //21
-            new Buzzwole(), //22
-            new Gengar(), //23
-            new Alakazam(), //24
-            new Arceus(), //25
-            new Darkrai(), //26
-            new Gigalith(), //27
-            new Glastrier(), //28
-            new Groudon(), //29
-            new Pinsir(), //30
-            new Silvally(), //31
-            new Spectrier(), //32
-            new Tornadus(), //33
-            new Xerneas(), //34
-        ];
-//        $this->raid($pokemons[5], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9],
-//            clone $pokemons[9], clone $pokemons[9], clone $pokemons[9], clone $pokemons[9]);
-//        $this->raid($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)],
-//            clone $pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
-//        $this->battle($pokemons[array_rand($pokemons)], clone $pokemons[array_rand($pokemons)]);
-//        $this->teamBattle([$pokemons[5]], [$pokemons[9], $pokemons[15]]);
 
-        $path = 'test.csv';
+        $path = 'test1.csv';
         $handle = fopen($path, "r");
         $headers = fgetcsv($handle, 0, ";");
         foreach ($headers as $index => $value) {
@@ -101,15 +57,28 @@ class PokemonCommand
         $teams = [];
         try {
             while (($row = fgetcsv($handle, 1000, ";")) !== false) {
-                $team = [];
-                for ($i = 1; $i <= 6; $i++) {
-                    $class = 'models\pokemon\\'.$row[$headers['Pokemon '.$i]];
-                    if (!class_exists($class)) {
-                        throw new Exception("File not found: ".$class);
-                    }
-                    $team[] = new $class();
+                $trainer = $row[$headers["Trainer"]];
+                $level = $row[$headers["Level"]];
+                $calc = $level / 12;
+                $maxHealth = $row[$headers["maxHealth"]] * $calc;
+                $health = $maxHealth;
+                $CP = $row[$headers["CP"]] * $calc;
+                if (!isset($teams[$trainer])) {
+                    $teams[$trainer] = [];
                 }
-                $teams[$row[$headers["Trainer naam"]]] = $team;
+                $pokemon = $row[$headers['Pokemon']] ?? null;
+                if (empty($pokemon)) {
+                    Console::error("error: empty pokemon");
+                    continue;
+                }
+                $class = 'models\pokemon\\'.$pokemon;
+                if ($level > 100) {
+                    throw new Exception($class . " has a lever higher than 100, this is not allowed");
+                }
+                if (!class_exists($class)) {
+                    throw new Exception("File not found: ".$class);
+                }
+                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth);
             }
         } catch (Exception $e) {
             Console::error("Error: ".$e->getMessage());

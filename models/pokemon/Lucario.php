@@ -9,9 +9,6 @@ use models\moves\FocusBlast;
 
 class Lucario extends Pokemon
 {
-    protected int $health = 432;
-    protected int $maxHealth = 432;
-    protected int $CP = 4061;
     protected array $type = ["fighting"];
     protected int $shields = 2;
 

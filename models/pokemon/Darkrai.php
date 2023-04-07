@@ -9,9 +9,6 @@ use models\moves\Snarl;
 
 class Darkrai extends Pokemon
 {
-    protected int $health = 422;
-    protected int $maxHealth = 422;
-    protected int $CP = 3970;
     protected array $type = ["dark"];
     protected int $shields = 2;
 

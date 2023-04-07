@@ -9,9 +9,6 @@ use models\moves\MudSlap;
 
 class Entei extends Pokemon
 {
-    protected int $health = 392;
-    protected int $maxHealth = 392;
-    protected int $CP = 3681;
     protected array $type = ["fire"];
     protected int $shields = 2;
 

@@ -9,9 +9,6 @@ use models\moves\StoneEdge;
 
 class Rhyperior extends Pokemon
 {
-    protected int $health = 536;
-    protected int $maxHealth = 536;
-    protected int $CP = 3968;
     protected array $type = ["rock", "ground"];
     protected int $shields = 2;
 

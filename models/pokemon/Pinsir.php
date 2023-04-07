@@ -10,9 +10,6 @@ use models\moves\Counter;
 
 class Pinsir extends Pokemon
 {
-    protected int $health = 334;
-    protected int $maxHealth = 334;
-    protected int $CP = 3119;
     protected array $type = ["bug"];
     protected int $shields = 2;
 

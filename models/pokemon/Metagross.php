@@ -9,9 +9,6 @@ use models\moves\MudSlap;
 
 class Metagross extends Pokemon
 {
-    protected int $health = 428;
-    protected int $maxHealth = 428;
-    protected int $CP = 4031;
     protected array $type = ["steel"];
     protected int $shields = 2;
 

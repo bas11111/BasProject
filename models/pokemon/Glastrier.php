@@ -9,9 +9,6 @@ use models\moves\MudSlap;
 
 class Glastrier extends Pokemon
 {
-    protected int $health = 440;
-    protected int $maxHealth = 440;
-    protected int $CP = 4147;
     protected array $type = ["ice"];
     protected int $shields = 2;
 

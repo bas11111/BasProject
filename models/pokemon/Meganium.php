@@ -9,9 +9,6 @@ use models\moves\SolarBeam;
 
 class Meganium extends Pokemon
 {
-    protected int $health = 272;
-    protected int $maxHealth = 272;
-    protected int $CP = 2524;
     protected array $type = ["grass"];
     protected int $shields = 2;
 

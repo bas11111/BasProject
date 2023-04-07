@@ -9,9 +9,6 @@ use models\moves\StoneEdge;
 
 class Tyranitar extends Pokemon
 {
-    protected int $health = 433;
-    protected int $maxHealth = 433;
-    protected int $CP = 4079;
     protected array $type = ["rock", "dark"];
     protected int $shields = 2;
 

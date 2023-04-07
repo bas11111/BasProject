@@ -9,9 +9,6 @@ use models\moves\ThunderBolt;
 
 class Zapdos extends Pokemon
 {
-    protected int $health = 398;
-    protected int $maxHealth = 398;
-    protected int $CP = 3741;
     protected array $type = ["electric", "fly"];
     protected int $shields = 2;
 

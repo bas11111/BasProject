@@ -9,9 +9,6 @@ use models\moves\LegendarySmash;
 
 class Mewtwo extends Pokemon
 {
-    protected int $health = 472;
-    protected int $maxHealth = 472;
-    protected int $CP = 4452;
     protected array $type = ["legendary"];
     protected int $shields = 2;
 

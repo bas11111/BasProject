@@ -9,9 +9,6 @@ use models\moves\DazzlingDream;
 
 class Xerneas extends Pokemon
 {
-    protected int $health = 427;
-    protected int $maxHealth = 427;
-    protected int $CP = 4020;
     protected array $type = ["fairy"];
     protected int $shields = 2;
 

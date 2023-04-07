@@ -9,9 +9,6 @@ use models\moves\Hex;
 
 class Alakazam extends Pokemon
 {
-    protected int $health = 345;
-    protected int $maxHealth = 345;
-    protected int $CP = 3221;
     protected array $type = ["psychic"];
     protected int $shields = 2;
 

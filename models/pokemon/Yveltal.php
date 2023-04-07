@@ -9,9 +9,6 @@ use models\moves\Snarl;
 
 class Yveltal extends Pokemon
 {
-    protected int $health = 427;
-    protected int $maxHealth = 427;
-    protected int $CP = 4020;
     protected array $type = ["dark", "fly"];
     protected int $shields = 2;
 
