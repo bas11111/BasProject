@@ -1,42 +1,7 @@
 <?php
 
 use models\moves\Move;
-use models\pokemon\Abomasnow;
-use models\pokemon\Alakazam;
-use models\pokemon\Arceus;
-use models\pokemon\Articuno;
-use models\pokemon\Buzzwole;
-use models\pokemon\Charizard;
-use models\pokemon\Darkrai;
-use models\pokemon\Dragonite;
-use models\pokemon\Entei;
-use models\pokemon\Garchomp;
-use models\pokemon\Gardevoir;
-use models\pokemon\Gengar;
-use models\pokemon\Gigalith;
-use models\pokemon\Glastrier;
-use models\pokemon\Groudon;
-use models\pokemon\Gyarados;
-use models\pokemon\Hydreigon;
-use models\pokemon\Lucario;
-use models\pokemon\Machamp;
-use models\pokemon\Meganium;
-use models\pokemon\Metagross;
-use models\pokemon\Mewtwo;
-use models\pokemon\Pinsir;
 use models\pokemon\Pokemon;
-use models\pokemon\Raikou;
-use models\pokemon\Rhyperior;
-use models\pokemon\Silvally;
-use models\pokemon\Snorlax;
-use models\pokemon\Spectrier;
-use models\pokemon\Suicune;
-use models\pokemon\Tornadus;
-use models\pokemon\Tyranitar;
-use models\pokemon\Venusaur;
-use models\pokemon\Xerneas;
-use models\pokemon\Yveltal;
-use models\pokemon\Zapdos;
 
 class PokemonCommand
 {
@@ -44,12 +9,12 @@ class PokemonCommand
 
     public function actionIndex()
     {
-
         $path = 'test1.csv';
         $handle = fopen($path, "r");
         $headers = fgetcsv($handle, 0, ";");
         foreach ($headers as $index => $value) {
-            $value = trim($value);
+            $value = trim($value)
+            ;
             $value = str_replace('﻿', '', $value);
             $headers[$index] = $value;
         }
@@ -73,7 +38,7 @@ class PokemonCommand
                 }
                 $class = 'models\pokemon\\'.$pokemon;
                 if ($level > 100) {
-                    throw new Exception($class . " has a lever higher than 100, this is not allowed");
+                    throw new Exception($class." has a level higher than 100, this is not allowed");
                 }
                 if (!class_exists($class)) {
                     throw new Exception("File not found: ".$class);
@@ -129,6 +94,9 @@ class PokemonCommand
         $CP = round($attacker->getCombatPower() / 200);
         $damage += $CP;
 
+        if ($move->getType() == $attacker->getType()) {
+            Console::succes("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        }
 
         $targetShields = $target->getShields();
         if ($move->isCharged()) {
