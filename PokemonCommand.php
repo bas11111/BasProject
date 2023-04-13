@@ -53,14 +53,14 @@ class PokemonCommand
 
         fclose($handle);
         $trainer1 = 'Bas';
-        $trainer2 = 'Melvin';
+        $trainer2 = 'Gerlof';
         if (!isset($teams[$trainer1]) || !isset($teams[$trainer2])) {
             Console::error('Error: One of the selected trainers does not have a team');
             die;
         }
-//        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
+        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
 //        $this->battle($teams["Arjen"][5], $teams["Gerlof"][4]);
-        $this->raid(clone($teams["Bas"][5]), $teams["Bas"][0], $teams["Bas"][1], $teams["Bas"][2], $teams["Bas"][3], $teams["Bas"][4], $teams["Bas"][5], $teams["Bas"][6]);
+//        $this->raid(clone($teams["Bas"][5]), $teams["Bas"][0], $teams["Bas"][1], $teams["Bas"][2], $teams["Bas"][3], $teams["Bas"][4], $teams["Bas"][5]);
     }
 
     private
@@ -214,7 +214,7 @@ class PokemonCommand
         $this->environment = "";
         $dice = rand(1, 5);
         if ($dice === 1) {
-            Console::info("This battle takes place near the water, fire and type's have been debuffed!");
+            Console::info("This battle takes place near the water, fire type's have been debuffed!");
             Console::info("-------------------------------");
             $this->environment = "water";
         }
@@ -335,10 +335,9 @@ class PokemonCommand
         Pokemon $pokemon4,
         Pokemon $pokemon5,
         Pokemon $pokemon6,
-        Pokemon $pokemon7,
         bool $startOfBattle = true
     ) {
-        $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7];
+        $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6,];
         if ($startOfBattle) {
             $this->setEnvironment();
             $boss->setHealth(4500);
@@ -389,7 +388,7 @@ class PokemonCommand
             Console::error("All of your pokemon have fallen, ".$boss->getName()." has won this raid with ".$boss->gethealth()."HP left!");
             die;
         }
-        $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7, false);
+        $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, false);
     }
 
     private

@@ -16,6 +16,7 @@ class LegendarySmash extends Move
             "dragon",
             "electric",
             "fairy",
+            "fly",
             "fire",
             "air",
             "ghost",
