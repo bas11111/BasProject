@@ -12,10 +12,6 @@ class Gardevoir extends Pokemon
     protected array $type = ["fairy", "psychic"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["poison", "steel", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

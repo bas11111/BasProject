@@ -12,10 +12,6 @@ class Suicune extends Pokemon
     protected array $type = ["water"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["electric", "grass", "ice", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

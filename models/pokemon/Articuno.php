@@ -12,10 +12,6 @@ class Articuno extends Pokemon
     protected array $type = ["ice", "fly"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fire", "fighting", "legendary", "rock", "normal", "dark", "fly", "electric"];
-    }
 
     public function hasMegaEvolve(): bool
     {

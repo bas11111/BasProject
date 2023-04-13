@@ -12,10 +12,6 @@ class Gengar extends Pokemon
     protected array $type = ["ghost", "poison"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["ghost", "ground", "dark", "psychic", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

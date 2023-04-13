@@ -13,6 +13,20 @@ abstract class Pokemon
     protected int $CP;
     protected int $shields;
 
+    protected static array $environmentDebuffedTypes = [
+        "water" => ["fire", "ground"],
+        "mountains" => ["ground"],
+        "ground" => ["fly"],
+        "sky" => ["ground"],
+        "caves" => ["ice", "fairy"]
+    ];
+
+    public function isDeBuffed(string $environment): bool
+    {
+        return array_key_exists($environment, static::$environmentDebuffedTypes) && in_array($this->type, static::$environmentDebuffedTypes[$environment]);
+    }
+
+
     public function __construct(int $level, int $CP, int $health, int $maxHealth)
     {
         $this->level = $level;
@@ -24,27 +38,6 @@ abstract class Pokemon
     public function getType(): array
     {
         return $this->type;
-    }
-
-    public function isWeakAgainst(array $types)
-    {
-        foreach ($types as $type) {
-            if (in_array($type, $this->getWeakAgainst())) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    abstract public function getWeakAgainst(): array;
-
-    public function getheal(Pokemon $pokemon)
-    {
-        $pokemon->setHealth(min($pokemon->getHealth() + 10, $pokemon->getMaxHealth()));
-        echo($pokemon->getName()." has an artifact equipped, regenerated 10 HP . ".$pokemon->getName()." now has "
-            .$pokemon->getHealth()." HP.");
-        echo("-------");
     }
 
     public function getHealth()

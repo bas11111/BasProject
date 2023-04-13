@@ -12,10 +12,6 @@ class Charizard extends Pokemon
     protected array $type = ["fire"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["water", "ground", "rock", "fly", "normal", "legendary", "electric"];
-    }
 
     public function hasMegaEvolve(): bool
     {

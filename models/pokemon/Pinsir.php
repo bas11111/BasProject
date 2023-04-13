@@ -13,10 +13,6 @@ class Pinsir extends Pokemon
     protected array $type = ["bug"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fire", "fly", "rock", "legendary"];
-    }
 
     public function getMoves(): array
     {

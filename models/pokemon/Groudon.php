@@ -12,10 +12,6 @@ class Groudon extends Pokemon
     protected array $type = ["ground"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["grass", "ice", "water", "legendary"];
-    }
 
     public function getMoves(): array
     {

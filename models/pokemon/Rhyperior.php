@@ -12,10 +12,6 @@ class Rhyperior extends Pokemon
     protected array $type = ["rock", "ground"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["grass", "ice", "water", "dark", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

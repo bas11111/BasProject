@@ -12,10 +12,6 @@ class Mewtwo extends Pokemon
     protected array $type = ["legendary"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fighting"];
-    }
 
     public function hasMegaEvolve(): bool
     {

@@ -12,10 +12,6 @@ class Spectrier extends Pokemon
     protected array $type = ["ghost"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["dark", "ghost"];
-    }
 
     public function getMoves(): array
     {

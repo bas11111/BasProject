@@ -12,10 +12,6 @@ class Gyarados extends Pokemon
     protected array $type = ["water", "dragon"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["grass", "ice", "dragon", "legendary", "electric"];
-    }
 
     public function hasMegaEvolve(): bool
     {

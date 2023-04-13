@@ -12,10 +12,6 @@ class Entei extends Pokemon
     protected array $type = ["fire"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fly", "water", "ground", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

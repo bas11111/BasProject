@@ -12,10 +12,6 @@ class Abomasnow extends Pokemon
     protected array $type = ["ice", "grass"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["electric", "legendary", "grass"];
-    }
 
     public function hasMegaEvolve(): bool
     {

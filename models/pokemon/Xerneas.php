@@ -12,10 +12,6 @@ class Xerneas extends Pokemon
     protected array $type = ["fairy"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["poison", "steel", "legendary"];
-    }
 
     public function getMoves(): array
     {

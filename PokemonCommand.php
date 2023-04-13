@@ -6,6 +6,7 @@ use models\pokemon\Pokemon;
 class PokemonCommand
 {
     private string $weather;
+    private string $environment;
 
     public function actionIndex()
     {
@@ -13,8 +14,7 @@ class PokemonCommand
         $handle = fopen($path, "r");
         $headers = fgetcsv($handle, 0, ";");
         foreach ($headers as $index => $value) {
-            $value = trim($value)
-            ;
+            $value = trim($value);
             $value = str_replace('﻿', '', $value);
             $headers[$index] = $value;
         }
@@ -24,7 +24,7 @@ class PokemonCommand
             while (($row = fgetcsv($handle, 1000, ";")) !== false) {
                 $trainer = $row[$headers["Trainer"]];
                 $level = $row[$headers["Level"]];
-                $calc = $level / 12;
+                $calc = round($level / 12);
                 $maxHealth = $row[$headers["maxHealth"]] * $calc;
                 $health = $maxHealth;
                 $CP = $row[$headers["CP"]] * $calc;
@@ -50,6 +50,7 @@ class PokemonCommand
             die;
         }
 
+
         fclose($handle);
         $trainer1 = 'Bas';
         $trainer2 = 'Melvin';
@@ -57,7 +58,9 @@ class PokemonCommand
             Console::error('Error: One of the selected trainers does not have a team');
             die;
         }
-        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
+//        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
+//        $this->battle($teams["Arjen"][5], $teams["Gerlof"][4]);
+        $this->raid(clone($teams["Bas"][5]), $teams["Bas"][0], $teams["Bas"][1], $teams["Bas"][2], $teams["Bas"][3], $teams["Bas"][4], $teams["Bas"][5], $teams["Bas"][6]);
     }
 
     private
@@ -94,14 +97,10 @@ class PokemonCommand
         $CP = round($attacker->getCombatPower() / 200);
         $damage += $CP;
 
-        if ($move->getType() == $attacker->getType()) {
-            Console::succes("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        }
-
         $targetShields = $target->getShields();
         if ($move->isCharged()) {
             if ($target->getShields() > 0) {
-                if (rand(1, 1) === 1) {
+                if (rand(1, 2) === 1) {
                     Console::succes($target->getName()." has used a shield to block the incoming attack");
                     $damage = 0;
                     $target->setShields($targetShields - 1);
@@ -109,7 +108,9 @@ class PokemonCommand
                 }
             }
         }
-
+        if ($damage > 0) {
+            Console::info("The attack did " . $damage . " damage");
+        }
         return $damage;
     }
 
@@ -209,6 +210,36 @@ class PokemonCommand
         }
     }
 
+    public function setEnvironment() {
+        $this->environment = "";
+        $dice = rand(1, 5);
+        if ($dice === 1) {
+            Console::info("This battle takes place near the water, fire and type's have been debuffed!");
+            Console::info("-------------------------------");
+            $this->environment = "water";
+        }
+        if ($dice === 2) {
+            Console::info("This battle takes place in the mountains, dark type's have been debuffed!");
+            Console::info("-------------------------------");
+            $this->environment = "mountains";
+        }
+        if ($dice === 3) {
+            Console::info("This battle takes place on the ground, flying type's have been debuffed");
+            Console::info("-------------------------------");
+            $this->environment = "ground";
+        }
+        if ($dice === 4) {
+            Console::info("This battle takes place in the sky, ground type's have been debuffed!");
+            Console::info("-------------------------------");
+            $this->environment = "sky";
+        }
+        if ($dice === 5) {
+            Console::info("This battle takes place in the caves, ice and fairy types have been debuffed.");
+            Console::info("-------------------------------");
+            $this->environment = "caves";
+        }
+    }
+
     private
     function setMega(
         Pokemon $pokemon
@@ -221,6 +252,11 @@ class PokemonCommand
             }
         }
     }
+    private function DeBuff(Pokemon $pokemon) {
+        if ($pokemon->isDeBuffed($this->environment)) {
+            $pokemon->setHealth($pokemon->getHealth() - 50);
+        }
+    }
 
     private
     function battle(
@@ -231,8 +267,15 @@ class PokemonCommand
     ) {
         if ($startofbattle) {
             $this->setWeather();
+            $this->setEnvironment();
             $this->setMega($pokemon1);
             $this->setMega($pokemon2);
+            if ($pokemon1->isDeBuffed($this->environment)) {
+                $pokemon1->setHealth($pokemon1->getHealth() - 50);
+            }
+            if ($pokemon2->isDeBuffed($this->environment)) {
+                $pokemon2->setHealth($pokemon2->getHealth() - 50);
+            }
         }
         $moves1 = $pokemon1->getMoves();
         $moves2 = $pokemon2->getMoves();
@@ -297,10 +340,14 @@ class PokemonCommand
     ) {
         $array = [$pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, $pokemon7];
         if ($startOfBattle) {
+            $this->setEnvironment();
             $boss->setHealth(4500);
             $boss->setShields(0);
             foreach ($array as $pokemon) {
                 $this->setMega($pokemon);
+            }
+            foreach ($array as $pokemon) {
+                $this->deBuff($pokemon);
             }
             $this->setWeather();
         }

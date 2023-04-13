@@ -13,10 +13,6 @@ class Gigalith extends Pokemon
     protected array $type = ["rock"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fighting", "grass" , "ground", "steel", "water", "legendary"];
-    }
 
     public function getMoves(): array
     {

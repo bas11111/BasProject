@@ -12,10 +12,6 @@ class Buzzwole extends Pokemon
     protected array $type = ["bug"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fire", "rock", "fly", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

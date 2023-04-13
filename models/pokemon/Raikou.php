@@ -12,10 +12,6 @@ class Raikou extends Pokemon
     protected array $type = ["electric"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["ground", "dragon", "grass", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

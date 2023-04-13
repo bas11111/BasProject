@@ -12,10 +12,6 @@ class Glastrier extends Pokemon
     protected array $type = ["ice"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fighting", "fire", "rock", "steel"];
-    }
 
     public function getMoves(): array
     {

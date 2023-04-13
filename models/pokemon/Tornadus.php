@@ -12,10 +12,6 @@ class Tornadus extends Pokemon
     protected array $type = ["fly"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["electric", "ice", "rock"];
-    }
 
     public function getMoves(): array
     {

@@ -12,10 +12,6 @@ class Zapdos extends Pokemon
     protected array $type = ["electric", "fly"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["electric", "ground", "dragon", "grass", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

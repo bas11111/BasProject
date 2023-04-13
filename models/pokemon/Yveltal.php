@@ -12,10 +12,6 @@ class Yveltal extends Pokemon
     protected array $type = ["dark", "fly"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["rock", "normal", "grass", "fly", "electric", "fairy", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

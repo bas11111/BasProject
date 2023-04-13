@@ -12,10 +12,6 @@ class Meganium extends Pokemon
     protected array $type = ["grass"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fire", "normal", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

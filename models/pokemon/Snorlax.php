@@ -12,10 +12,6 @@ class Snorlax extends Pokemon
     protected array $type = ["normal"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["ice", "rock", "legendary", "fighting"];
-    }
 
     public function hasMegaEvolve(): bool
     {

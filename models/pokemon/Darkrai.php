@@ -12,10 +12,6 @@ class Darkrai extends Pokemon
     protected array $type = ["dark"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["bug", "fairy", "fighting"];
-    }
 
     public function getMoves(): array
     {

@@ -12,10 +12,6 @@ class Machamp extends Pokemon
     protected array $type = ["fighting"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fly"];
-    }
 
     public function hasMegaEvolve(): bool
     {

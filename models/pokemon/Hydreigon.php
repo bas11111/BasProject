@@ -12,10 +12,6 @@ class Hydreigon extends Pokemon
     protected array $type = ["dragon"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["dragon", "fairy", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

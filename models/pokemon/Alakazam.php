@@ -12,10 +12,6 @@ class Alakazam extends Pokemon
     protected array $type = ["psychic"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["bug", "dark", "ghost"];
-    }
 
     public function getMoves(): array
     {

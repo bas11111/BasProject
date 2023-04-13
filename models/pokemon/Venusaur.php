@@ -12,10 +12,6 @@ class Venusaur extends Pokemon
     protected array $type = ["grass"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["fire", "normal", "legendary", "poison"];
-    }
 
     public function hasMegaEvolve(): bool
     {

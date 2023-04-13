@@ -12,10 +12,6 @@ class Garchomp extends Pokemon
     protected array $type = ["dragon", "ground"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["dragon", "fairy", "grass", "ice", "water", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

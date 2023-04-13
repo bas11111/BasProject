@@ -12,10 +12,6 @@ class Tyranitar extends Pokemon
     protected array $type = ["rock", "dark"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["grass", "fly", "fairy", "legendary"];
-    }
 
     public function hasMegaEvolve(): bool
     {

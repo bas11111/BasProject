@@ -12,10 +12,6 @@ class Silvally extends Pokemon
     protected array $type = ["poison"];
     protected int $shields = 2;
 
-    public function getWeakAgainst(): array
-    {
-        return ["ground", "psychic", "legendary"];
-    }
 
     public function getMoves(): array
     {
