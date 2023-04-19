@@ -10,6 +10,7 @@ class PokemonCommand
 
     public function actionIndex()
     {
+        //dit is een test
         $path = 'test1.csv';
         $handle = fopen($path, "r");
         $headers = fgetcsv($handle, 0, ";");
