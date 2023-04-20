@@ -11,7 +11,7 @@ class Snorlax extends Pokemon
 {
     protected array $type = ["normal"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function hasMegaEvolve(): bool
     {

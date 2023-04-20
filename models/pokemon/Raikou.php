@@ -11,7 +11,7 @@ class Raikou extends Pokemon
 {
     protected array $type = ["electric"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function hasMegaEvolve(): bool
     {

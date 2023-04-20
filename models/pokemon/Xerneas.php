@@ -11,6 +11,7 @@ class Xerneas extends Pokemon
 {
     protected array $type = ["fairy"];
     protected int $shields = 2;
+    protected int $potions = 2;
 
 
     public function getMoves(): array

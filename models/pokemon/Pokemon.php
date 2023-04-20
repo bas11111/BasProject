@@ -12,6 +12,7 @@ abstract class Pokemon
     protected int $maxHealth;
     protected int $CP;
     protected int $shields;
+    protected int $potions;
 
     protected static array $environmentDebuffedTypes = [
         "water" => ["fire", "ground"],
@@ -68,6 +69,16 @@ abstract class Pokemon
     public function setShields(int $shields)
     {
         $this->shields = $shields;
+    }
+
+    public function getPotions()
+    {
+        return $this->potions;
+    }
+
+    public function setPotions(int $potions)
+    {
+        $this->potions = $potions;
     }
 
     public function getMaxHealth()

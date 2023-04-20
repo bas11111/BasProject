@@ -11,7 +11,7 @@ class Entei extends Pokemon
 {
     protected array $type = ["fire"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function hasMegaEvolve(): bool
     {

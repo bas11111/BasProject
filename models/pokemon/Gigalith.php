@@ -2,7 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletPunch;
 use models\moves\BulletSeed;
 use models\moves\MudSlap;
 use models\moves\RockThrow;
@@ -12,7 +11,7 @@ class Gigalith extends Pokemon
 {
     protected array $type = ["rock"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function getMoves(): array
     {

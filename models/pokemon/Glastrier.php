@@ -11,7 +11,7 @@ class Glastrier extends Pokemon
 {
     protected array $type = ["ice"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function getMoves(): array
     {

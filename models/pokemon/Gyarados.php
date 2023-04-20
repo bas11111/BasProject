@@ -11,7 +11,7 @@ class Gyarados extends Pokemon
 {
     protected array $type = ["water", "dragon"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function hasMegaEvolve(): bool
     {

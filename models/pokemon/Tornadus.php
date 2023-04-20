@@ -11,7 +11,7 @@ class Tornadus extends Pokemon
 {
     protected array $type = ["fly"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function getMoves(): array
     {

@@ -11,7 +11,7 @@ class Machamp extends Pokemon
 {
     protected array $type = ["fighting"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function hasMegaEvolve(): bool
     {

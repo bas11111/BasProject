@@ -11,6 +11,7 @@ class Yveltal extends Pokemon
 {
     protected array $type = ["dark", "fly"];
     protected int $shields = 2;
+    protected int $potions = 2;
 
 
     public function hasMegaEvolve(): bool

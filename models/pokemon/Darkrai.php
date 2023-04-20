@@ -11,7 +11,7 @@ class Darkrai extends Pokemon
 {
     protected array $type = ["dark"];
     protected int $shields = 2;
-
+    protected int $potions = 2;
 
     public function getMoves(): array
     {

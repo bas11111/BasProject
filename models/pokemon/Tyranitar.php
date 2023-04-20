@@ -11,6 +11,7 @@ class Tyranitar extends Pokemon
 {
     protected array $type = ["rock", "dark"];
     protected int $shields = 2;
+    protected int $potions = 2;
 
 
     public function hasMegaEvolve(): bool
