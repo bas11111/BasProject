@@ -19,8 +19,8 @@ class Tyranitar extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new RockThrow(), new Snarl(), new BulletPunch(), new StoneEdge()];
+        return ["RockThrow", "Snarl", "BulletPunch", "StoneEdge"];
     }
 }

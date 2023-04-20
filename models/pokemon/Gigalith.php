@@ -13,9 +13,9 @@ class Gigalith extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new RockThrow(), new MudSlap(), new BulletSeed(), new StoneEdge()];
+        return ["RockThrow", "MudSlap", "BulletSeed", "StoneEdge"];
     }
 
     public function hasMegaEvolve(): bool

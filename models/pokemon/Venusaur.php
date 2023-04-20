@@ -19,8 +19,8 @@ class Venusaur extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new BulletSeed(), new Acid(), new BulletPunch(), new SolarBeam()];
+        return ["BulletSeed", "Acid", "BulletPunch", "SolarBeam"];
     }
 }

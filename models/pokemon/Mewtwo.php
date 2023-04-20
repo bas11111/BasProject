@@ -18,8 +18,8 @@ class Mewtwo extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new LegendarySmash(), new LegendaryBurst(), new Confusion(), new FutureSight()];
+        return ["LegendarySmash", "LegendaryBurst", "Confusion", "FutureSight"];
     }
 }

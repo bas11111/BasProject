@@ -13,9 +13,9 @@ class Spectrier extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Hex(), new Snarl(), new Acid(), new Poltergeist()];
+        return ["Hex", "Snarl", "Acid", "Poltergeist"];
     }
 
     public function hasMegaEvolve(): bool

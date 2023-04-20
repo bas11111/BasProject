@@ -6,6 +6,7 @@ use models\moves\Avalanche;
 use models\moves\BulletSeed;
 use models\moves\DragonBreath;
 use models\moves\IceKick;
+use models\moves\Move;
 
 class Abomasnow extends Pokemon
 {
@@ -18,8 +19,8 @@ class Abomasnow extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new IceKick(), new BulletSeed(), new DragonBreath(), new Avalanche()];
+        return ["IceKick", "BulletSeed", "DragonBreath", "Avalance"];
     }
 }

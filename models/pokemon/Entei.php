@@ -18,8 +18,8 @@ class Entei extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new FireBreath(), new BulletPunch(), new MudSlap(), new FlameBlast()];
+        return ["FireBreath", "BulletPunch", "MudSlap", "FlameBlast"];
     }
 }

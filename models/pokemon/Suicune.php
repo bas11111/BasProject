@@ -18,8 +18,8 @@ class Suicune extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new WaterGun(), new IceKick(), new Snarl(), new HydroPump()];
+        return ["WaterGun", "IceKick", "Snarl", "HydroPump"];
     }
 }

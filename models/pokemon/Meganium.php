@@ -18,8 +18,8 @@ class Meganium extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new BulletSeed(), new MudSlap(), new RockThrow(), new SolarBeam()];
+        return ["BulletSeed", "MudSlap", "RockThrow", "SolarBeam"];
     }
 }

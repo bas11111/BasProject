@@ -18,8 +18,8 @@ class Charizard extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new FireBreath(), new AirSlash(), new DragonBreath(), new FlameBlast()];
+        return ["FireBreath", "AirSlash", "DragonBreath", "FlameBlast"];
     }
 }

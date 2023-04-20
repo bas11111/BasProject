@@ -18,8 +18,8 @@ class Articuno extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new AirSlash(), new WaterGun(), new IceKick(), new Avalanche()];
+        return ["AirSlash", "WaterGun", "IceKick", "Avalance"];
     }
 }

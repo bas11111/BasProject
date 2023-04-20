@@ -18,8 +18,8 @@ class Machamp extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Counter(), new Snarl(), new BulletPunch(), new FocusBlast()];
+        return ["Counter", "Snarl", "BulletPunch", "FocusBlast"];
     }
 }

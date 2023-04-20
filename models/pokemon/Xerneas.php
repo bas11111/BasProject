@@ -14,9 +14,9 @@ class Xerneas extends Pokemon
     protected int $potions = 2;
 
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Charm(), new Confusion(), new BugBite(), new DazzlingDream()];
+        return ["Charm", "Confusion", "BugBite", "DazzlingDream"];
     }
 
     public function hasMegaEvolve(): bool

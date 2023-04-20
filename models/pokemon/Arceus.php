@@ -13,9 +13,9 @@ class Arceus extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new LegendarySmash(), new Charm(), new DazzlingDream(), new LegendaryBurst()];
+        return ["LegendarySmash", "Charm", "DazzlingDream", "LegendaryBurst"];
     }
 
     public function hasMegaEvolve(): bool

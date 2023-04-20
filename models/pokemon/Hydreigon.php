@@ -18,8 +18,8 @@ class Hydreigon extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new DragonBreath(), new Snarl(), new BulletPunch(), new DracoMeteor()];
+        return ["DragonBreath", "Snarl", "BulletPunch", "DracoMeteor"];
     }
 }

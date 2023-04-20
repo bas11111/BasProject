@@ -43,7 +43,13 @@ class PokemonCommand
                 if (!class_exists($class)) {
                     throw new Exception("File not found: ".$class);
                 }
-                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth);
+                $moves = [
+                    $row[$headers['Move1']] ?? null,
+                    $row[$headers['Move2']] ?? null,
+                    $row[$headers['Move3']] ?? null,
+                    $row[$headers['Move4']] ?? null,
+                ];
+                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth, $moves);
             }
         } catch (Exception $e) {
             Console::error("Error: ".$e->getMessage());
@@ -177,37 +183,37 @@ class PokemonCommand
         $dice = rand(1, 7);
         if ($dice === 1) {
             Console::info("The weather is sunny! Grass, ground and fire type attacks are now boosted!");
-            Console::info("-------------------------------");
+            Console::info("--------------------------------------------------------------------------");
             $this->weather = "sunny";
         }
         if ($dice === 2) {
             Console::info("The weather is rainy! Water, electric and bug type attacks are now boosted!");
-            Console::info("-------------------------------");
+            Console::info("---------------------------------------------------------------------------");
             $this->weather = "rainy";
         }
         if ($dice === 3) {
             Console::info("The weather is windy! Dragon, flying and psychic type attacks are now boosted!");
-            Console::info("-------------------------------");
+            Console::info("------------------------------------------------------------------------------");
             $this->weather = "windy";
         }
         if ($dice === 4) {
             Console::info("The weather is snowy! Ice and steel type attacks are now boosted!");
-            Console::info("-------------------------------");
+            Console::info("-----------------------------------------------------------------");
             $this->weather = "snowy";
         }
         if ($dice === 5) {
             Console::info("The weather is foggy! Ghost and dark type attacks are now boosted!");
-            Console::info("-------------------------------");
+            Console::info("------------------------------------------------------------------");
             $this->weather = "foggy";
         }
         if ($dice === 6) {
             Console::info("The weather is cloudy! Fairy, fighting and poison type attacks are now boosted!");
-            Console::info("-------------------------------");
+            Console::info("-------------------------------------------------------------------------------");
             $this->weather = "cloudy";
         }
         if ($dice === 7) {
             Console::info("The weather is partly cloudy! Normal and rock type attacks are now boosted!");
-            Console::info("-------------------------------");
+            Console::info("---------------------------------------------------------------------------");
             $this->weather = "partly cloudy";
         }
     }
@@ -218,27 +224,27 @@ class PokemonCommand
         $dice = rand(1, 5);
         if ($dice === 1) {
             Console::info("This battle takes place near the water, fire type's have been debuffed!");
-            Console::info("-------------------------------");
+            Console::info("-----------------------------------------------------------------------");
             $this->environment = "water";
         }
         if ($dice === 2) {
             Console::info("This battle takes place in the mountains, dark type's have been debuffed!");
-            Console::info("-------------------------------");
+            Console::info("-------------------------------------------------------------------------");
             $this->environment = "mountains";
         }
         if ($dice === 3) {
-            Console::info("This battle takes place on the ground, flying type's have been debuffed");
-            Console::info("-------------------------------");
+            Console::info("This battle takes place on the ground, flying type's have been debuffed!");
+            Console::info("-----------------------------------------------------------------------");
             $this->environment = "ground";
         }
         if ($dice === 4) {
             Console::info("This battle takes place in the sky, ground type's have been debuffed!");
-            Console::info("-------------------------------");
+            Console::info("---------------------------------------------------------------------");
             $this->environment = "sky";
         }
         if ($dice === 5) {
-            Console::info("This battle takes place in the caves, ice and fairy types have been debuffed.");
-            Console::info("-------------------------------");
+            Console::info("This battle takes place in the caves, ice and fairy types have been debuffed!");
+            Console::info("-----------------------------------------------------------------------------");
             $this->environment = "caves";
         }
     }
@@ -282,8 +288,12 @@ class PokemonCommand
                 $pokemon2->setHealth($pokemon2->getHealth() - 50);
             }
         }
-        $moves1 = $pokemon1->getMoves();
-        $moves2 = $pokemon2->getMoves();
+        Pokemon::class->getBestMove($pokemon1, $pokemon2);
+        var_dump($pokemon1);
+        die;
+        $moves1 = $pokemon1->getMove("AirSlash");
+        var_dump($moves1);
+        $moves2 = $pokemon2->getMove();
         if ($pokemon1->getHealth() > 0) {
             if ($pokemon1->getHealth() < 150) {
                 if ($pokemon1->getPotions() > 0) {

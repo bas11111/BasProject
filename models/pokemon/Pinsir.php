@@ -18,8 +18,8 @@ class Pinsir extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new BugBite(), new BulletSeed(), new Counter(), new BugBuzz()];
+        return ["BugBite", "BulletSeed", "Counter", "BugBuzz"];
     }
 }

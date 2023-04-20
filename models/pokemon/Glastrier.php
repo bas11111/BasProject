@@ -13,9 +13,9 @@ class Glastrier extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new IceKick(), new Cut(), new MudSlap(), new Avalanche()];
+        return ["IceKick", "Cut", "MudSlap", "Avalanche"];
     }
 
     public function hasMegaEvolve(): bool

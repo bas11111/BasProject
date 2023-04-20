@@ -13,9 +13,9 @@ class Darkrai extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Snarl(), new Hex(), new Acid(), new DarkPulse()];
+        return ["Snarl", "Hex", "Acid", "DarkPulse"];
     }
 
     public function hasMegaEvolve(): bool

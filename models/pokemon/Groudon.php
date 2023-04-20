@@ -13,9 +13,9 @@ class Groudon extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new MudSlap(), new DragonBreath(), new FireBreath(), new Earthquake()];
+        return ["MudSlap", "DragonBreath", "FireBreath", "Earthquake"];
     }
 
     public function hasMegaEvolve(): bool

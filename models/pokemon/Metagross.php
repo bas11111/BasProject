@@ -18,8 +18,8 @@ class Metagross extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new BulletPunch(), new Confusion(), new MudSlap(), new HeavySlam()];
+        return ["BulletPunch", "Confusion", "MudSlap", "HeavySlam"];
     }
 }

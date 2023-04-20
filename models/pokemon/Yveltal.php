@@ -19,8 +19,8 @@ class Yveltal extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Snarl(), new AirSlash(), new Confusion(), new Hurricane()];
+        return ["Snarl", "AirSlash", "Confusion", "Hurricane"];
     }
 }

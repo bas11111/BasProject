@@ -18,8 +18,8 @@ class Gyarados extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new DragonBreath(), new WaterGun(), new Snarl(), new HydroPump()];
+        return ["DragonBreath", "WaterGun", "Snarl", "HydroPump"];
     }
 }

@@ -19,8 +19,8 @@ class Zapdos extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new AirSlash(), new Spark(), new BulletPunch(), new ThunderBolt()];
+        return ["AirSlash", "Spark", "BulletPunch", "ThunderBolt"];
     }
 }

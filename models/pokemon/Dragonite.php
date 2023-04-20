@@ -18,8 +18,8 @@ class Dragonite extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new DragonBreath(), new AirSlash(), new BulletPunch(), new DracoMeteor()];
+        return ["DragonBreath", "AirSlash", "BulletPunch", "DracoMeteor"];
     }
 }

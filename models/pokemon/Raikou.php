@@ -18,8 +18,8 @@ class Raikou extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Spark(), new Hex, new Snarl(), new ThunderBolt()];
+        return ["Spark", "Hex", "Snarl", "ThunderBolt"];
     }
 }

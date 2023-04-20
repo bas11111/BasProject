@@ -18,8 +18,8 @@ class Snorlax extends Pokemon
         return false;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Cut(), new Confusion(), new BulletPunch(), new HornAttack()];
+        return ["Cut", "Confusion", "BulletPunch", "HornAttack"];
     }
 }

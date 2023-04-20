@@ -13,9 +13,9 @@ class Alakazam extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Confusion(), new Hex(), new Counter(), new FutureSight()];
+        return ["Confusion", "Hex", "Counter", "FutureSight"];
     }
 
     public function hasMegaEvolve(): bool

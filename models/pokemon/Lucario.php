@@ -18,8 +18,8 @@ class Lucario extends Pokemon
         return true;
     }
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Counter(), new BulletPunch(), new Cut(), new FocusBlast()];
+        return ["Counter", "BulletPunch", "Cut", "FocusBlast"];
     }
 }

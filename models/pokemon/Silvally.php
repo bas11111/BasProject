@@ -13,9 +13,9 @@ class Silvally extends Pokemon
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getMoves(): array
+    public function getAvailableMoves(): array
     {
-        return [new Acid(), new Snarl(), new Hex(), new SludgeWave()];
+        return ["Acid", "Snarl", "Hex", "SludgeWave"];
     }
 
     public function hasMegaEvolve(): bool
