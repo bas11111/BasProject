@@ -65,62 +65,11 @@ class PokemonCommand
         }
 //        $this->teamBattle($teams[$trainer1], $trainer1, $te
 //ams[$trainer2], $trainer2);
-        $this->battle($teams["Gerlof"][4], $teams["Bas"][0]);
+        $this->battle($teams["Bas"][0], $teams["Bas"][4]);
 //        $this->raid(clone($teams["Bas"][5]), $teams["Bas"][0], $teams["Bas"][1], $teams["Bas"][2], $teams["Bas"][3], $teams["Bas"][4], $teams["Bas"][5]);
     }
 
-    private
-    function calculateDamage(
-        Move $move,
-        Pokemon $attacker,
-        Pokemon $target
-    ) {
-        Console::info($move->getName()." was used!");
-        if ($move->isEffectiveAgainst($target->getType())) {
-            Console::succes("It was very effective!");
-            if ($move->isCharged()) {
-                $damage = $move->getDamage() + rand(30, 40);
-            } else {
-                $damage = $move->getDamage() + rand(10, 20);
-            }
-        } elseif ($move->isNotEffectiveAgainst($target->getType())) {
-            Console::error("It wasn't very effective...");
-            if ($move->isCharged()) {
-                $damage = $move->getDamage() - rand(30, 40);
-            } else {
-                $damage = $move->getDamage() - rand(5, 10);
-            }
-            if ($damage < 1) {
-                $damage = 1;
-            }
-        } else {
-            $damage = $move->getDamage();
-        }
 
-        if ($move->isBoosted($this->weather)) {
-            $damage += 10;
-        }
-
-        $CP = round($attacker->getCombatPower() / 200);
-        $damage += $CP;
-
-        $targetShields = $target->getShields();
-        if ($move->isCharged()) {
-            if ($target->getShields() > 0) {
-                if (rand(1, 2) === 1) {
-                    Console::succes($target->getName()." has used a shield to block the incoming attack");
-                    $damage = 0;
-                    $target->setShields($targetShields - 1);
-                    Console::info($target->getName().spl_object_id($target)." now has ".$target->getShields()." shield left!");
-                }
-            }
-        }
-        if ($damage > 0) {
-            Console::info("The attack did ".$damage." damage");
-        }
-
-        return $damage;
-    }
 
     private
     function setHP(
@@ -129,10 +78,29 @@ class PokemonCommand
         Pokemon $target
     ) {
         $targetHealth = $target->getHealth();
-        $targetHealth -= $this->calculateDamage($move, $attacker, $target);
+        $damage = $move->calculateDamage($attacker, $target, $this->weather);
+        Console::info($attacker->getName() . ' uses ' . $move->getName() . "!");
+        if ($move->isEffectiveAgainst($target->getType())) {
+            Console::succes("It was very effective!");
+        } elseif ($move->isNotEffectiveAgainst($target->getType())) {
+            Console::error("It wasn't very effective...");
+        }
+        $targetShields = $target->getShields();
+        if ($move->isCharged()) {
+            if ($target->getShields() > 0) {
+                if (rand(1, 1) === 2) {
+                    $damage = 0;
+                    Console::succes($target->getName()." has used a shield to block the incoming attack");
+                    $target->setShields($targetShields - 1);
+                    Console::info($target->getName().spl_object_id($target)." now has ".$target->getShields()." shield left!");
+                }
+            }
+        }
+        Console::info("It did " . $damage . " Damage");
+        $targetHealth -= $damage;
+        $target->setHealth($targetHealth);
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
         Console::info("-------------------------------");
-        $target->setHealth($targetHealth);
     }
 
     private
@@ -142,7 +110,7 @@ class PokemonCommand
         Pokemon $target
     ) {
         $targetHealth = $target->getHealth();
-        $targetHealth -= $this->calculateDamage($move, $attacker, $target);
+        $targetHealth -= $move->calculateDamage($attacker, $target, $this->weather);
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
         Console::info("---------------------------------");
         $target->setHealth($targetHealth);
@@ -288,12 +256,8 @@ class PokemonCommand
                 $pokemon2->setHealth($pokemon2->getHealth() - 50);
             }
         }
-        Pokemon::class->getBestMove($pokemon1, $pokemon2);
-        var_dump($pokemon1);
-        die;
-        $moves1 = $pokemon1->getMove("AirSlash");
-        var_dump($moves1);
-        $moves2 = $pokemon2->getMove();
+        $moves1 = $pokemon1->getBestMove($pokemon2, $this->weather);
+        $moves2 = $pokemon2->getBestMove($pokemon1, $this->weather);
         if ($pokemon1->getHealth() > 0) {
             if ($pokemon1->getHealth() < 150) {
                 if ($pokemon1->getPotions() > 0) {
@@ -303,17 +267,17 @@ class PokemonCommand
                     } else {
                         Console::info($pokemon1->getName().spl_object_id($pokemon1)." attacks!");
                         Console::info("-------------------------------");
-                        $this->setHP($moves1[array_rand($moves1)], $pokemon1, $pokemon2);
+                        $this->setHP($moves1, $pokemon1, $pokemon2);
                     }
                 } else {
                     Console::info($pokemon1->getName().spl_object_id($pokemon1)." attacks!");
                     Console::info("-------------------------------");
-                    $this->setHP($moves1[array_rand($moves1)], $pokemon1, $pokemon2);
+                    $this->setHP($moves1, $pokemon1, $pokemon2);
                 }
             } else {
                 Console::info($pokemon1->getName().spl_object_id($pokemon1)." attacks!");
                 Console::info("-------------------------------");
-                $this->setHP($moves1[array_rand($moves1)], $pokemon1, $pokemon2);
+                $this->setHP($moves1, $pokemon1, $pokemon2);
             }
         }
         if ($pokemon2->getHealth() > 0) {
@@ -325,17 +289,17 @@ class PokemonCommand
                     } else {
                         Console::info($pokemon2->getName().spl_object_id($pokemon2)." attacks!");
                         Console::info("-------------------------------");
-                        $this->setHP($moves2[array_rand($moves2)], $pokemon2, $pokemon1);
+                        $this->setHP($moves2, $pokemon2, $pokemon1);
                     }
                 } else {
                     Console::info($pokemon2->getName().spl_object_id($pokemon2)." attacks!");
                     Console::info("-------------------------------");
-                    $this->setHP($moves2[array_rand($moves2)], $pokemon2, $pokemon1);
+                    $this->setHP($moves2, $pokemon2, $pokemon1);
                 }
             } else {
                 Console::info($pokemon2->getName().spl_object_id($pokemon2)." attacks!");
                 Console::info("-------------------------------");
-                $this->setHP($moves2[array_rand($moves2)], $pokemon2, $pokemon1);
+                $this->setHP($moves2, $pokemon2, $pokemon1);
             }
         }
         if ($pokemon1->getHealth() > 0 && $pokemon2->getHealth() > 0) {

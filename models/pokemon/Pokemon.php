@@ -2,8 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\AirSlash;
-use models\moves\Avalanche;
 use models\moves\Move;
 use ReflectionClass;
 
@@ -24,7 +22,7 @@ abstract class Pokemon
         "mountains" => ["ground"],
         "ground" => ["fly"],
         "sky" => ["ground"],
-        "caves" => ["ice", "fairy"]
+        "caves" => ["ice", "fairy"],
     ];
 
 
@@ -35,30 +33,56 @@ abstract class Pokemon
         $this->health = $health;
         $this->maxHealth = $maxHealth;
         foreach ($moves as $move) {
-            if(($_move = $this->getMove($move)) !== null) {
+            if (($_move = $this->getMove($move)) !== null) {
                 $this->moves[] = $_move;
             }
         }
     }
 
-    public function getMove(string $move): ?Move {
+    public function getMove(string $move): ?Move
+    {
         if (in_array($move, $this->getAvailableMoves())) {
-            $class = 'models\\moves\\' . $move;
+            $class = 'models\\moves\\'.$move;
+
             return new $class();
         }
+
         return null;
     }
 
-    public function getBestMove(Pokemon $pokemon, Pokemon $opponent) {
-        // Check elke move die ik heb
-        // Welke move is super effective tegen mijn tegenstander
-        // Welke move geeft de meeste schade tegen mijn tegenstander
-        // Return deze move
 
+    public function getBestMove(Pokemon $opponent, string $weather)
+    {
+        $highestDamage = 0;
+        $bestMove = null;
+        /** @var Move $move */
+        if (rand(1, 10) === 10) {
+            foreach ($this->moves as $move) {
+                $damage = $move->calculateDamage($this, $opponent, $weather);
+                if ($highestDamage < $damage) {
+                    $highestDamage = $damage;
+                    $bestMove = $move;
+                }
+            }
+        } else {
+            foreach ($this->moves as $move) {
+                if (!$move->isCharged()) {
+                    $damage = $move->calculateDamage($this, $opponent, $weather);
+                    if ($highestDamage < $damage) {
+                        $highestDamage = $damage;
+                        $bestMove = $move;
+                    }
+                }
+            }
+        }
+
+        return $bestMove;
     }
+
     public function isDeBuffed(string $environment): bool
     {
-        return array_key_exists($environment, static::$environmentDebuffedTypes) && in_array($this->type, static::$environmentDebuffedTypes[$environment]);
+        return array_key_exists($environment, static::$environmentDebuffedTypes)
+            && in_array($this->type, static::$environmentDebuffedTypes[$environment]);
     }
 
     public function getType(): array
@@ -114,8 +138,11 @@ abstract class Pokemon
     public function getName(): string
     {
         $reflect = new ReflectionClass($this);
+
         return $reflect->getShortName();
     }
 
     abstract public function hasMegaEvolve(): bool;
+
+    abstract public function getAvailableMoves(): array;
 }
