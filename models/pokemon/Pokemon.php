@@ -14,6 +14,7 @@ abstract class Pokemon
     protected int $CP;
     protected int $shields;
     protected int $potions;
+    protected string $about;
 
     protected array $moves = [];
 
@@ -26,7 +27,7 @@ abstract class Pokemon
     ];
 
 
-    public function __construct(int $level, int $CP, int $health, int $maxHealth, array $moves = [])
+    public function __construct(int $level, int $CP, int $health, int $maxHealth, array $moves = [], string $about)
     {
         $this->level = $level;
         $this->CP = $CP;
@@ -37,6 +38,7 @@ abstract class Pokemon
                 $this->moves[] = $_move;
             }
         }
+        $this->about = $about;
     }
 
     public function getMove(string $move): ?Move
@@ -100,6 +102,16 @@ abstract class Pokemon
         $this->health = $health;
     }
 
+    public function getAbout()
+    {
+        return $this->about;
+    }
+
+    public function setAbout($about)
+    {
+        $this->about = $about;
+    }
+
     public function getCombatPower()
     {
         return $this->CP;
@@ -108,6 +120,16 @@ abstract class Pokemon
     public function setCombatPower(int $CP)
     {
         $this->CP = $CP;
+    }
+
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    public function setLevel(int $level)
+    {
+        $this->level = $level;
     }
 
     public function getShields()

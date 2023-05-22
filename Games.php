@@ -14,18 +14,21 @@ class Games
         }
         $headers = array_flip($headers);
         while (($row = fgetcsv($handle, 1000, ";")) !== false) {
-            $num1 = $row[$headers["num1"]] ?? null;
+            $num1 = $row[$headers["num1"]];
             $num2 = $row[$headers["num2"]];
             $num3 = $row[$headers["num3"]];
+            $sum = $row[$headers["sum"]];
+            $question = $row[$headers["question"]];
         }
-        $this->calc($num1, $num2, "+");
+//        $this->calc($num1, $num2, $sum);
 //        $this->coinFlip();
-//        $this->eightBall("Can you count to 20?");
-//        $this->counting($num3);
+        $this->eightBall($question);
+        $this->counting($num3);
 //        $this->story();
     }
 
-    public function story() {
+    public function story()
+    {
         Console::info("You wake up.");
         $num = rand(1, 2);
         if ($num === 1) {
@@ -55,9 +58,10 @@ class Games
             Console::error("You lost your internship");
         }
         Console::info("You go home");
-
     }
-    public function calc(int $num1, int $num2, string $sum) {
+
+    public function calc(int $num1, int $num2, string $sum)
+    {
         if ($sum === "+") {
             $result = $num1 + $num2;
             Console::info($result);
@@ -76,7 +80,8 @@ class Games
         }
     }
 
-    public function coinFlip() {
+    public function coinFlip()
+    {
         $rand = rand(1, 2);
         if ($rand === 1) {
             Console::info("The coin landed on heads!");
@@ -85,13 +90,14 @@ class Games
         }
     }
 
-    public function eightBall(string $question) {
+    public function eightBall(string $question)
+    {
         if ($question === "") {
             Console::error("Error: you have not asked a question! Please ask a question!");
             die;
         }
         $rand = rand(1, 20);
-        Console::info("You asked: " . $question);
+        Console::info("You asked: ".$question);
         Console::info("My answer:");
         if ($rand === 1) {
             Console::succes("It is certain.");
@@ -155,10 +161,16 @@ class Games
         }
     }
 
-    public function counting(int $limit) {
-        for ($i = 1; $i<=$limit; $i++) {
+    public function counting(int $limit)
+    {
+        for ($i = 1; $i <= $limit; $i++) {
             Console::info("$i");
             usleep(100000);
         }
+    }
+
+    public function name()
+    {
+
     }
 }

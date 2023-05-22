@@ -1,36 +1,36 @@
-﻿Pokemon;Trainer;Level;CP;maxHealth;Move1;Move2;Move3;Move4
-Abomasnow;Gerlof;78;318;31;IceKick;BulletSeed;DragonBreath;Avalanche
-Alakazam;Gerlof;81;412;41;Confusion;Hex;Counter;FutureSight
-Arceus;Bas;96;538;53;LegendarySmash;Charm;DazzlingDream;LegendaryBurst
-Articuno;Arjen;87;441;44;AirSlash;WaterGun;IceKick;Avalanche
-Buzzwole;Brandon;86;466;46;BugBite;BulletSeed;HornAttack;BugBuzz
-Charizard;Melvin;100;389;38;FireBreath;AirSlash;DragonBreath;FlameBlast
-Darkrai;Brandon;78;504;50;Snarl;Hex;Acid;DarkPulse
-Dragonite;Melvin;96;511;51;DragonBreath;AirSlash;BulletPunch;DracoMeteor
-Entei;Brandon;89;458;45;FireBreath;BulletPunch;MudSlap;FlameBlast
-Garchomp;Bas;91;534;52;DragonBreath;MudSlap;FireBreath;Earthquake
-Gardevoir;Melvin;88;417;41;Charm;Confusion;Hex;DazzlingDream
-Gengar;Brandon;88;388;38;Acid;Hex;Snarl;Poltergeist
-Gigalith;Arjen;82;435;43;RockThrow;MudSlap;BulletSeed;StoneEdge
-Glastrier;Arjen;85;525;52;IceKick;Cut;MudSlap;Avalanche
-Groudon;Bas;89;555;55;MudSlap;DragonBreath;FireBreath;Earthquake
-Gyarados;Melvin;87;457;45;DragonBreath;WaterGun;Snarl;HydroPump
-Hydreigon;Brandon;87;489;48;DragonBreath;Snarl;BulletPunch;DracoMeteor
-Lucario;Bas;94;516;51;Counter;BulletPunch;Cut;FocusBlast
-Machamp;Melvin;86;412;41;Counter;Snarl;BulletPunch;FocusBlast
-Meganium;Joran;87;325;32;BulletSeed;MudSlap;RockThrow;SolarBeam
-Metagross;Bas;91;511;51;BulletPunch;Confusion;MudSlap;HeavySlam
-Mewtwo;Bas;90;563;56;LegendarySmash;LegendaryBurst;Confusion;FutureSight
-Pinsir;Joran;86;399;39;BugBite;BulletSeed;Counter;BugBuzz
-Raikou;Melvin;88;465;46;Spark;Hex;Snarl;ThunderBolt
-Rhyperior;Joran;84;503;50;RockThrow;MudSlap;BulletPunch;StoneEdge
-Silvally;Arjen;80;398;39;Acid;Snarl;Hex;SludgeWave
-Snorlax;Joran;71;219;70;Cut;Confusion;BulletPunch;HornAttack
-Spectrier;Arjen;85;456;45;Hex;Snarl;Acid;Poltergeist
-Suicune;Joran;83;402;40;WaterGun;IceKick;Snarl;HydroPump
-Tornadus;Gerlof;81;451;45;AirSlash;Snarl;Cut;Hurricane
-Tyranitar;Bas;88;517;51;RockThrow;Snarl;BulletPunch;StoneEdge
-Venusaur;Joran;82;366;36;BulletSeed;Acid;BulletPunch;SolarBeam
-Xerneas;Gerlof;81;510;51;Charm;Confusion;BugBite;DazzlingDream
-Yveltal;Arjen;89;510;51;Snarl;AirSlash;Confusion;Hurricane
-Zapdos;Gerlof;85;475;47;AirSlash;Spark;BulletPunch;ThunderBolt
+﻿Pokemon;Trainer;Level;CP;maxHealth;Move1;Move2;Move3;Move4;About
+Abomasnow;Gerlof;78;318;31;IceKick;BulletSeed;DragonBreath;Avalanche;It lives a quiet life on mountains that are perpetually covered in snow. It hides itself by whipping up blizzards.
+Alakazam;Gerlof;81;412;41;Confusion;Hex;Counter;FutureSight;Alakazam's brain continually grows, making its head far too heavy to support with its neck. This Pokémon holds its head up using its psychokinetic power instead.
+Arceus;Bas;96;538;53;LegendarySmash;Charm;DazzlingDream;LegendaryBurst;It is told in mythology that this Pokémon was born before the universe even existed.
+Articuno;Arjen;87;441;44;AirSlash;WaterGun;IceKick;Avalanche;Articuno is a Legendary Pokémon that can control ice. The flapping of its wings chills the air. As a result, it is said that when this Pokémon flies, snow will fall.
+Buzzwole;Brandon;86;466;46;BugBite;BulletSeed;HornAttack;BugBuzz;Buzzwole goes around showing off its abnormally swollen muscles. It is one kind of Ultra Beast.
+Charizard;Melvin;100;389;38;FireBreath;AirSlash;DragonBreath;FlameBlast;Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself.
+Darkrai;Brandon;78;504;50;Snarl;Hex;Acid;DarkPulse;It can lull people to sleep and make them dream. It is active during nights of the new moon.
+Dragonite;Melvin;96;511;51;DragonBreath;AirSlash;BulletPunch;DracoMeteor;Dragonite is capable of circling the globe in just 16 hours. It is a kindhearted Pokémon that leads lost and foundering ships in a storm to the safety of land.
+Entei;Brandon;89;458;45;FireBreath;BulletPunch;MudSlap;FlameBlast;Entei embodies the passion of magma. This Pokémon is thought to have been born in the eruption of a volcano. It sends up massive bursts of fire that utterly consume all that they touch.
+Garchomp;Bas;91;534;52;DragonBreath;MudSlap;FireBreath;Earthquake;Its fine scales don't just reduce wind resistance—their sharp edges also cause injury to any opponent who attacks it.
+Gardevoir;Melvin;88;417;41;Charm;Confusion;Hex;DazzlingDream;Gardevoir has the ability to read the future. If it senses impending danger to its Trainer, this Pokémon is said to unleash its psychokinetic energy at full power.
+Gengar;Brandon;88;388;38;Acid;Hex;Snarl;Poltergeist;Sometimes, on a dark night, your shadow thrown by a streetlight will suddenly and startlingly overtake you. It is actually a Gengar running past you, pretending to be your shadow
+Gigalith;Arjen;82;435;43;RockThrow;MudSlap;BulletSeed;StoneEdge;It absorbs rays of sunlight and shoots out energy. It's usually lurking deep beneath the surface.
+Glastrier;Arjen;85;525;52;IceKick;Cut;MudSlap;Avalanche;Glastrier emits intense cold from its hooves. It’s also a belligerent Pokémon—anything it wants, it takes by force
+Groudon;Bas;89;555;55;MudSlap;DragonBreath;FireBreath;Earthquake;Groudon is said to be the personification of the land itself. Legends tell of its many clashes against Kyogre, as each sought to gain the power of nature.
+Gyarados;Melvin;87;457;45;DragonBreath;WaterGun;Snarl;HydroPump;When Magikarp evolves into Gyarados, its brain cells undergo a structural transformation. It is said that this transformation is to blame for this Pokémon's wildly violent nature.
+Hydreigon;Brandon;87;489;48;DragonBreath;Snarl;BulletPunch;DracoMeteor;It responds to movement by attacking. This scary, three-headed Pokémon devours everything in its path!
+Lucario;Bas;94;516;51;Counter;BulletPunch;Cut;FocusBlast;Lucario reads its opponent's feelings with its aura waves. It finds out things it would rather not know, so it gets stressed out easily.
+Machamp;Melvin;86;412;41;Counter;Snarl;BulletPunch;FocusBlast;Machamp has the power to hurl anything aside. However, trying to do any work requiring care and dexterity causes its arms to get tangled. This Pokémon tends to leap into action before it thinks.
+Meganium;Joran;87;325;32;BulletSeed;MudSlap;RockThrow;SolarBeam;The fragrance of Meganium's flower soothes and calms emotions. In battle, this Pokémon gives off more of its becalming scent to blunt the foe's fighting spirit.
+Metagross;Bas;91;511;51;BulletPunch;Confusion;MudSlap;HeavySlam;Metagross has four brains in total. Combined, the four brains can breeze through difficult calculations faster than a supercomputer. This Pokémon can float in the air by tucking in its four legs
+Mewtwo;Bas;90;563;56;LegendarySmash;LegendaryBurst;Confusion;FutureSight;Mewtwo is a Pokémon that was created by genetic manipulation. However, even though the scientific power of humans created this Pokémon's body, they failed to endow Mewtwo with a compassionate heart.
+Pinsir;Joran;86;399;39;BugBite;BulletSeed;Counter;BugBuzz;Pinsir is astoundingly strong. It can grip a foe weighing twice its weight in its horns and easily lift it. This Pokémon's movements turn sluggish in cold places.
+Raikou;Melvin;88;465;46;Spark;Hex;Snarl;ThunderBolt;Raikou embodies the speed of lightning. The roars of this Pokémon send shock waves shuddering through the air and shake the ground as if lightning bolts had come crashing down.
+Rhyperior;Joran;84;503;50;RockThrow;MudSlap;BulletPunch;StoneEdge;It puts rocks in holes in its palms and uses its muscles to shoot them. Geodude are shot at rare times
+Silvally;Arjen;80;398;39;Acid;Snarl;Hex;SludgeWave;Through the bond it formed with its Trainer, its will was strengthened, and it was able to destroy its control mask.
+Snorlax;Joran;71;219;70;Cut;Confusion;BulletPunch;HornAttack;Snorlax's typical day consists of nothing more than eating and sleeping. It is such a docile Pokémon that there are children who use its expansive belly as a place to play.
+Spectrier;Arjen;85;456;45;DragonBreath;Snarl;Acid;Poltergeist;It probes its surroundings with all its senses save one—it doesn’t use its sense of sight. Spectrier’s kicks are said to separate soul from body.
+Suicune;Joran;83;402;40;WaterGun;IceKick;Snarl;HydroPump;Suicune embodies the compassion of a pure spring of water. It runs across the land with gracefulness. This Pokémon has the power to purify dirty water.
+Tornadus;Gerlof;81;451;45;AirSlash;Snarl;Cut;Hurricane;Tornadus expels massive energy from its tail, causing severe storms. Its power is great enough to blow houses away.
+Tyranitar;Bas;88;517;51;RockThrow;Snarl;BulletPunch;StoneEdge;Tyranitar is so overwhelmingly powerful, it can bring down a whole mountain to make its nest. This Pokémon wanders about in mountains seeking new opponents to fight.
+Venusaur;Joran;82;366;36;BulletSeed;Acid;BulletPunch;SolarBeam;There is a large flower on Venusaur's back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower's aroma soothes the emotions of people.
+Xerneas;Gerlof;81;510;51;Charm;Confusion;BugBite;DazzlingDream;Legends say it can share eternal life. It slept for a thousand years in the form of a tree before its revival.
+Yveltal;Arjen;89;510;51;Snarl;AirSlash;Confusion;Hurricane;When this legendary Pokémon's wings and tail feathers spread wide and glow red, it absorbs the life force of living creatures.
+Zapdos;Gerlof;85;475;47;AirSlash;Spark;BulletPunch;ThunderBolt;Zapdos is a Legendary Pokémon that has the ability to control electricity. It usually lives in thunderclouds. The Pokémon gains power if it is stricken by lightning bolts.

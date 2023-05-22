@@ -27,6 +27,7 @@ class PokemonCommand
                 $calc = round($level / 12);
                 $maxHealth = $row[$headers["maxHealth"]] * $calc;
                 $health = $maxHealth;
+                $about = $row[$headers["About"]];
                 $CP = $row[$headers["CP"]] * $calc;
                 if (!isset($teams[$trainer])) {
                     $teams[$trainer] = [];
@@ -49,7 +50,7 @@ class PokemonCommand
                     $row[$headers['Move3']] ?? null,
                     $row[$headers['Move4']] ?? null,
                 ];
-                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth, $moves);
+                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth, $moves, $about);
             }
         } catch (Exception $e) {
             Console::error("Error: ".$e->getMessage());
@@ -58,17 +59,28 @@ class PokemonCommand
 
         fclose($handle);
         $trainer1 = 'Bas';
-        $trainer2 = 'Gerlof';
+        $trainer2 = 'Melvin';
         if (!isset($teams[$trainer1]) || !isset($teams[$trainer2])) {
             Console::error('Error: One of the selected trainers does not have a team');
             die;
         }
 //        $this->teamBattle($teams[$trainer1], $trainer1, $te
 //ams[$trainer2], $trainer2);
-        $this->battle($teams["Bas"][0], $teams["Bas"][4]);
-//        $this->raid(clone($teams["Bas"][5]), $teams["Bas"][0], $teams["Bas"][1], $teams["Bas"][2], $teams["Bas"][3], $teams["Bas"][4], $teams["Bas"][5]);
+//        $this->battle($teams["Bas"][0], $teams["Bas"][4]);
+        $this->pokeDex($teams["Bas"][5]);
+//        $this->raid(clone($teams["Bas"][0]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
     }
 
+    private function pokeDex($pokemon) {
+        Console::info($pokemon->getName());
+        Console::info("HP: " . $pokemon->getHealth());
+        Console::info("CP: " . $pokemon->getCombatPower());
+        Console::info("Level: " . $pokemon->getLevel());
+        foreach ($pokemon->getType() as $type) {
+            Console::info("Type: " . $type);
+        }
+        Console::info("About this Pokemon: " . $pokemon->getAbout());
+    }
 
 
     private
@@ -110,7 +122,15 @@ class PokemonCommand
         Pokemon $target
     ) {
         $targetHealth = $target->getHealth();
-        $targetHealth -= $move->calculateDamage($attacker, $target, $this->weather);
+        $damage = $move->calculateDamage($attacker, $target, $this->weather);
+        $targetHealth -= $damage;
+        Console::info($attacker->getName().spl_object_id($attacker) . " used " . $move->getName());
+        if ($move->isEffectiveAgainst($target->getType())) {
+            Console::succes("It was very effective");
+        } elseif ($move->isNotEffectiveAgainst($target->getType())) {
+            Console::error("It wasn't very effective");
+        }
+        Console::info("The attack did " . $damage . " damage");
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
         Console::info("---------------------------------");
         $target->setHealth($targetHealth);
@@ -118,6 +138,7 @@ class PokemonCommand
             Console::error($target->getName().spl_object_id($target)." has fallen!");
             Console::info("---------------------------------");
         }
+        return $damage;
     }
 
     private
@@ -344,18 +365,18 @@ class PokemonCommand
             $this->setWeather();
         }
         foreach ($array as $pokemon) {
-            $moves = $pokemon->getmoves();
+            $moves = $pokemon->getBestMove($boss, $this->weather);
             if ($pokemon->getHealth() > 0) {
                 if ($pokemon->getHealth() < 150) {
                     if (rand(1, 3) === 3) {
                         $this->usePotion($pokemon);
                     } else {
                         Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
-                        $this->setRaidHP($moves[array_rand($moves)], $pokemon, $boss);
+                        $this->setRaidHP($moves, $pokemon, $boss);
                     }
                 } else {
                     Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
-                    $this->setRaidHP($moves[array_rand($moves)], $pokemon, $boss);
+                    $this->setRaidHP($moves, $pokemon, $boss);
                 }
             }
         }
@@ -368,10 +389,10 @@ class PokemonCommand
             die;
         }
         foreach ($array as $pokemon) {
-            $bossmoves = $boss->getMoves();
+            $bossmoves = $boss->getBestMove($pokemon, $this->weather);
             if ($pokemon->getHealth() > 0) {
                 Console::info($boss->getName().spl_object_id($boss)." attacks!");
-                $this->setRaidHP($bossmoves[array_rand($bossmoves)], $pokemon, $pokemon);
+                $this->setRaidHP($bossmoves, $boss, $pokemon);
             }
         }
         if ($pokemon1->getHealth() <= 0 && $pokemon2->getHealth() <= 0 && $pokemon3->getHealth() <= 0 && $pokemon4->getHealth() <= 0
