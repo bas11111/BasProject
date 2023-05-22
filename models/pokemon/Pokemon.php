@@ -16,6 +16,8 @@ abstract class Pokemon
     protected int $potions;
     protected string $about;
 
+    protected int $entry;
+
     protected array $moves = [];
 
     protected static array $environmentDebuffedTypes = [
@@ -27,18 +29,19 @@ abstract class Pokemon
     ];
 
 
-    public function __construct(int $level, int $CP, int $health, int $maxHealth, array $moves = [], string $about)
+    public function __construct(int $level, int $CP, int $health, int $maxHealth, string $about, int $entry, array $moves = [])
     {
         $this->level = $level;
         $this->CP = $CP;
         $this->health = $health;
         $this->maxHealth = $maxHealth;
+        $this->about = $about;
+        $this->entry = $entry;
         foreach ($moves as $move) {
             if (($_move = $this->getMove($move)) !== null) {
                 $this->moves[] = $_move;
             }
         }
-        $this->about = $about;
     }
 
     public function getMove(string $move): ?Move
@@ -110,6 +113,16 @@ abstract class Pokemon
     public function setAbout($about)
     {
         $this->about = $about;
+    }
+
+    public function getEntry()
+    {
+        return $this->entry;
+    }
+
+    public function setEntry($entry)
+    {
+        $this->entry = $entry;
     }
 
     public function getCombatPower()

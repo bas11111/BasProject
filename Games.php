@@ -22,9 +22,15 @@ class Games
         }
 //        $this->calc($num1, $num2, $sum);
 //        $this->coinFlip();
-        $this->eightBall($question);
-        $this->counting($num3);
+//        $this->eightBall($question);
+//        $this->counting($num3);
 //        $this->story();
+        $this->randomNumberGenerator(1, 120);
+    }
+
+    public function randomNumberGenerator($num1, $num2) {
+        $num = rand($num1, $num2);
+        Console::info($num);
     }
 
     public function story()
@@ -54,10 +60,41 @@ class Games
         }
         if ($num === 7) {
             Console::info("You work the entire day");
+            $num = 9;
         } elseif ($num === 8) {
             Console::error("You lost your internship");
+            $num = 10;
         }
-        Console::info("You go home");
+        if ($num === 9) {
+            Console::info("After working the entire the day, you go home.");
+            $num = 11;
+        } elseif ($num === 10) {
+            Console::info("Because you lost internship, you decide to go home.");
+            $num = 12;
+        }
+        if ($num === 11) {
+            Console::info("You go to internship everyday, and eventually finish it.");
+            $num = 13;
+        } elseif ($num === 12) {
+            Console::error("You become depressed because you can't find an internship, and you fail school.");
+            $num = 14;
+        }
+        if ($num === 13) {
+            Console::succes("You eventually gratuate school, and get a good job.");
+            $num = 15;
+        } elseif ($num === 14) {
+            Console::error("You decide it's no longer worth it...");
+            $num = 16;
+        }
+        if ($num === 15) {
+            Console::succes("You live a succesful and happy life.");
+        } elseif ($num === 16) {
+            Console::error("You decide to end it all......");
+            $num = 17;
+        }
+        if ($num === 17) {
+            Console::error("If only you woke up on time that day......");
+        }
     }
 
     public function calc(int $num1, int $num2, string $sum)
@@ -86,7 +123,7 @@ class Games
         if ($rand === 1) {
             Console::info("The coin landed on heads!");
         } elseif ($rand === 2) {
-            Console::info("The coin landed on heads!");
+            Console::info("The coin landed on tails!");
         }
     }
 
@@ -167,10 +204,5 @@ class Games
             Console::info("$i");
             usleep(100000);
         }
-    }
-
-    public function name()
-    {
-
     }
 }

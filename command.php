@@ -2,5 +2,5 @@
 require 'autoload.php';
 require 'Console.php';
 
-$command = new \Games();
+$command = new \PokemonCommand();
 $command->actionIndex();

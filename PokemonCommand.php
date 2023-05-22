@@ -18,6 +18,7 @@ class PokemonCommand
             $value = str_replace('﻿', '', $value);
             $headers[$index] = $value;
         }
+
         $headers = array_flip($headers);
         $teams = [];
         try {
@@ -28,6 +29,7 @@ class PokemonCommand
                 $maxHealth = $row[$headers["maxHealth"]] * $calc;
                 $health = $maxHealth;
                 $about = $row[$headers["About"]];
+                $entry = $row[$headers["Pokedex"]];
                 $CP = $row[$headers["CP"]] * $calc;
                 if (!isset($teams[$trainer])) {
                     $teams[$trainer] = [];
@@ -50,7 +52,7 @@ class PokemonCommand
                     $row[$headers['Move3']] ?? null,
                     $row[$headers['Move4']] ?? null,
                 ];
-                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth, $moves, $about);
+                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth, $about, $entry, $moves);
             }
         } catch (Exception $e) {
             Console::error("Error: ".$e->getMessage());
@@ -64,15 +66,14 @@ class PokemonCommand
             Console::error('Error: One of the selected trainers does not have a team');
             die;
         }
-//        $this->teamBattle($teams[$trainer1], $trainer1, $te
-//ams[$trainer2], $trainer2);
+//        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
 //        $this->battle($teams["Bas"][0], $teams["Bas"][4]);
-        $this->pokeDex($teams["Bas"][5]);
+//        $this->pokeDex($teams["Joran"][6]);
 //        $this->raid(clone($teams["Bas"][0]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
     }
 
     private function pokeDex($pokemon) {
-        Console::info($pokemon->getName());
+        Console::info("Name: " . $pokemon->getName());
         Console::info("HP: " . $pokemon->getHealth());
         Console::info("CP: " . $pokemon->getCombatPower());
         Console::info("Level: " . $pokemon->getLevel());
@@ -80,6 +81,7 @@ class PokemonCommand
             Console::info("Type: " . $type);
         }
         Console::info("About this Pokemon: " . $pokemon->getAbout());
+        Console::info("Pokedex entry: " . $pokemon->getEntry());
     }
 
 
