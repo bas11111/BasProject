@@ -20,11 +20,11 @@ class Games
             $sum = $row[$headers["sum"]];
             $question = $row[$headers["question"]];
         }
-//        $this->calc($num1, $num2, $sum);
-//        $this->coinFlip();
-//        $this->eightBall($question);
-//        $this->counting($num3);
-//        $this->story();
+        $this->calc($num1, $num2, $sum);
+        $this->coinFlip();
+        $this->eightBall($question);
+        $this->counting($num3);
+        $this->story();
         $this->randomNumberGenerator(1, 120);
     }
 
@@ -59,7 +59,7 @@ class Games
             $num = 8;
         }
         if ($num === 7) {
-            Console::info("You work the entire day");
+            Console::info("You work on your code the entire day");
             $num = 9;
         } elseif ($num === 8) {
             Console::error("You lost your internship");
@@ -88,11 +88,14 @@ class Games
         }
         if ($num === 15) {
             Console::succes("You live a succesful and happy life.");
+            $num = 17;
         } elseif ($num === 16) {
             Console::error("You decide to end it all......");
-            $num = 17;
+            $num = 18;
         }
         if ($num === 17) {
+            Console::info("You woke up on time, and lived a happy life because of it.");
+        } elseif ($num === 18) {
             Console::error("If only you woke up on time that day......");
         }
     }

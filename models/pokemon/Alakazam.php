@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\Confusion;
-use models\moves\Counter;
+use models\moves\ZenHeadbutt;
 use models\moves\FutureSight;
 use models\moves\Hex;
 
@@ -15,7 +15,7 @@ class Alakazam extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Confusion", "Hex", "Counter", "FutureSight"];
+        return ["Confusion", "Hex", "ZenHeadbutt", "FutureSight"];
     }
 
     public function hasMegaEvolve(): bool

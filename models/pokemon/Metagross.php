@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\BulletPunch;
 use models\moves\Confusion;
 use models\moves\HeavySlam;
-use models\moves\MudSlap;
+use models\moves\IronTail;
 
 class Metagross extends Pokemon
 {
@@ -20,6 +20,6 @@ class Metagross extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["BulletPunch", "Confusion", "MudSlap", "HeavySlam"];
+        return ["BulletPunch", "Confusion", "IronTail", "HeavySlam"];
     }
 }

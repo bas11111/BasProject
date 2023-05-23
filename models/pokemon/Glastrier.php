@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\Avalanche;
 use models\moves\Cut;
 use models\moves\IceKick;
-use models\moves\MudSlap;
+use models\moves\IceFang;
 
 class Glastrier extends Pokemon
 {
@@ -15,7 +15,7 @@ class Glastrier extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["IceKick", "Cut", "MudSlap", "Avalanche"];
+        return ["IceKick", "Cut", "IceFang", "Avalanche"];
     }
 
     public function hasMegaEvolve(): bool

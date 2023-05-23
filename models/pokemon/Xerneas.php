@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\BugBite;
+use models\moves\FairyWind;
 use models\moves\Charm;
 use models\moves\Confusion;
 use models\moves\DazzlingDream;
@@ -16,7 +16,7 @@ class Xerneas extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Charm", "Confusion", "BugBite", "DazzlingDream"];
+        return ["Charm", "Confusion", "FairyWind", "DazzlingDream"];
     }
 
     public function hasMegaEvolve(): bool

@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\Counter;
 use models\moves\FireBreath;
-use models\moves\Cut;
+use models\moves\RockSmash;
 use models\moves\FocusBlast;
 
 class Blaziken extends Pokemon
@@ -20,6 +20,6 @@ class Blaziken extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Counter", "FireBreath", "Cut", "FocusBlast"];
+        return ["Counter", "FireBreath", "RockSmash", "FocusBlast"];
     }
 }

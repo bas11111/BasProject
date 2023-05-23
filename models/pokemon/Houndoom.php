@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\Snarl;
 use models\moves\FireBreath;
-use models\moves\Hex;
+use models\moves\FeintAttack;
 use models\moves\DarkPulse;
 
 class Houndoom extends Pokemon
@@ -20,6 +20,6 @@ class Houndoom extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Snarl", "Firebreath", "Hex", "DarkPulse"];
+        return ["Snarl", "Firebreath", "FeintAttack", "DarkPulse"];
     }
 }

@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\AirSlash;
 use models\moves\DragonBreath;
-use models\moves\Hex;
+use models\moves\DragonTail;
 use models\moves\Hurricane;
 
 class Rayquaza extends Pokemon
@@ -20,6 +20,6 @@ class Rayquaza extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["AirSlash", "DragonBreath", "Hex", "Hurricane"];
+        return ["AirSlash", "DragonBreath", "Dragontail", "Hurricane"];
     }
 }

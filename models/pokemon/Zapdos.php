@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\AirSlash;
-use models\moves\BulletPunch;
+use models\moves\VoltSwitch;
 use models\moves\Spark;
 use models\moves\ThunderBolt;
 
@@ -21,6 +21,6 @@ class Zapdos extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["AirSlash", "Spark", "BulletPunch", "ThunderBolt"];
+        return ["AirSlash", "Spark", "VoltSwitch", "ThunderBolt"];
     }
 }

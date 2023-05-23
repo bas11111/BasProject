@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\Hex;
-use models\moves\Snarl;
+use models\moves\Astonish;
 use models\moves\DragonBreath;
 use models\moves\Poltergeist;
 
@@ -20,6 +20,6 @@ class Giratina extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Hex", "Snarl", "DragonBreath", "Poltergeist"];
+        return ["Hex", "Astonish", "DragonBreath", "Poltergeist"];
     }
 }

@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\IceKick;
 use models\moves\MudSlap;
-use models\moves\RockThrow;
+use models\moves\IceFang;
 use models\moves\Avalanche;
 
 class Mamoswine extends Pokemon
@@ -20,6 +20,6 @@ class Mamoswine extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Icekick", "MudSlap", "RockThrow", "Avalanche"];
+        return ["Icekick", "MudSlap", "IceFang", "Avalanche"];
     }
 }

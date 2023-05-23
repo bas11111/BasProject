@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\DragonBreath;
 use models\moves\Earthquake;
-use models\moves\FireBreath;
+use models\moves\MudShot;
 use models\moves\MudSlap;
 
 class Groudon extends Pokemon
@@ -15,7 +15,7 @@ class Groudon extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["MudSlap", "DragonBreath", "FireBreath", "Earthquake"];
+        return ["MudSlap", "DragonBreath", "MudShot", "Earthquake"];
     }
 
     public function hasMegaEvolve(): bool

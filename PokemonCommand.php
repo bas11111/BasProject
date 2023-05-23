@@ -25,12 +25,13 @@ class PokemonCommand
             while (($row = fgetcsv($handle, 1000, ";")) !== false) {
                 $trainer = $row[$headers["Trainer"]];
                 $level = $row[$headers["Level"]];
-                $calc = round($level / 12);
-                $maxHealth = $row[$headers["maxHealth"]] * $calc;
+                $calc = round($level * 4);
+                $calc2 = round($level * 35);
+                $maxHealth = $row[$headers["maxHealth"]] + $calc;
                 $health = $maxHealth;
                 $about = $row[$headers["About"]];
                 $entry = $row[$headers["Pokedex"]];
-                $CP = $row[$headers["CP"]] * $calc;
+                $CP = $row[$headers["CP"]] + $calc2;
                 if (!isset($teams[$trainer])) {
                     $teams[$trainer] = [];
                 }
@@ -44,7 +45,7 @@ class PokemonCommand
                     throw new Exception($class." has a level higher than 100, this is not allowed");
                 }
                 if (!class_exists($class)) {
-                    throw new Exception("File not found: ".$class);
+                    throw new Exception("File not found: ".$class . ".");
                 }
                 $moves = [
                     $row[$headers['Move1']] ?? null,
@@ -66,9 +67,9 @@ class PokemonCommand
             Console::error('Error: One of the selected trainers does not have a team');
             die;
         }
-//        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
-//        $this->battle($teams["Bas"][0], $teams["Bas"][4]);
-//        $this->pokeDex($teams["Joran"][6]);
+        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
+//        $this->battle($teams["Bas"][6], clone($teams["Bas"][4]));
+//        $this->pokeDex($teams["Melvin"][0]);
 //        $this->raid(clone($teams["Bas"][0]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
     }
 

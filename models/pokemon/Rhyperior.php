@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletPunch;
+use models\moves\MudShot;
 use models\moves\MudSlap;
 use models\moves\RockThrow;
 use models\moves\StoneEdge;
@@ -20,6 +20,6 @@ class Rhyperior extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["RockThrow", "MudSlap", "BulletPunch", "StoneEdge"];
+        return ["RockThrow", "MudSlap", "MudShot", "StoneEdge"];
     }
 }

@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\MudSlap;
 use models\moves\AirSlash;
-use models\moves\DragonBreath;
+use models\moves\MudShot;
 use models\moves\Earthquake;
 
 class Landorus extends Pokemon
@@ -20,6 +20,6 @@ class Landorus extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["MudSlap", "AirSlash", "DragonBreath", "Earthquake"];
+        return ["MudSlap", "AirSlash", "MudShot", "Earthquake"];
     }
 }

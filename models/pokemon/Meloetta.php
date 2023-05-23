@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\Cut;
 use models\moves\Confusion;
-use models\moves\Hex;
+use models\moves\HiddenPower;
 use models\moves\HornAttack;
 
 class Meloetta extends Pokemon
@@ -20,6 +20,6 @@ class Meloetta extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Cut", "Confusion", "Hex", "HornAttack"];
+        return ["Cut", "Confusion", "HiddenPowers", "HornAttack"];
     }
 }

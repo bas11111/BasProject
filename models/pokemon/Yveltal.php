@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\AirSlash;
-use models\moves\Confusion;
+use models\moves\FeintAttack;
 use models\moves\Hurricane;
 use models\moves\Snarl;
 
@@ -21,6 +21,6 @@ class Yveltal extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Snarl", "AirSlash", "Confusion", "Hurricane"];
+        return ["Snarl", "AirSlash", "FeintAttack", "Hurricane"];
     }
 }

@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\Charm;
 use models\moves\Confusion;
 use models\moves\DazzlingDream;
-use models\moves\Hex;
+use models\moves\FairyWind;
 
 class Gardevoir extends Pokemon
 {
@@ -20,6 +20,6 @@ class Gardevoir extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Charm", "Confusion", "Hex", "DazzlingDream"];
+        return ["Charm", "Confusion", "FairyWind", "DazzlingDream"];
     }
 }

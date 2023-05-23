@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\Hex;
+use models\moves\VoltSwitch;
 use models\moves\Snarl;
 use models\moves\Spark;
 use models\moves\ThunderBolt;
@@ -20,6 +20,6 @@ class Raikou extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Spark", "Hex", "Snarl", "ThunderBolt"];
+        return ["Spark", "VoltSwitch", "Snarl", "ThunderBolt"];
     }
 }

@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\HydroPump;
 use models\moves\IceKick;
-use models\moves\Snarl;
+use models\moves\Waterfall;
 use models\moves\WaterGun;
 
 class Suicune extends Pokemon
@@ -20,6 +20,6 @@ class Suicune extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["WaterGun", "IceKick", "Snarl", "HydroPump"];
+        return ["WaterGun", "IceKick", "Waterfall", "HydroPump"];
     }
 }

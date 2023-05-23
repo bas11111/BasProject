@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\RockThrow;
 use models\moves\BulletPunch;
-use models\moves\MudSlap;
+use models\moves\IronTail;
 use models\moves\StoneEdge;
 
 class Aggron extends Pokemon
@@ -20,6 +20,6 @@ class Aggron extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["RockThrow", "BulletPunch", "MudSlap", "StoneEdge"];
+        return ["RockThrow", "BulletPunch", "IronTail", "StoneEdge"];
     }
 }

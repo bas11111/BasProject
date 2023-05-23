@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\BulletSeed;
 use models\moves\MudSlap;
-use models\moves\RockThrow;
+use models\moves\MagicalLeaf;
 use models\moves\SolarBeam;
 
 class Meganium extends Pokemon
@@ -20,6 +20,6 @@ class Meganium extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["BulletSeed", "MudSlap", "RockThrow", "SolarBeam"];
+        return ["BulletSeed", "MudSlap", "MagicalLeaf", "SolarBeam"];
     }
 }

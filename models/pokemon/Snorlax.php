@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\BulletPunch;
-use models\moves\Confusion;
+use models\moves\HiddenPower;
 use models\moves\Cut;
 use models\moves\HornAttack;
 
@@ -20,6 +20,6 @@ class Snorlax extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Cut", "Confusion", "BulletPunch", "HornAttack"];
+        return ["Cut", "HiddenPower", "BulletPunch", "HornAttack"];
     }
 }

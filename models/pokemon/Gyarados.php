@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\DragonBreath;
 use models\moves\HydroPump;
-use models\moves\Snarl;
+use models\moves\Waterfall;
 use models\moves\WaterGun;
 
 class Gyarados extends Pokemon
@@ -20,6 +20,6 @@ class Gyarados extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["DragonBreath", "WaterGun", "Snarl", "HydroPump"];
+        return ["DragonBreath", "WaterGun", "Waterfall", "HydroPump"];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletPunch;
+use models\moves\DragonTail;
 use models\moves\DracoMeteor;
 use models\moves\DragonBreath;
 use models\moves\Snarl;
@@ -20,6 +20,6 @@ class Hydreigon extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["DragonBreath", "Snarl", "BulletPunch", "DracoMeteor"];
+        return ["DragonBreath", "Snarl", "DragonTail", "DracoMeteor"];
     }
 }

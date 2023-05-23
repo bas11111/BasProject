@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\AirSlash;
 use models\moves\Avalanche;
 use models\moves\IceKick;
-use models\moves\WaterGun;
+use models\moves\IceFang;
 
 class Articuno extends Pokemon
 {
@@ -20,6 +20,6 @@ class Articuno extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["AirSlash", "WaterGun", "IceKick", "Avalance"];
+        return ["AirSlash", "IceFang", "IceKick", "Avalance"];
     }
 }

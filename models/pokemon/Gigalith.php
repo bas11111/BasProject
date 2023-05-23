@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletSeed;
+use models\moves\Rollout;
 use models\moves\MudSlap;
 use models\moves\RockThrow;
 use models\moves\StoneEdge;
@@ -15,7 +15,7 @@ class Gigalith extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["RockThrow", "MudSlap", "BulletSeed", "StoneEdge"];
+        return ["RockThrow", "MudSlap", "Rollout", "StoneEdge"];
     }
 
     public function hasMegaEvolve(): bool

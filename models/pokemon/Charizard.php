@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\AirSlash;
-use models\moves\DragonBreath;
+use models\moves\Incinerate;
 use models\moves\FireBreath;
 use models\moves\FlameBlast;
 
@@ -20,6 +20,6 @@ class Charizard extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["FireBreath", "AirSlash", "DragonBreath", "FlameBlast"];
+        return ["FireBreath", "AirSlash", "Incinerate", "FlameBlast"];
     }
 }

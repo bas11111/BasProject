@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\DragonBreath;
 use models\moves\Earthquake;
-use models\moves\FireBreath;
+use models\moves\DragonTail;
 use models\moves\MudSlap;
 
 class Garchomp extends Pokemon
@@ -20,6 +20,6 @@ class Garchomp extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["DragonBreath", "MudSlap", "FireBreath", "Earthquake"];
+        return ["DragonBreath", "MudSlap", "DragonTail", "Earthquake"];
     }
 }

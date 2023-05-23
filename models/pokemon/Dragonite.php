@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\AirSlash;
-use models\moves\BulletPunch;
+use models\moves\DragonTail;
 use models\moves\DracoMeteor;
 use models\moves\DragonBreath;
 
@@ -20,6 +20,6 @@ class Dragonite extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["DragonBreath", "AirSlash", "BulletPunch", "DracoMeteor"];
+        return ["DragonBreath", "AirSlash", "DragonTail", "DracoMeteor"];
     }
 }

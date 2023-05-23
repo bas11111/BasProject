@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\BulletPunch;
 use models\moves\Counter;
 use models\moves\FocusBlast;
-use models\moves\Snarl;
+use models\moves\RockSmash;
 
 class Machamp extends Pokemon
 {
@@ -20,6 +20,6 @@ class Machamp extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Counter", "Snarl", "BulletPunch", "FocusBlast"];
+        return ["Counter", "RockSmash", "BulletPunch", "FocusBlast"];
     }
 }

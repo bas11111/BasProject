@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\BulletSeed;
 use models\moves\Snarl;
-use models\moves\BulletPunch;
+use models\moves\FeintAttack;
 use models\moves\SolarBeam;
 
 class Zarude extends Pokemon
@@ -20,6 +20,6 @@ class Zarude extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Bulletseed", "Snarl", "BulletPunch", "SolarBeam"];
+        return ["Bulletseed", "Snarl", "FeintAttack", "SolarBeam"];
     }
 }

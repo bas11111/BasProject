@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletPunch;
+use models\moves\Rollout;
 use models\moves\RockThrow;
 use models\moves\Snarl;
 use models\moves\StoneEdge;
@@ -21,6 +21,6 @@ class Tyranitar extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["RockThrow", "Snarl", "BulletPunch", "StoneEdge"];
+        return ["RockThrow", "Snarl", "Rollout", "StoneEdge"];
     }
 }

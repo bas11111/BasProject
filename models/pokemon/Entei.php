@@ -5,8 +5,7 @@ namespace models\pokemon;
 use models\moves\BulletPunch;
 use models\moves\FireBreath;
 use models\moves\FlameBlast;
-use models\moves\MudSlap;
-
+use models\moves\Incinerate;
 class Entei extends Pokemon
 {
     protected array $type = ["fire"];
@@ -20,6 +19,6 @@ class Entei extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["FireBreath", "BulletPunch", "MudSlap", "FlameBlast"];
+        return ["FireBreath", "BulletPunch", "Incinerate", "FlameBlast"];
     }
 }

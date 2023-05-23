@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\Charm;
 use models\moves\AirSlash;
-use models\moves\Hex;
+use models\moves\FairyWind;
 use models\moves\DazzlingDream;
 
 class Togekiss extends Pokemon
@@ -20,6 +20,6 @@ class Togekiss extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Charm", "Airslash", "Hex", "DazzlingDream"];
+        return ["Charm", "Airslash", "FairyWind", "DazzlingDream"];
     }
 }

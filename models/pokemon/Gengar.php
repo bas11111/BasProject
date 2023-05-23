@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\Acid;
 use models\moves\Hex;
 use models\moves\Poltergeist;
-use models\moves\Snarl;
+use models\moves\Astonish;
 
 class Gengar extends Pokemon
 {
@@ -20,6 +20,6 @@ class Gengar extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Acid", "Hex", "Snarl", "Poltergeist"];
+        return ["Acid", "Hex", "Astonish", "Poltergeist"];
     }
 }

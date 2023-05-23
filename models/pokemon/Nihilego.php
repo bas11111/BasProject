@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\Acid;
 use models\moves\RockThrow;
-use models\moves\Hex;
+use models\moves\PoisonJab;
 use models\moves\SludgeWave;
 
 class Nihilego extends Pokemon
@@ -20,6 +20,6 @@ class Nihilego extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Acid", "RockThrow", "Hex", "Sludgewave"];
+        return ["Acid", "RockThrow", "PoisonJab", "Sludgewave"];
     }
 }

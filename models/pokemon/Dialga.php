@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\BulletPunch;
-use models\moves\RockThrow;
+use models\moves\IronTail;
 use models\moves\DragonBreath;
 use models\moves\HeavySlam;
 
@@ -20,6 +20,6 @@ class Dialga extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["BulletPunch", "RockThrow", "DragonBreath", "HeavySlam"];
+        return ["BulletPunch", "IronTail", "DragonBreath", "HeavySlam"];
     }
 }

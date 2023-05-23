@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\BugBite;
 use models\moves\BugBuzz;
 use models\moves\BulletSeed;
-use models\moves\Counter;
+use models\moves\StruggleBug;
 
 class Pinsir extends Pokemon
 {
@@ -20,6 +20,6 @@ class Pinsir extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["BugBite", "BulletSeed", "Counter", "BugBuzz"];
+        return ["BugBite", "BulletSeed", "StruggleBug", "BugBuzz"];
     }
 }

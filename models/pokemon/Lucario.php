@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\BulletPunch;
 use models\moves\Counter;
-use models\moves\Cut;
+use models\moves\RockSmash;
 use models\moves\FocusBlast;
 
 class Lucario extends Pokemon
@@ -20,6 +20,6 @@ class Lucario extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Counter", "BulletPunch", "Cut", "FocusBlast"];
+        return ["Counter", "BulletPunch", "RockSmash", "FocusBlast"];
     }
 }

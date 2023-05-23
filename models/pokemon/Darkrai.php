@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\Acid;
+use models\moves\FeintAttack;
 use models\moves\DarkPulse;
 use models\moves\Hex;
 use models\moves\Snarl;
@@ -15,7 +15,7 @@ class Darkrai extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Snarl", "Hex", "Acid", "DarkPulse"];
+        return ["Snarl", "Hex", "FeintAttack", "DarkPulse"];
     }
 
     public function hasMegaEvolve(): bool

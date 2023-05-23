@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\BugBite;
 use models\moves\BugBuzz;
 use models\moves\BulletSeed;
-use models\moves\HornAttack;
+use models\moves\StruggleBug;
 
 class Buzzwole extends Pokemon
 {
@@ -21,6 +21,6 @@ class Buzzwole extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["BugBite", "BulletSeed", "HornAttack", "BugBuzz"];
+        return ["BugBite", "BulletSeed", "StruggleBug", "BugBuzz"];
     }
 }

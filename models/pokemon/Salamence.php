@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\DragonBreath;
 use models\moves\AirSlash;
-use models\moves\BulletPunch;
+use models\moves\Gust;
 use models\moves\DracoMeteor;
 
 class Salamence extends Pokemon
@@ -20,6 +20,6 @@ class Salamence extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["DragonBreath", "AirSlash", "BulletPunch", "DracoMeteor"];
+        return ["DragonBreath", "AirSlash", "Gust", "DracoMeteor"];
     }
 }

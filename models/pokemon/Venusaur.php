@@ -3,7 +3,7 @@
 namespace models\pokemon;
 
 use models\moves\Acid;
-use models\moves\BulletPunch;
+use models\moves\MagicalLeaf;
 use models\moves\BulletSeed;
 use models\moves\SolarBeam;
 
@@ -21,6 +21,6 @@ class Venusaur extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["BulletSeed", "Acid", "BulletPunch", "SolarBeam"];
+        return ["BulletSeed", "Acid", "MagicalLeaf", "SolarBeam"];
     }
 }

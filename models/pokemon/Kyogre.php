@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\WaterGun;
 use models\moves\IceKick;
-use models\moves\Snarl;
+use models\moves\Waterfall;
 use models\moves\HydroPump;
 
 class Kyogre extends Pokemon
@@ -20,6 +20,6 @@ class Kyogre extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["WaterGun", "IceKick", "Snarl", "HydroPump"];
+        return ["WaterGun", "IceKick", "Waterfall", "HydroPump"];
     }
 }

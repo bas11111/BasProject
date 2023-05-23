@@ -2,7 +2,7 @@
 
 namespace models\pokemon;
 
-use models\moves\Acid;
+use models\moves\Astonish;
 use models\moves\Hex;
 use models\moves\Poltergeist;
 use models\moves\Snarl;
@@ -15,7 +15,7 @@ class Spectrier extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Hex", "Snarl", "Acid", "Poltergeist"];
+        return ["Hex", "Snarl", "Astonish", "Poltergeist"];
     }
 
     public function hasMegaEvolve(): bool

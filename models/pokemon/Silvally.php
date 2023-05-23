@@ -5,7 +5,7 @@ namespace models\pokemon;
 use models\moves\Acid;
 use models\moves\Hex;
 use models\moves\SludgeWave;
-use models\moves\Snarl;
+use models\moves\PoisonJab;
 
 class Silvally extends Pokemon
 {
@@ -15,7 +15,7 @@ class Silvally extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Acid", "Snarl", "Hex", "SludgeWave"];
+        return ["Acid", "PoisonJab", "Hex", "SludgeWave"];
     }
 
     public function hasMegaEvolve(): bool

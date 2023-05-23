@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\Counter;
 use models\moves\Confusion;
-use models\moves\Snarl;
+use models\moves\RockSmash;
 use models\moves\FutureSight;
 
 class Gallade extends Pokemon
@@ -20,6 +20,6 @@ class Gallade extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Counter", "Confusion", "Snarl", "FutureSight"];
+        return ["Counter", "Confusion", "RockSmash", "FutureSight"];
     }
 }

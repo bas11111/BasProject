@@ -4,7 +4,7 @@ namespace models\pokemon;
 
 use models\moves\FireBreath;
 use models\moves\AirSlash;
-use models\moves\DragonBreath;
+use models\moves\Incinerate;
 use models\moves\FlameBlast;
 
 class Moltres extends Pokemon
@@ -20,6 +20,6 @@ class Moltres extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["FireBreath", "Airslash", "DragonBreath", "FlameBlast"];
+        return ["FireBreath", "Airslash", "Incinerate", "FlameBlast"];
     }
 }

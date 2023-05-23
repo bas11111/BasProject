@@ -3,8 +3,8 @@
 namespace models\pokemon;
 
 use models\moves\Spark;
-use models\moves\Snarl;
-use models\moves\BulletPunch;
+use models\moves\DragonTail;
+use models\moves\VoltSwitch;
 use models\moves\ThunderBolt;
 
 class Zekrom extends Pokemon
@@ -20,6 +20,6 @@ class Zekrom extends Pokemon
 
     public function getAvailableMoves(): array
     {
-        return ["Spark", "Snarl", "BulletPunch", "Thunderbolt"];
+        return ["Spark", "DragonTail", "VoltSwitch", "Thunderbolt"];
     }
 }
