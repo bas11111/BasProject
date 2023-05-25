@@ -67,9 +67,9 @@ class PokemonCommand
             Console::error('Error: One of the selected trainers does not have a team');
             die;
         }
-        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
+//        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
 //        $this->battle($teams["Bas"][6], clone($teams["Bas"][4]));
-//        $this->pokeDex($teams["Melvin"][0]);
+        $this->pokeDex($teams["Melvin"][0]);
 //        $this->raid(clone($teams["Bas"][0]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
     }
 
