@@ -20,4 +20,10 @@ abstract class House
     public function getHeight() {
         return $this->heightcm;
     }
+    public function getWidth() {
+        return $this->widthcm;
+    }
+    public function getLength() {
+        return $this->lengthcm;
+    }
 }
