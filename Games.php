@@ -39,58 +39,74 @@ class Games
         $num = rand(1, 2);
         if ($num === 1) {
             Console::succes("You decide to get out of bed.");
+            usleep(500000);
             $num = 3;
         } elseif ($num === 2) {
             Console::info("You hit the snooze button, and continue sleeping");
+            usleep(500000);
             $num = 4;
         }
         if ($num === 3) {
             Console::succes("You get ready for internship with alot of time to spare.");
+            usleep(500000);
             $num = 5;
         } elseif ($num === 4) {
             Console::error("You wake up half an hour later, and realize you overslept");
+            usleep(500000);
             $num = 6;
         }
         if ($num === 5) {
             Console::succes("You arrive on internship on time");
+            usleep(500000);
             $num = 7;
         } elseif ($num === 6) {
             Console::error("You arrive to late on your internship");
+            usleep(500000);
             $num = 8;
         }
         if ($num === 7) {
             Console::info("You work on your code the entire day");
+            usleep(500000);
             $num = 9;
         } elseif ($num === 8) {
             Console::error("You lost your internship");
+            usleep(500000);
             $num = 10;
         }
         if ($num === 9) {
             Console::info("After working the entire the day, you go home.");
+            usleep(500000);
             $num = 11;
         } elseif ($num === 10) {
             Console::info("Because you lost internship, you decide to go home.");
+            usleep(500000);
             $num = 12;
         }
         if ($num === 11) {
             Console::info("You go to internship everyday, and eventually finish it.");
+            usleep(500000);
             $num = 13;
         } elseif ($num === 12) {
             Console::error("You become depressed because you can't find an internship, and you fail school.");
+            usleep(500000);
             $num = 14;
         }
         if ($num === 13) {
             Console::succes("You eventually gratuate school, and get a good job.");
+            usleep(500000);
             $num = 15;
         } elseif ($num === 14) {
             Console::error("You decide it's no longer worth it...");
+            usleep(500000);
             $num = 16;
         }
         if ($num === 15) {
             Console::succes("You live a succesful and happy life.");
+            usleep(500000);
             $num = 17;
         } elseif ($num === 16) {
             Console::error("You decide to end it all......");
+            usleep(500000);
             $num = 18;
         }
         if ($num === 17) {
@@ -207,5 +223,11 @@ class Games
             Console::info("$i");
             usleep(100000);
         }
+    }
+
+    public function name()
+    {
+        Console::info("Test");
+        Console::info("Dit is een test.");
     }
 }
