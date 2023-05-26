@@ -227,7 +227,8 @@ class Games
 
     public function name()
     {
-        Console::info("Test");
-        Console::info("Dit is een test.");
+        if (rand(1,2 ) === 2) {
+
+        }
     }
 }

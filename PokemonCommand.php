@@ -113,6 +113,12 @@ class PokemonCommand
         }
         Console::info("It did " . $damage . " Damage");
         $targetHealth -= $damage;
+        if (rand(1, 10) === 1) {
+            $rand = rand(5, 10);
+            Console::info($attacker->getName() . "used a follow-up attack for " . $rand . " damage!");
+            $targetHealth -= $rand;
+            Console::info("Total damage: " . $damage + $rand);
+        }
         $target->setHealth($targetHealth);
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
         Console::info("-------------------------------");
