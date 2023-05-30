@@ -45,7 +45,7 @@ class PokemonCommand
                     throw new Exception($class." has a level higher than 100, this is not allowed");
                 }
                 if (!class_exists($class)) {
-                    throw new Exception("File not found: ".$class . ".");
+                    throw new Exception("File not found: ".$class.".");
                 }
                 $moves = [
                     $row[$headers['Move1']] ?? null,
@@ -68,21 +68,23 @@ class PokemonCommand
             die;
         }
 //        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
-        $this->battle($teams["Bas"][0], clone($teams["Bas"][4]));
+//        $this->battle($teams["Bas"][0], clone($teams["Bas"][4]));
 //        $this->pokeDex($teams["Melvin"][0]);
 //        $this->raid(clone($teams["Bas"][2]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
+        $this->wildBattle($teams["Bas"][5], clone($teams["Bas"][rand(1, 8)]));
     }
 
-    private function pokeDex($pokemon) {
-        Console::info("Name: " . $pokemon->getName());
-        Console::info("HP: " . $pokemon->getHealth());
-        Console::info("CP: " . $pokemon->getCombatPower());
-        Console::info("Level: " . $pokemon->getLevel());
+    private function pokeDex($pokemon)
+    {
+        Console::info("Name: ".$pokemon->getName());
+        Console::info("HP: ".$pokemon->getHealth());
+        Console::info("CP: ".$pokemon->getCombatPower());
+        Console::info("Level: ".$pokemon->getLevel());
         foreach ($pokemon->getType() as $type) {
-            Console::info("Type: " . $type);
+            Console::info("Type: ".$type);
         }
-        Console::info("About this Pokemon: " . $pokemon->getAbout());
-        Console::info("Pokedex entry: " . $pokemon->getEntry());
+        Console::info("About this Pokemon: ".$pokemon->getAbout());
+        Console::info("Pokedex entry: ".$pokemon->getEntry());
     }
 
 
@@ -94,7 +96,7 @@ class PokemonCommand
     ) {
         $targetHealth = $target->getHealth();
         $damage = $move->calculateDamage($attacker, $target, $this->weather);
-        Console::info($attacker->getName() . ' uses ' . $move->getName() . "!");
+        Console::info($attacker->getName().' uses '.$move->getName()."!");
         if ($move->isEffectiveAgainst($target->getType())) {
             Console::succes("It was very effective!");
         } elseif ($move->isNotEffectiveAgainst($target->getType())) {
@@ -111,13 +113,13 @@ class PokemonCommand
                 }
             }
         }
-        Console::info("It did " . $damage . " Damage");
+        Console::info("It did ".$damage." Damage");
         $targetHealth -= $damage;
         if (rand(1, 10) === 1) {
             $rand = rand(5, 10);
-            Console::info($attacker->getName() . "used a follow-up attack for " . $rand . " damage!");
+            Console::info($attacker->getName()." used a follow-up attack for ".$rand." damage!");
             $targetHealth -= $rand;
-            Console::info("Total damage: " . $damage + $rand);
+            Console::info("Total damage: ".$damage + $rand);
         }
         $target->setHealth($targetHealth);
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
@@ -133,13 +135,13 @@ class PokemonCommand
         $targetHealth = $target->getHealth();
         $damage = $move->calculateDamage($attacker, $target, $this->weather);
         $targetHealth -= $damage;
-        Console::info($attacker->getName().spl_object_id($attacker) . " used " . $move->getName());
+        Console::info($attacker->getName().spl_object_id($attacker)." used ".$move->getName());
         if ($move->isEffectiveAgainst($target->getType())) {
             Console::succes("It was very effective");
         } elseif ($move->isNotEffectiveAgainst($target->getType())) {
             Console::error("It wasn't very effective");
         }
-        Console::info("The attack did " . $damage . " damage");
+        Console::info("The attack did ".$damage." damage");
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
         Console::info("---------------------------------");
         $target->setHealth($targetHealth);
@@ -147,6 +149,7 @@ class PokemonCommand
             Console::error($target->getName().spl_object_id($target)." has fallen!");
             Console::info("---------------------------------");
         }
+
         return $damage;
     }
 
@@ -456,6 +459,45 @@ class PokemonCommand
             Console::succes($trainer1." wins");
         } else {
             $this->teamBattle($team1, $trainer1, $team2, $trainer2, false);
+        }
+    }
+
+    public function wildBattle(Pokemon $pokemon1, Pokemon $pokemon2)
+    {
+        $pokemon2->setLevel(rand(50, 100));
+        Console::info("A wild ".$pokemon2->getName().$pokemon2->getLevel()." has appeared!");
+        if (rand(1, 2) === 2) {
+            Console::info("You decide to run away!");
+        } else {
+            Console::info("You decide to engage in combat!");
+            $this->battle($pokemon1, $pokemon2);
+            if ($pokemon1->getHealth() > 0) {
+                Console::succes("You have defeated the wild ".$pokemon2->getName().$pokemon2->getLevel()."! Catch it before it runs away!");
+                $this->catching($pokemon2);
+            }
+        }
+    }
+
+    public function catching($pokemon)
+    {
+        Console::info(".");
+        sleep(1);
+        if (rand(1, round($pokemon->getLevel() / 20)) === 1) {
+            Console::info("..");
+            sleep(1);
+            if (rand(1, round($pokemon->getLevel() / 20)) === 1) {
+                Console::info("...");
+                sleep(1);
+                Console::succes("Gotcha! ".$pokemon->getName()." was caught!");
+            } else {
+                Console::error($pokemon->getName()." broke free!");
+                sleep(1);
+                if (rand(1, 5) === 1) {Console::error($pokemon->getName(). " ran away!"); die;} else {$this->catching($pokemon);}
+            }
+        } else {
+            Console::error($pokemon->getName()." broke free!");
+            sleep(1);
+            if (rand(1, 5) === 1) {Console::error($pokemon->getName(). " ran away!"); die;} else {$this->catching($pokemon);}
         }
     }
 }
