@@ -18,8 +18,16 @@ class Garchomp extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["DragonBreath", "MudSlap", "DragonTail", "Earthquake"];
+        return [
+            1 => "DragonBreath",
+            6 => "BulletPunch",
+            21 => "MudSlap",
+            34 => "DragonTail",
+            57 => "MudShot",
+            80 => "DracoMeteor",
+            90 => "Earthquake"
+        ];
     }
 }

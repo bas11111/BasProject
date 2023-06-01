@@ -10,13 +10,13 @@ abstract class Pokemon
     protected array $type;
     protected int $health;
     protected int $level;
-    protected int $maxHealth;
-    protected int $CP;
+    protected ?int $maxHealth = null;
+    protected ?int $CP = null;
     protected int $shields;
     protected int $potions;
-    protected string $about;
+    protected static string $about;
 
-    protected int $entry;
+    protected static int $entry;
 
     protected array $moves = [];
 
@@ -29,16 +29,19 @@ abstract class Pokemon
     ];
 
 
-    public function __construct(int $level, int $CP, int $health, int $maxHealth, string $about, int $entry, array $moves = [])
+    public function __construct(int $level, ?array $moves = null)
     {
         $this->level = $level;
-        $this->CP = $CP;
-        $this->health = $health;
-        $this->maxHealth = $maxHealth;
-        $this->about = $about;
-        $this->entry = $entry;
+        $this->getCombatPower();
+        $maxHealth = $this->getMaxHealth();
+        $this->health = $maxHealth;
+        static::$about = 'This is a pokemon';
+        static::$entry = 1;
+        if ($moves === null) {
+            $moves = static::getAvailableMovesAtLevel($this->level);
+        }
         foreach ($moves as $move) {
-            if (($_move = $this->getMove($move)) !== null) {
+            if (($_move = $this->getMove($move)) !== null && static::isMoveAvailableAtLevel($this->level, $move)) {
                 $this->moves[] = $_move;
             }
         }
@@ -46,13 +49,20 @@ abstract class Pokemon
 
     public function getMove(string $move): ?Move
     {
-        if (in_array($move, $this->getAvailableMoves())) {
+        if (in_array($move, static::getAvailableMoves())) {
             $class = 'models\\moves\\'.$move;
 
             return new $class();
         }
 
         return null;
+    }
+
+    private static function isMoveAvailableAtLevel(int $level, mixed $move): bool
+    {
+        $index = array_search($move, static::getAvailableMoves());
+
+        return $index !== false && $index <= $level;
     }
 
 
@@ -127,6 +137,13 @@ abstract class Pokemon
 
     public function getCombatPower()
     {
+        if ($this->CP === null) {
+            $level = $this->getLevel();
+            $cp = $level * 35;
+
+            $this->CP = $cp;
+        }
+
         return $this->CP;
     }
 
@@ -167,6 +184,13 @@ abstract class Pokemon
 
     public function getMaxHealth()
     {
+        if ($this->maxHealth === null) {
+            $level = $this->getLevel();
+            $maxHealth = 100 + $level * 4;
+
+            $this->maxHealth = $maxHealth;
+        }
+
         return $this->maxHealth;
     }
 
@@ -179,5 +203,32 @@ abstract class Pokemon
 
     abstract public function hasMegaEvolve(): bool;
 
-    abstract public function getAvailableMoves(): array;
+    abstract public static function getAvailableMoves(): array;
+
+    public static function getAvailableMovesAtLevel(int $level): array
+    {
+        $allMoves = static::getAvailableMoves();
+        ksort($allMoves);
+        $moves = [];
+        foreach ($allMoves as $move) {
+            if (static::isMoveAvailableAtLevel($level, $move)) {
+                $moves[] = $move;
+            }
+        }
+        $count = count($moves);
+        if ($count <= 4) {
+            return $moves;
+        }
+        $results = [];
+        $lastIndex = $count - 1;
+        $firstIndex = $lastIndex - 3;
+        while ($firstIndex <= $lastIndex) {
+            $results[] = $moves[$firstIndex];
+            $firstIndex++;
+        }
+
+        return $results;
+        //TODO Find 4 moves from my available list. Either the last 4, or 4 random ones
+
+    }
 }

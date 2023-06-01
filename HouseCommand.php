@@ -8,7 +8,7 @@ class HouseCommand
 {
     public function actionIndex()
     {
-        $this->door(new Chair(50, 50, 75));
+        $this->door(new Chair(50, 500, 75));
 //        $this->closet(new Closet(50, 50, 150), new Table(49, 100, 5));
     }
 
@@ -17,12 +17,14 @@ class HouseCommand
         $height = $furniture->getHeight();
         $width = $furniture->getWidth();
         if ($furniture->getHeight() < 200 || $furniture->getWidth() < 100) {
-            Console::error("The furniture does fit through the door!");
+            Console::succes("The furniture does fit through the door!");
         } elseif ($furniture->getHeight() >= 200 || $furniture->getWidth >= 100) {
-            Console::succes("The furniture does not fit through the door!");
+            Console::error("The furniture does not fit through the door!");
             Console::info("Maybe if you flip the furniture, it does fit through the door?");
             $furniture->setHeight($width);
             $furniture->setWidth($height);
+            Console::info($height);
+            Console::info($width);
             if ($furniture->getHeight() < 200 || $furniture->getWidth() < 100) {
                 Console::error("The furniture does fit through the door!");
             } elseif ($furniture->getHeight() >= 200 || $furniture->getWidth >= 100) {

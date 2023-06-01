@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\AirSlash;
-use models\moves\Incinerate;
-use models\moves\FireBreath;
-use models\moves\FlameBlast;
-
 class Charizard extends Pokemon
 {
     protected array $type = ["fire"];
@@ -18,8 +13,17 @@ class Charizard extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["FireBreath", "AirSlash", "Incinerate", "FlameBlast"];
+        return [
+            1 => "FireBreath",
+            6 => "Incinerate",
+            20 => "AirSlash",
+            25 => "DragonBreath",
+            40 => "DragonTail",
+            45 => "Gust",
+            80 => "DracoMeteor",
+            90 => "FlameBlast"
+        ];
     }
 }

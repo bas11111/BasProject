@@ -18,7 +18,7 @@ class Kyogre extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["WaterGun", "IceKick", "Waterfall", "HydroPump"];
     }

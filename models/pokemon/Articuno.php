@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\AirSlash;
-use models\moves\Avalanche;
-use models\moves\IceKick;
-use models\moves\IceFang;
-
 class Articuno extends Pokemon
 {
     protected array $type = ["ice", "fly"];
@@ -18,8 +13,16 @@ class Articuno extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["AirSlash", "IceFang", "IceKick", "Avalance"];
+        return [
+            1 => "IceFang",
+            8 => "IceKick",
+            24 => "AirSlash",
+            41 => "Gust",
+            66 => "WaterGun",
+            80 => "Avalance",
+            90 => "Hurricane"
+        ];
     }
 }

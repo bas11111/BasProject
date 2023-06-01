@@ -18,7 +18,7 @@ class Rhyperior extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["RockThrow", "MudSlap", "MudShot", "StoneEdge"];
     }

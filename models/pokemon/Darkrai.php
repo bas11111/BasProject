@@ -2,20 +2,21 @@
 
 namespace models\pokemon;
 
-use models\moves\FeintAttack;
-use models\moves\DarkPulse;
-use models\moves\Hex;
-use models\moves\Snarl;
-
 class Darkrai extends Pokemon
 {
     protected array $type = ["dark"];
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["Snarl", "Hex", "FeintAttack", "DarkPulse"];
+        return [
+            1 => "Snarl",
+            4 => "FeintAttack",
+            25 => "Hex",
+            65 => "Astonish",
+            70 => "DarkPulse"
+        ];
     }
 
     public function hasMegaEvolve(): bool

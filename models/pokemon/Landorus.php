@@ -18,7 +18,7 @@ class Landorus extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["MudSlap", "AirSlash", "MudShot", "Earthquake"];
     }

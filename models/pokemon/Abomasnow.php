@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Avalanche;
-use models\moves\IceFang;
-use models\moves\BulletSeed;
-use models\moves\IceKick;
-
 class Abomasnow extends Pokemon
 {
     protected array $type = ["ice", "grass"];
@@ -18,8 +13,17 @@ class Abomasnow extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["IceKick", "IceFang", "BulletSeed", "Avalance"];
+        return [
+            1 => "IceKick",
+            6 => "IceFang",
+            20 => "BulletSeed",
+            40 => "MudShot",
+            55 => "MagicalLeaf",
+            70 => "MudSlap",
+            80 => "Avalance",
+            90 => "SolarBeam"
+        ];
     }
 }

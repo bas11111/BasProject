@@ -18,7 +18,7 @@ class Machamp extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["Counter", "RockSmash", "BulletPunch", "FocusBlast"];
     }

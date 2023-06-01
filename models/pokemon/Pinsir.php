@@ -18,7 +18,7 @@ class Pinsir extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["BugBite", "BulletSeed", "StruggleBug", "BugBuzz"];
     }

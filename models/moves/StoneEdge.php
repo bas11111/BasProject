@@ -7,7 +7,7 @@ class StoneEdge extends Move
 
     protected string $type = "rock";
 
-    protected bool $charged = false;
+    protected bool $charged = true;
 
     function getEffectiveAgainst(): array
     {
@@ -21,6 +21,6 @@ class StoneEdge extends Move
 
     public function getDamage(): int
     {
-        return 12;
+        return 100;
     }
 }

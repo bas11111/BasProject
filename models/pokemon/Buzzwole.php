@@ -19,8 +19,16 @@ class Buzzwole extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["BugBite", "BulletSeed", "StruggleBug", "BugBuzz"];
+        return [
+            1 => "BugBite",
+            8 => "StruggleBug",
+            17 => "BulletSeed",
+            24 => "MagicalLeaf",
+            55 => "PoisonJab",
+            80 => "BugBuzz",
+            90 => "SolarBeam"
+        ];
     }
 }

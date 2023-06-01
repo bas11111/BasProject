@@ -18,7 +18,7 @@ class Rayquaza extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["AirSlash", "DragonBreath", "Dragontail", "Hurricane"];
     }

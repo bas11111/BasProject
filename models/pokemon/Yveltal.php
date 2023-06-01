@@ -19,7 +19,7 @@ class Yveltal extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["Snarl", "AirSlash", "FeintAttack", "Hurricane"];
     }

@@ -10,6 +10,8 @@ class PokemonCommand
 
     public function actionIndex()
     {
+        var_dump(new \models\pokemon\Charizard(100));
+        die;
         $path = 'test1.csv';
         $handle = fopen($path, "r");
         $headers = fgetcsv($handle, 0, ";");
@@ -53,7 +55,7 @@ class PokemonCommand
                     $row[$headers['Move3']] ?? null,
                     $row[$headers['Move4']] ?? null,
                 ];
-                $teams[$trainer][] = new $class($level, $CP, $health, $maxHealth, $about, $entry, $moves);
+                $teams[$trainer][] = new $class($level, $moves);
             }
         } catch (Exception $e) {
             Console::error("Error: ".$e->getMessage());
@@ -71,7 +73,8 @@ class PokemonCommand
 //        $this->battle($teams["Bas"][0], clone($teams["Bas"][4]));
 //        $this->pokeDex($teams["Melvin"][0]);
 //        $this->raid(clone($teams["Bas"][2]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
-        $this->wildBattle($teams["Bas"][5], clone($teams["Bas"][rand(1, 8)]));
+
+        $this->wildBattle($teams[$trainer1]);
     }
 
     private function pokeDex($pokemon)
@@ -462,8 +465,35 @@ class PokemonCommand
         }
     }
 
-    public function wildBattle(Pokemon $pokemon1, Pokemon $pokemon2)
+    public function wildBattle(array $team)
     {
+        $results = scandir("models\pokemon");
+        $invalidResults = [
+            '.',
+            '..',
+            'Pokemon.php',
+        ];
+        foreach ($results as $index => $result) {
+            if (in_array($result, $invalidResults)) {
+                unset($results[$index]);
+            }
+        }
+        $results = array_values($results);
+        var_dump($results);
+        var_dump(count($results));
+        $wildPokemonFile = $results[rand(0, count($results) - 1)];
+        var_dump($wildPokemonFile);
+        $wildPokemonClassName = str_replace(".php", "", $wildPokemonFile);
+        var_dump($wildPokemonClassName);
+        $wildPokemonClassPath = 'models\pokemon\\'.$wildPokemonClassName;
+        $level = rand(50, 100);
+        /** @var Pokemon $wildPokemonClass */
+
+        $wildPokemonClass = new $wildPokemonClassPath($level);
+        var_dump($wildPokemonClass);
+        die;
+        $pokemon1 = $team[0];
+        $pokemon2 = $team[1];
         $pokemon2->setLevel(rand(50, 100));
         Console::info("A wild ".$pokemon2->getName().$pokemon2->getLevel()." has appeared!");
         if (rand(1, 2) === 2) {
@@ -492,12 +522,22 @@ class PokemonCommand
             } else {
                 Console::error($pokemon->getName()." broke free!");
                 sleep(1);
-                if (rand(1, 5) === 1) {Console::error($pokemon->getName(). " ran away!"); die;} else {$this->catching($pokemon);}
+                if (rand(1, 5) === 1) {
+                    Console::error($pokemon->getName()." ran away!");
+                    die;
+                } else {
+                    $this->catching($pokemon);
+                }
             }
         } else {
             Console::error($pokemon->getName()." broke free!");
             sleep(1);
-            if (rand(1, 5) === 1) {Console::error($pokemon->getName(). " ran away!"); die;} else {$this->catching($pokemon);}
+            if (rand(1, 5) === 1) {
+                Console::error($pokemon->getName()." ran away!");
+                die;
+            } else {
+                $this->catching($pokemon);
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ class Xerneas extends Pokemon
     protected int $potions = 2;
 
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["Charm", "Confusion", "FairyWind", "DazzlingDream"];
     }

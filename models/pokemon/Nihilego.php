@@ -18,7 +18,7 @@ class Nihilego extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["Acid", "RockThrow", "PoisonJab", "Sludgewave"];
     }

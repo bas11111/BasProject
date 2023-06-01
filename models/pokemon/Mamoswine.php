@@ -18,7 +18,7 @@ class Mamoswine extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
         return ["Icekick", "MudSlap", "IceFang", "Avalanche"];
     }

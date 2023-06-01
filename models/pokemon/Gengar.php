@@ -18,8 +18,16 @@ class Gengar extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["Acid", "Hex", "Astonish", "Poltergeist"];
+        return [
+            1 => "Acid",
+            6 => "Snarl",
+            19 => "PoisonJab",
+            36 => "Hex",
+            50 => "Astonish",
+            80 => "SludgeBomb",
+            90 => "Poltergeist"
+        ];
     }
 }

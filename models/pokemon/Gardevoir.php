@@ -18,8 +18,14 @@ class Gardevoir extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["Charm", "Confusion", "FairyWind", "DazzlingDream"];
+        return [
+            1 => "Confusion",
+            23 => "ZenHeadButt",
+            40 => "FairyWind",
+            53 => "Charm",
+            80 => "DazzlingDream"
+        ];
     }
 }

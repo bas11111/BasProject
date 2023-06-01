@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Counter;
-use models\moves\Confusion;
-use models\moves\RockSmash;
-use models\moves\FutureSight;
-
 class Gallade extends Pokemon
 {
     protected array $type = ["fighting", "psychic"];
@@ -18,8 +13,16 @@ class Gallade extends Pokemon
         return true;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["Counter", "Confusion", "RockSmash", "FutureSight"];
+        return [
+            1 => "Counter",
+            11 => "ZenHeadButt",
+            25 => "Confusion",
+            40 => "RockSmash",
+            60 => "Charm",
+            80 => "FutureSight",
+            90 => "FocusBlast"
+        ];
     }
 }

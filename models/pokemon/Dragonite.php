@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\AirSlash;
-use models\moves\DragonTail;
-use models\moves\DracoMeteor;
-use models\moves\DragonBreath;
-
 class Dragonite extends Pokemon
 {
     protected array $type = ["dragon"];
@@ -18,8 +13,16 @@ class Dragonite extends Pokemon
         return false;
     }
 
-    public function getAvailableMoves(): array
+    public static function getAvailableMoves(): array
     {
-        return ["DragonBreath", "AirSlash", "DragonTail", "DracoMeteor"];
+        return [
+            1 => "DragonBreath",
+            6 => "Counter",
+            25 => "AirSlash",
+            40 => "DragonTail",
+            60 => "Gust",
+            80 => "DracoMeteor",
+            90 => "Hurricane",
+        ];
     }
 }
