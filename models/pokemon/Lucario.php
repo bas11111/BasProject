@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletPunch;
-use models\moves\Counter;
-use models\moves\RockSmash;
-use models\moves\FocusBlast;
-
 class Lucario extends Pokemon
 {
     protected array $type = ["fighting"];
@@ -20,6 +15,14 @@ class Lucario extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Counter", "BulletPunch", "RockSmash", "FocusBlast"];
+        return [
+            "Counter",
+            "Cut",
+            "BulletPunch",
+            "IronTail",
+            "RockSmash",
+            "FocusBlast",
+            "HeavySlam"
+        ];
     }
 }

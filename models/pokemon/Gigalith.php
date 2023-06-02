@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Rollout;
-use models\moves\MudSlap;
-use models\moves\RockThrow;
-use models\moves\StoneEdge;
-
 class Gigalith extends Pokemon
 {
     protected array $type = ["rock"];
@@ -17,9 +12,10 @@ class Gigalith extends Pokemon
     {
         return [
             1 => "RockThrow",
-            "MudSlap",
-            "Rollout",
-            "StoneEdge"
+            9 => "MudSlap",
+            20 => "MudShot",
+            37 => "Rollout",
+            80 => "StoneEdge"
         ];
     }
 

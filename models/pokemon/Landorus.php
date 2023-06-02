@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\MudSlap;
-use models\moves\AirSlash;
-use models\moves\MudShot;
-use models\moves\Earthquake;
-
 class Landorus extends Pokemon
 {
     protected array $type = ["ground", "fly"];
@@ -20,6 +15,14 @@ class Landorus extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["MudSlap", "AirSlash", "MudShot", "Earthquake"];
+        return [
+            1 => "MudSlap",
+            6 => "Cut",
+            21 => "AirSlash",
+            35 => "MudShot",
+            46 => "Gust",
+            80 => "Earthquake",
+            90 => "Hurricane"
+        ];
     }
 }

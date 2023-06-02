@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\DragonBreath;
-use models\moves\Earthquake;
-use models\moves\DragonTail;
-use models\moves\MudSlap;
-
 class Garchomp extends Pokemon
 {
     protected array $type = ["dragon", "ground"];

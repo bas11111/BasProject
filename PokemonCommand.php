@@ -10,7 +10,7 @@ class PokemonCommand
 
     public function actionIndex()
     {
-        var_dump(new \models\pokemon\Charizard(100));
+        var_dump(new \models\pokemon\Garchomp(100));
         die;
         $path = 'test1.csv';
         $handle = fopen($path, "r");

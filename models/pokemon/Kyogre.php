@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\WaterGun;
-use models\moves\IceKick;
-use models\moves\Waterfall;
-use models\moves\HydroPump;
-
 class Kyogre extends Pokemon
 {
     protected array $type = ["water"];
@@ -20,6 +15,12 @@ class Kyogre extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["WaterGun", "IceKick", "Waterfall", "HydroPump"];
+        return [
+            1 => "Cut",
+            4 => "WaterGun",
+            21 => "IceKick",
+            45 =>"Waterfall",
+            80 => "HydroPump"
+        ];
     }
 }

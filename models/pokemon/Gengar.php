@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Acid;
-use models\moves\Hex;
-use models\moves\Poltergeist;
-use models\moves\Astonish;
-
 class Gengar extends Pokemon
 {
     protected array $type = ["ghost", "poison"];
