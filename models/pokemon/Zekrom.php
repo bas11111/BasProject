@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Spark;
-use models\moves\DragonTail;
-use models\moves\VoltSwitch;
-use models\moves\ThunderBolt;
-
 class Zekrom extends Pokemon
 {
     protected array $type = ["electric", "dragon"];
@@ -20,6 +15,14 @@ class Zekrom extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Spark", "DragonTail", "VoltSwitch", "Thunderbolt"];
+        return [
+            1 => "Spark",
+            8 => "Snarl",
+            24 => "DragonTail",
+            40 => "DragonBreath",
+            61 => "VoltSwitch",
+            80 => "Thunderbolt",
+            90 => "DracoMeteor"
+        ];
     }
 }

@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\HydroPump;
-use models\moves\IceKick;
-use models\moves\Waterfall;
-use models\moves\WaterGun;
-
 class Suicune extends Pokemon
 {
     protected array $type = ["water"];
@@ -20,6 +15,13 @@ class Suicune extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["WaterGun", "IceKick", "Waterfall", "HydroPump"];
+        return [
+            1 => "IceKick",
+            19 => "Snarl",
+            31 => "WaterGun",
+            50 => "IceFang",
+            61 => "Waterfall",
+            80 => "HydroPump"
+        ];
     }
 }

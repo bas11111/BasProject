@@ -2,24 +2,24 @@
 
 namespace models\pokemon;
 
-use models\moves\AirSlash;
-use models\moves\Cut;
-use models\moves\Hurricane;
-use models\moves\Gust;
-
 class Tornadus extends Pokemon
 {
     protected array $type = ["fly"];
     protected int $shields = 2;
     protected int $potions = 2;
 
-    public static function getAvailableMoves(): array
-    {
-        return ["AirSlash", "Gust", "Cut", "Hurricane"];
-    }
-
     public function hasMegaEvolve(): bool
     {
         return false;
+    }
+
+    public static function getAvailableMoves(): array
+    {
+        return [
+            1 => "AirSlash",
+            12 => "Gust",
+            28 => "Cut",
+            80 => "Hurricane"
+        ];
     }
 }

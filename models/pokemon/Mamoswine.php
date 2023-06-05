@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\IceKick;
-use models\moves\MudSlap;
-use models\moves\IceFang;
-use models\moves\Avalanche;
-
 class Mamoswine extends Pokemon
 {
     protected array $type = ["ice", "ground"];
@@ -20,6 +15,14 @@ class Mamoswine extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Icekick", "MudSlap", "IceFang", "Avalanche"];
+        return [
+            1 => "Icekick",
+            11 => "MudSlap",
+            27 => "MudShot",
+            45 => "Cut",
+            60 => "IceFang",
+            80 => "Avalanche",
+            90 => "EarthQuake"
+        ];
     }
 }

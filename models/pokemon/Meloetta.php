@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Cut;
-use models\moves\Confusion;
-use models\moves\HiddenPower;
-use models\moves\HornAttack;
-
 class Meloetta extends Pokemon
 {
     protected array $type = ["normal", "psychic"];
@@ -20,6 +15,13 @@ class Meloetta extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Cut", "Confusion", "HiddenPowers", "HornAttack"];
+        return [
+            1 => "Cut",
+            12 => "Confusion",
+            30 => "HiddenPower",
+            45 => "ZenHeadbutt",
+            60 => "HornAttack",
+            80 => "FutureSight"
+        ];
     }
 }

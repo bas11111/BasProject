@@ -10,8 +10,8 @@ class PokemonCommand
 
     public function actionIndex()
     {
-        var_dump(new \models\pokemon\Garchomp(100));
-        die;
+//        var_dump(new \models\pokemon\Zekrom(100));
+//        die;
         $path = 'test1.csv';
         $handle = fopen($path, "r");
         $headers = fgetcsv($handle, 0, ";");
@@ -70,11 +70,11 @@ class PokemonCommand
             die;
         }
 //        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
-//        $this->battle($teams["Bas"][0], clone($teams["Bas"][4]));
+        $this->battle($teams["Bas"][6], clone($teams["Bas"][4]));
 //        $this->pokeDex($teams["Melvin"][0]);
 //        $this->raid(clone($teams["Bas"][2]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
 
-        $this->wildBattle($teams[$trainer1]);
+//        $this->wildBattle($teams[$trainer1]);
     }
 
     private function pokeDex($pokemon)
@@ -490,8 +490,6 @@ class PokemonCommand
         /** @var Pokemon $wildPokemonClass */
 
         $wildPokemonClass = new $wildPokemonClassPath($level);
-        var_dump($wildPokemonClass);
-        die;
         $pokemon1 = $team[0];
         $pokemon2 = $team[1];
         $pokemon2->setLevel(rand(50, 100));

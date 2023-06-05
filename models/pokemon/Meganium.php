@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletSeed;
-use models\moves\MudSlap;
-use models\moves\MagicalLeaf;
-use models\moves\SolarBeam;
-
 class Meganium extends Pokemon
 {
     protected array $type = ["grass"];
@@ -20,6 +15,13 @@ class Meganium extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["BulletSeed", "MudSlap", "MagicalLeaf", "SolarBeam"];
+        return [
+            1 => "BulletSeed",
+            15 => "MudSlap",
+            35 => "Cut",
+            55 => "Mudshot",
+            70 => "MagicalLeaf",
+            80 => "SolarBeam"
+        ];
     }
 }

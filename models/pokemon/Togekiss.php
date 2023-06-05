@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Charm;
-use models\moves\AirSlash;
-use models\moves\FairyWind;
-use models\moves\DazzlingDream;
-
 class Togekiss extends Pokemon
 {
     protected array $type = ["fairy", "fly"];
@@ -20,6 +15,14 @@ class Togekiss extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Charm", "Airslash", "FairyWind", "DazzlingDream"];
+        return [
+            1 => "Charm",
+            11 => "Confusion",
+            32 => "Airslash",
+            45 => "FairyWind",
+            60 => "Gust",
+            80 => "DazzlingDream",
+            90 => "Hurricane"
+        ];
     }
 }

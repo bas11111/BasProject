@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\AirSlash;
-use models\moves\FeintAttack;
-use models\moves\Hurricane;
-use models\moves\Snarl;
-
 class Yveltal extends Pokemon
 {
     protected array $type = ["dark", "fly"];
@@ -21,6 +16,13 @@ class Yveltal extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Snarl", "AirSlash", "FeintAttack", "Hurricane"];
+        return [
+            1 => "Snarl",
+            22 => "AirSlash",
+            38 => "FeintAttack",
+            59 => "Gust",
+            80 => "Hurricane",
+            90 => "DarkPulse"
+        ];
     }
 }

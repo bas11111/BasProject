@@ -16,13 +16,13 @@ class Lucario extends Pokemon
     public static function getAvailableMoves(): array
     {
         return [
-            "Counter",
-            "Cut",
-            "BulletPunch",
-            "IronTail",
-            "RockSmash",
-            "FocusBlast",
-            "HeavySlam"
+            1 => "Counter",
+            6 => "Cut",
+            16 => "BulletPunch",
+            30 => "IronTail",
+            55 => "RockSmash",
+            80 => "FocusBlast",
+            90 => "HeavySlam"
         ];
     }
 }

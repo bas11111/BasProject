@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\FairyWind;
-use models\moves\Charm;
-use models\moves\Confusion;
-use models\moves\DazzlingDream;
-
 class Xerneas extends Pokemon
 {
     protected array $type = ["fairy"];
@@ -14,13 +9,19 @@ class Xerneas extends Pokemon
     protected int $potions = 2;
 
 
-    public static function getAvailableMoves(): array
-    {
-        return ["Charm", "Confusion", "FairyWind", "DazzlingDream"];
-    }
-
     public function hasMegaEvolve(): bool
     {
         return false;
+    }
+
+    public static function getAvailableMoves(): array
+    {
+        return [
+            1 => "Charm",
+            20 => "ZenHeadbutt",
+            47 => "Confusion",
+            62 => "FairyWind",
+            80 => "DazzlingDream"
+        ];
     }
 }

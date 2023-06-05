@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\AirSlash;
-use models\moves\VoltSwitch;
-use models\moves\Spark;
-use models\moves\ThunderBolt;
-
 class Zapdos extends Pokemon
 {
     protected array $type = ["electric", "fly"];
@@ -21,6 +16,13 @@ class Zapdos extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["AirSlash", "Spark", "VoltSwitch", "ThunderBolt"];
+        return [
+            1 => "AirSlash",
+            8 => "Spark",
+            22 => "VoltSwitch",
+            43 => "Gust",
+            80 => "ThunderBolt",
+            90 => "Hurricane"
+        ];
     }
 }

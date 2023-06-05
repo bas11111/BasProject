@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\BugBite;
-use models\moves\BugBuzz;
-use models\moves\BulletSeed;
-use models\moves\StruggleBug;
-
 class Pinsir extends Pokemon
 {
     protected array $type = ["bug"];
@@ -20,6 +15,13 @@ class Pinsir extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["BugBite", "BulletSeed", "StruggleBug", "BugBuzz"];
+        return [
+            1 => "BugBite",
+            20 => "RockThrow",
+            34 => "BulletSeed",
+            50 => "Rollout",
+            61 => "StruggleBug",
+            80 => "BugBuzz"
+        ];
     }
 }

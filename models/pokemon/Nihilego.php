@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Acid;
-use models\moves\RockThrow;
-use models\moves\PoisonJab;
-use models\moves\SludgeWave;
-
 class Nihilego extends Pokemon
 {
     protected array $type = ["rock", "poison"];
@@ -20,6 +15,13 @@ class Nihilego extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Acid", "RockThrow", "PoisonJab", "Sludgewave"];
+        return [
+            1 => "Acid",
+            14 => "RockThrow",
+            29 => "PoisonJab",
+            46 => "Rollout",
+            80 => "Sludgewave",
+            90 => "StoneEdge",
+        ];
     }
 }

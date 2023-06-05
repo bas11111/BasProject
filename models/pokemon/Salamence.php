@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\DragonBreath;
-use models\moves\AirSlash;
-use models\moves\Gust;
-use models\moves\DracoMeteor;
-
 class Salamence extends Pokemon
 {
     protected array $type = ["dragon", "fly"];
@@ -20,6 +15,14 @@ class Salamence extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["DragonBreath", "AirSlash", "Gust", "DracoMeteor"];
+        return [
+            "DragonBreath",
+            "BulletPunch",
+            "AirSlash",
+            "Gust",
+            "DragonTail",
+            "DracoMeteor",
+            "Hurricane"
+        ];
     }
 }

@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\MudShot;
-use models\moves\MudSlap;
-use models\moves\RockThrow;
-use models\moves\StoneEdge;
-
 class Rhyperior extends Pokemon
 {
     protected array $type = ["rock", "ground"];
@@ -20,6 +15,14 @@ class Rhyperior extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["RockThrow", "MudSlap", "MudShot", "StoneEdge"];
+        return [
+            1 => "MudSlap",
+            9 => "Cut",
+            21 => "RockThrow",
+            44 => "Rollout",
+            61 => "MudShot",
+            80 => "StoneEdge",
+            90 => "EarthQuake"
+        ];
     }
 }

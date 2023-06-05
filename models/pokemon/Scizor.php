@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\BugBite;
-use models\moves\BulletPunch;
-use models\moves\IronTail;
-use models\moves\BugBuzz;
-
 class Scizor extends Pokemon
 {
     protected array $type = ["bug", "steel"];
@@ -20,6 +15,14 @@ class Scizor extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["BugBite", "Bulletpunch", "IronTail", "BugBuzz"];
+        return [
+            1 => "BugBite",
+            9 => "Bulletpunch",
+            21 => "StruggleBug",
+            35 => "IronTail",
+            55 => "PoisonJab",
+            80 => "HeavySlam",
+            90 => "BugBuzz",
+        ];
     }
 }

@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\Acid;
-use models\moves\MagicalLeaf;
-use models\moves\BulletSeed;
-use models\moves\SolarBeam;
-
 class Venusaur extends Pokemon
 {
     protected array $type = ["grass"];
@@ -21,6 +16,12 @@ class Venusaur extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["BulletSeed", "Acid", "MagicalLeaf", "SolarBeam"];
+        return [
+            1 => "BulletSeed",
+            23 => "Acid",
+            40 => "MagicalLeaf",
+            61 => "PoisonJab",
+            80 => "SolarBeam"
+        ];
     }
 }

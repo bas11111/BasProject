@@ -2,11 +2,6 @@
 
 namespace models\pokemon;
 
-use models\moves\BulletSeed;
-use models\moves\Snarl;
-use models\moves\FeintAttack;
-use models\moves\SolarBeam;
-
 class Zarude extends Pokemon
 {
     protected array $type = ["grass", "dark"];
@@ -20,6 +15,13 @@ class Zarude extends Pokemon
 
     public static function getAvailableMoves(): array
     {
-        return ["Bulletseed", "Snarl", "FeintAttack", "SolarBeam"];
+        return [
+            1 => "Bulletseed",
+            18 => "Snarl",
+            41 => "FeintAttack",
+            56 => "MagicalLeaf",
+            80 => "SolarBeam",
+            90 => "DarkPulse"
+        ];
     }
 }
