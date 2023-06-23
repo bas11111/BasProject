@@ -18,7 +18,7 @@ class Hydreigon extends Pokemon
         return [
             1 => "DragonBreath",
             15 => "Snarl",
-            30 => "Ashtonish",
+            30 => "Astonish",
             45 => "Hex",
             60 => "DragonTail",
             80 => "DracoMeteor"

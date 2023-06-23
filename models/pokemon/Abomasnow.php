@@ -22,7 +22,7 @@ class Abomasnow extends Pokemon
             40 => "MudShot",
             55 => "MagicalLeaf",
             70 => "MudSlap",
-            80 => "Avalance",
+            80 => "Avalanche",
             90 => "SolarBeam"
         ];
     }

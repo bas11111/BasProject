@@ -1,6 +1,6 @@
 ﻿Pokemon;Trainer;Level;CP;maxHealth;Move1;Move2;Move3;Move4;About;Pokedex
-Abomasnow;Gerlof;78;318;31;;;;;It lives a quiet life on mountains that are perpetually covered in snow. It hides itself by whipping up blizzards.;460
-Aggron;Brandon;87;404;40;RockThrow;BulletPunch;IronTail;StoneEdge;Aggron claims an entire mountain as its own territory. It mercilessly beats up anything that violates its environment. This Pokémon vigilantly patrols its territory at all times.;306
+Abomasnow;Gerlof;100;318;31;IceKick;IceFang;BulletSeed;;It lives a quiet life on mountains that are perpetually covered in snow. It hides itself by whipping up blizzards.;460
+Aggron;Brandon;87;404;40;RockThrow;BulletPunch;IronTail;;Aggron claims an entire mountain as its own territory. It mercilessly beats up anything that violates its environment. This Pokémon vigilantly patrols its territory at all times.;306
 Alakazam;Gerlof;81;412;41;;;;;Alakazam's brain continually grows, making its head far too heavy to support with its neck. This Pokémon holds its head up using its psychokinetic power instead.;65
 Arceus;Bas;96;538;53;LegendarySmash;Charm;DazzlingDream;LegendaryBurst;It is told in mythology that this Pokémon was born before the universe even existed.;493
 Articuno;Melvin;87;441;44;;;;;Articuno is a Legendary Pokémon that can control ice. The flapping of its wings chills the air. As a result, it is said that when this Pokémon flies, snow will fall.;144
@@ -12,7 +12,7 @@ Dialga;Arjen;85;544;54;BulletPunch;IronTail;DragonBreath;HeavySlam;It has the po
 Dragonite;Melvin;96;511;51;;;;;Dragonite is capable of circling the globe in just 16 hours. It is a kindhearted Pokémon that leads lost and foundering ships in a storm to the safety of land.;149
 Entei;Brandon;89;458;45;FireBreath;BulletPunch;Incinerate;FlameBlast;Entei embodies the passion of magma. This Pokémon is thought to have been born in the eruption of a volcano. It sends up massive bursts of fire that utterly consume all that they touch.;244
 Gallade;Joran;81;417;41;;;;;A master of courtesy and swordsmanship, it fights using extending swords on its elbows.;475
-Garchomp;Bas;91;534;52;DragonBreath;MudSlap;DragonTail;Earthquake;Its fine scales don't just reduce wind resistance—their sharp edges also cause injury to any opponent who attacks it.;445
+Garchomp;Bas;90;534;52;DragonBreath;MudSlap;DragonTail;Earthquake;Its fine scales don't just reduce wind resistance—their sharp edges also cause injury to any opponent who attacks it.;445
 Gardevoir;Melvin;88;417;41;;;;;Gardevoir has the ability to read the future. If it senses impending danger to its Trainer, this Pokémon is said to unleash its psychokinetic energy at full power.;282
 Gengar;Brandon;88;388;38;Acid;Hex;Astonish;Poltergeist;Sometimes, on a dark night, your shadow thrown by a streetlight will suddenly and startlingly overtake you. It is actually a Gengar running past you, pretending to be your shadow;94
 Gigalith;Joran;82;435;43;;;;;It absorbs rays of sunlight and shoots out energy. It's usually lurking deep beneath the surface.;526

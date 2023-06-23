@@ -21,7 +21,7 @@ class Articuno extends Pokemon
             24 => "AirSlash",
             41 => "Gust",
             66 => "WaterGun",
-            80 => "Avalance",
+            80 => "Avalanche",
             90 => "Hurricane"
         ];
     }

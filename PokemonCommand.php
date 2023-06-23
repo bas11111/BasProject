@@ -48,11 +48,18 @@ class PokemonCommand
                     throw new Exception("File not found: ".$class.".");
                 }
                 $moves = [
-                    $row[$headers['Move1']] ?? null,
-                    $row[$headers['Move2']] ?? null,
-                    $row[$headers['Move3']] ?? null,
-                    $row[$headers['Move4']] ?? null,
+                    $row[$headers["Move1"]] ?? null,
+                    $row[$headers["Move2"]] ?? null,
+                    $row[$headers["Move3"]] ?? null,
+                    $row[$headers["Move4"]] ?? null,
                 ];
+                foreach ($moves as $key=>$move) {
+                    if (empty($move)){
+                        unset($moves[$key]);
+                    }
+                }
+                /** @var Pokemon $pokemon */
+                $pokemon = new $class($level, $moves);
                 $teams[$trainer][] = new $class($level, $moves);
             }
         } catch (Exception $e) {
@@ -67,9 +74,10 @@ class PokemonCommand
             Console::error('Error: One of the selected trainers does not have a team');
             die;
         }
+//        var_dump($teams["Bas"][6]);
 //        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
-//        $this->battle($teams["Bas"][6], clone($teams["Bas"][4]));
-//        $this->pokeDex($teams["Melvin"][0]);
+        $this->battle($teams["Melvin"][0], clone($teams["Bas"][5]));
+//        $this->pokeDex($teams["Melvin"][1]);
 //        $this->raid(clone($teams["Bas"][2]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
 //        $this->wildBattle($teams[$trainer1]);
     }
@@ -269,6 +277,7 @@ class PokemonCommand
             $pokemon->setHealth($pokemon->getHealth() - 50);
         }
     }
+
     private
     function battle(
         Pokemon $pokemon1,
@@ -475,12 +484,12 @@ class PokemonCommand
             }
         }
         $results = array_values($results);
-        var_dump($results);
-        var_dump(count($results));
+//        var_dump($results);
+//        var_dump(count($results));
         $wildPokemonFile = $results[rand(0, count($results) - 1)];
-        var_dump($wildPokemonFile);
+//        var_dump($wildPokemonFile);
         $wildPokemonClassName = str_replace(".php", "", $wildPokemonFile);
-        var_dump($wildPokemonClassName);
+//        var_dump($wildPokemonClassName);
         $wildPokemonClassPath = 'models\pokemon\\'.$wildPokemonClassName;
         $level = rand(50, 100);
         /** @var Pokemon $wildPokemonClass */

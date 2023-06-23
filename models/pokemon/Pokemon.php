@@ -35,10 +35,19 @@ abstract class Pokemon
         $this->getCombatPower();
         $maxHealth = $this->getMaxHealth();
         $this->health = $maxHealth;
-        static::$about = 'This is a pokemon';
+        static::$about = 'this is a pokemon';
         static::$entry = 1;
+        $availableMoves = static::getAvailableMovesAtLevel($this->level);
         if ($moves === null) {
-            $moves = static::getAvailableMovesAtLevel($this->level);
+            $moves = $availableMoves;
+        } elseif (count($availableMoves) > count($moves)) {
+            $availableMoveIndex = count($availableMoves) - 1;
+            $moveIndex = count($moves);
+            while (count($availableMoves) > count($moves)) {
+                $moves[$moveIndex] = $availableMoves[$availableMoveIndex];
+                $moveIndex = count($moves);
+                $availableMoveIndex--;
+            }
         }
         foreach ($moves as $move) {
             if (($_move = $this->getMove($move)) !== null && static::isMoveAvailableAtLevel($this->level, $move)) {
@@ -105,6 +114,11 @@ abstract class Pokemon
         return $this->type;
     }
 
+    public function getMoves(): array
+    {
+        return $this->moves;
+    }
+
     public function getHealth()
     {
         return $this->health;
@@ -115,24 +129,24 @@ abstract class Pokemon
         $this->health = $health;
     }
 
-    public function getAbout()
+    public static function getAbout()
     {
-        return $this->about;
+        return self::$about;
     }
 
-    public function setAbout($about)
+    public static function setAbout($about)
     {
-        $this->about = $about;
+        self::$about = $about;
     }
 
     public function getEntry()
     {
-        return $this->entry;
+        return self::$entry;
     }
 
     public function setEntry($entry)
     {
-        $this->entry = $entry;
+        self::$entry = $entry;
     }
 
     public function getCombatPower()
@@ -207,15 +221,20 @@ abstract class Pokemon
 
     public static function getAvailableMovesAtLevel(int $level): array
     {
+        //haalt alle moves uit moves-set
         $allMoves = static::getAvailableMoves();
+        //sorteert moves laag naar hoog
         ksort($allMoves);
         $moves = [];
         foreach ($allMoves as $move) {
+            //check of de pokemon dat level mag gebruiken op huidig level, zo ja, gooi hem in $moves array
             if (static::isMoveAvailableAtLevel($level, $move)) {
                 $moves[] = $move;
             }
         }
+        //telt het aantal moves in $moves array
         $count = count($moves);
+        //als het aantal moves lager of gelijk is aan 4, return de array
         if ($count <= 4) {
             return $moves;
         }
@@ -226,7 +245,6 @@ abstract class Pokemon
             $results[] = $moves[$firstIndex];
             $firstIndex++;
         }
-
         return $results;
         //TODO Find 4 moves from my available list. Either the last 4, or 4 random ones
 
