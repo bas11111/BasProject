@@ -2,6 +2,12 @@
 
 namespace models\pokemon;
 
+use models\moves\Charm;
+use models\moves\Confusion;
+use models\moves\DazzlingDream;
+use models\moves\FairyWind;
+use models\moves\ZenHeadbutt;
+
 class Xerneas extends Pokemon
 {
     protected array $type = ["fairy"];
@@ -14,14 +20,14 @@ class Xerneas extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Charm",
-            20 => "ZenHeadbutt",
-            47 => "Confusion",
-            62 => "FairyWind",
-            80 => "DazzlingDream"
+            1 => Charm::class,
+            20 => ZenHeadbutt::class,
+            47 => Confusion::class,
+            62 => FairyWind::class,
+            80 => DazzlingDream::class
         ];
     }
 }

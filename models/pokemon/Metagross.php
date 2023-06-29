@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\Confusion;
+use models\moves\Cut;
+use models\moves\FutureSight;
+use models\moves\HeavySlam;
+use models\moves\IronTail;
+use models\moves\ZenHeadbutt;
+
 class Metagross extends Pokemon
 {
     protected array $type = ["steel", "psychic"];
@@ -13,16 +21,16 @@ class Metagross extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "BulletPunch",
-            15 => "ZenHeadbutt",
-            21 => "Cut",
-            45 => "Confusion",
-            60 => "IronTail",
-            80 => "FutureSight",
-            90 => "HeavySlam"
+            1 => BulletPunch::class,
+            15 => ZenHeadbutt::class,
+            21 => Cut::class,
+            45 => Confusion::class,
+            60 => IronTail::class,
+            80 => FutureSight::class,
+            90 => HeavySlam::class
         ];
     }
 }

@@ -2,6 +2,12 @@
 
 namespace models\pokemon;
 
+use models\moves\FeintAttack;
+use models\moves\Snarl;
+use models\moves\Spark;
+use models\moves\ThunderBolt;
+use models\moves\VoltSwitch;
+
 class Raikou extends Pokemon
 {
     protected array $type = ["electric"];
@@ -13,14 +19,14 @@ class Raikou extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "FeintAttack",
-            20 => "Spark",
-            40 => "VoltSwitch",
-            60 => "Snarl",
-            80 => "ThunderBolt"
+            1 => FeintAttack::class,
+            20 => Spark::class,
+            40 => VoltSwitch::class,
+            60 => Snarl::class,
+            80 => ThunderBolt::class
         ];
     }
 }

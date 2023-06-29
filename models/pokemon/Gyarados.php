@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\DracoMeteor;
+use models\moves\DragonBreath;
+use models\moves\DragonTail;
+use models\moves\HydroPump;
+use models\moves\Snarl;
+use models\moves\Waterfall;
+use models\moves\WaterGun;
+
 class Gyarados extends Pokemon
 {
     protected array $type = ["water", "dragon"];
@@ -13,16 +21,16 @@ class Gyarados extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "WaterGun",
-            7 => "DragonBreath",
-            15 => "Snarl",
-            30 => "DragonTail",
-            60 => "Waterfall",
-            80 => "HydroPump",
-            90 => "DracoMeteor"
+            1 => WaterGun::class,
+            7 => DragonBreath::class,
+            15 => Snarl::class,
+            30 => DragonTail::class,
+            60 => Waterfall::class,
+            80 => HydroPump::class,
+            90 => DracoMeteor::class
         ];
     }
 }

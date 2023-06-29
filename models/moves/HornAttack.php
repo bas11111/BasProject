@@ -6,7 +6,7 @@ class HornAttack extends Move
 {
     protected string $type = "normal";
 
-    protected bool $charged = false;
+    protected bool $charged = true;
 
     function getEffectiveAgainst(): array
     {
@@ -20,6 +20,6 @@ class HornAttack extends Move
 
     public function getDamage(): int
     {
-        return 5;
+        return 40;
     }
 }

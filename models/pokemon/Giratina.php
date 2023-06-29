@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\Astonish;
+use models\moves\DracoMeteor;
+use models\moves\DragonBreath;
+use models\moves\DragonTail;
+use models\moves\Hex;
+use models\moves\Poltergeist;
+use models\moves\Snarl;
+
 class Giratina extends Pokemon
 {
     protected array $type = ["ghost", "dragon"];
@@ -13,16 +21,16 @@ class Giratina extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Hex",
-            8 => "Snarl",
-            24 => "Astonish",
-            42 => "DragonTail",
-            65 => "DragonBreath",
-            80 => "Poltergeist",
-            90 => "DracoMeteor"
+            1 => Hex::class,
+            8 => Snarl::class,
+            24 => Astonish::class,
+            42 => DragonTail::class,
+            65 => DragonBreath::class,
+            80 => Poltergeist::class,
+            90 => DracoMeteor::class
         ];
     }
 }

@@ -2,6 +2,12 @@
 
 namespace models\pokemon;
 
+use models\moves\Charm;
+use models\moves\Confusion;
+use models\moves\FutureSight;
+use models\moves\Hex;
+use models\moves\ZenHeadbutt;
+
 class Alakazam extends Pokemon
 {
     protected array $type = ["psychic"];
@@ -13,14 +19,14 @@ class Alakazam extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Confusion",
-            8 => "ZenHeadbutt",
-            25 => "Hex",
-            40 => "Charm",
-            80 => "FutureSight"
+            1 => Confusion::class,
+            8 => ZenHeadbutt::class,
+            25 => Hex::class,
+            40 => Charm::class,
+            80 => FutureSight::class
         ];
     }
 }

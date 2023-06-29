@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\Counter;
+use models\moves\FireBreath;
+use models\moves\FlameBlast;
+use models\moves\FocusBlast;
+use models\moves\Incinerate;
+use models\moves\RockSmash;
+
 class Blaziken extends Pokemon
 {
     protected array $type = ["fire", "fighting"];
@@ -13,16 +21,16 @@ class Blaziken extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Counter",
-            5 => "RockSmash",
-            17 => "FireBreath",
-            37 => "Incinerate",
-            50 => "BulletPunch",
-            80 => "FocusBlast",
-            90 => "FlameBlast"
+            1 => Counter::class,
+            5 => RockSmash::class,
+            17 => FireBreath::class,
+            37 => Incinerate::class,
+            50 => BulletPunch::class,
+            80 => FocusBlast::class,
+            90 => FlameBlast::class
         ];
     }
 }

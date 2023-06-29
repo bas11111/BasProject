@@ -2,6 +2,13 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\Counter;
+use models\moves\Cut;
+use models\moves\FocusBlast;
+use models\moves\IronTail;
+use models\moves\RockSmash;
+
 class Machamp extends Pokemon
 {
     protected array $type = ["fighting"];
@@ -13,15 +20,15 @@ class Machamp extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Counter",
-            11 => "Cut",
-            35 => "IronTail",
-            51 => "RockSmash",
-            65 => "BulletPunch",
-            80 => "FocusBlast"
+            1 => Counter::class,
+            11 => Cut::class,
+            35 => IronTail::class,
+            51 => RockSmash::class,
+            65 => BulletPunch::class,
+            80 => FocusBlast::class
         ];
     }
 }

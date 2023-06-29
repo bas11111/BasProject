@@ -2,11 +2,14 @@
 
 namespace models\pokemon;
 
+use Console;
 use models\moves\Move;
+use models\moves\Struggle;
 use ReflectionClass;
 
 abstract class Pokemon
 {
+    //properties
     protected array $type;
     protected int $health;
     protected int $level;
@@ -14,12 +17,13 @@ abstract class Pokemon
     protected ?int $CP = null;
     protected int $shields;
     protected int $potions;
-    protected static string $about;
+    protected string $about;
 
-    protected static int $entry;
+    protected int $entry;
 
+    /** @var Move[] */
     protected array $moves = [];
-
+    //welke types debuffed worden bij welke environment
     protected static array $environmentDebuffedTypes = [
         "water" => ["fire", "ground"],
         "mountains" => ["ground"],
@@ -28,16 +32,16 @@ abstract class Pokemon
         "caves" => ["ice", "fairy"],
     ];
 
-
+    //de construct, initializeer een object zijn properties bij creatie
     public function __construct(int $level, ?array $moves = null)
     {
         $this->level = $level;
         $this->getCombatPower();
         $maxHealth = $this->getMaxHealth();
         $this->health = $maxHealth;
-        static::$about = 'this is a pokemon';
-        static::$entry = 1;
-        $availableMoves = static::getAvailableMovesAtLevel($this->level);
+        $this->about = 'this is a pokemon';
+        $this->entry = 1;
+        $availableMoves = $this->getAvailableMovesAtLevel($this->level);
         if ($moves === null) {
             $moves = $availableMoves;
         } elseif (count($availableMoves) > count($moves)) {
@@ -50,57 +54,68 @@ abstract class Pokemon
             }
         }
         foreach ($moves as $move) {
-            if (($_move = $this->getMove($move)) !== null && static::isMoveAvailableAtLevel($this->level, $move)) {
-                $this->moves[] = $_move;
+            if (!($move instanceof Move)) {
+                try {
+                    $move = $this->getMove($move);
+                } catch (\Exception $exception) {
+                    Console::error($exception->getMessage());
+                    continue;
+                }
+            }
+            if ($this->isMoveAvailableAtLevel($this->level, $move)) {
+                $this->moves[] = $move;
             }
         }
     }
 
-    public function getMove(string $move): ?Move
+    //haalt een move uit de mogelijke moves, en returned die
+    public function getMove(string $move): Move
     {
-        if (in_array($move, static::getAvailableMoves())) {
-            $class = 'models\\moves\\'.$move;
-
-            return new $class();
+        if (!str_contains($move, '\\')) {
+            $move = 'models\\moves\\'.$move;
         }
+        if (!class_exists($move)){
+            throw new \Exception("Move: {$move} does not exist uberhaupt");
+        }
+        $_move = new $move();
 
-        return null;
+
+        if (!in_array($_move::class, $this->getAvailableMoves()) && !in_array($_move->getName(), $this->getAvailableMoves())) {
+            throw new \Exception("Invalid move: {$_move->getName()} for Pokemon: {$this->getName()}");
+        }
+        return $_move;
     }
 
-    private static function isMoveAvailableAtLevel(int $level, mixed $move): bool
+    //checkt of desbetreffende move toegestaan is op het level van de pokemon
+    private function isMoveAvailableAtLevel(int $level, Move $move): bool
     {
-        $index = array_search($move, static::getAvailableMoves());
+        $index = array_search($move->getName(), $this->getAvailableMoves());
+        if($index === false) {
+            $index = array_search($move::class, $this->getAvailableMoves());
+        }
 
         return $index !== false && $index <= $level;
     }
 
-
-    public function getBestMove(Pokemon $opponent, string $weather)
+    //kijkt welke move het meeste damage doet tegen de huidige tegenstander
+    public function getBestMove(Pokemon $opponent, string $weather): Move
     {
-        $highestDamage = 0;
+        $highestDamage = -INF;
         $bestMove = null;
-        /** @var Move $move */
-        if (rand(1, 10) === 10) {
-            foreach ($this->moves as $move) {
-                $damage = $move->calculateDamage($this, $opponent, $weather);
-                if ($highestDamage < $damage) {
-                    $highestDamage = $damage;
-                    $bestMove = $move;
-                }
+
+        $canUseChargedAttack = rand(1, 10) === 10;
+        foreach ($this->moves as $move) {
+            if (!$canUseChargedAttack && $move->isCharged()) {
+                continue;
             }
-        } else {
-            foreach ($this->moves as $move) {
-                if (!$move->isCharged()) {
-                    $damage = $move->calculateDamage($this, $opponent, $weather);
-                    if ($highestDamage < $damage) {
-                        $highestDamage = $damage;
-                        $bestMove = $move;
-                    }
-                }
+            $damage = $move->calculateDamage($this, $opponent, $weather);
+            if ($damage > $highestDamage) {
+                $highestDamage = $damage;
+                $bestMove = $move;
             }
         }
 
-        return $bestMove;
+        return $bestMove ?? new Struggle();
     }
 
     public function isDeBuffed(string $environment): bool
@@ -114,42 +129,28 @@ abstract class Pokemon
         return $this->type;
     }
 
-    public function getMoves(): array
-    {
-        return $this->moves;
-    }
-
-    public function getHealth()
+    public function getHealth(): int
     {
         return $this->health;
     }
 
-    public function setHealth(int $health)
+    public function setHealth(int $health): void
     {
         $this->health = $health;
     }
 
-    public static function getAbout()
+    public function getAbout(): string
     {
-        return self::$about;
+        return $this->about;
     }
 
-    public static function setAbout($about)
+
+    public function getEntry(): int
     {
-        self::$about = $about;
+        return $this->entry;
     }
 
-    public function getEntry()
-    {
-        return self::$entry;
-    }
-
-    public function setEntry($entry)
-    {
-        self::$entry = $entry;
-    }
-
-    public function getCombatPower()
+    public function getCombatPower(): int
     {
         if ($this->CP === null) {
             $level = $this->getLevel();
@@ -161,42 +162,32 @@ abstract class Pokemon
         return $this->CP;
     }
 
-    public function setCombatPower(int $CP)
+    public function setCombatPower(int $CP): void
     {
         $this->CP = $CP;
     }
 
-    public function getLevel()
+    public function getLevel(): int
     {
         return $this->level;
     }
 
-    public function setLevel(int $level)
+    public function setLevel(int $level): void
     {
         $this->level = $level;
     }
 
-    public function getShields()
+    public function getShields(): int
     {
         return $this->shields;
     }
 
-    public function setShields(int $shields)
+    public function setShields(int $shields): void
     {
         $this->shields = $shields;
     }
 
-    public function getPotions()
-    {
-        return $this->potions;
-    }
-
-    public function setPotions(int $potions)
-    {
-        $this->potions = $potions;
-    }
-
-    public function getMaxHealth()
+    public function getMaxHealth(): int
     {
         if ($this->maxHealth === null) {
             $level = $this->getLevel();
@@ -217,18 +208,25 @@ abstract class Pokemon
 
     abstract public function hasMegaEvolve(): bool;
 
-    abstract public static function getAvailableMoves(): array;
+    abstract public function getAvailableMoves(): array;
 
-    public static function getAvailableMovesAtLevel(int $level): array
+    /**
+     * @param  int|null  $level
+     *
+     * @return Move[]
+     */
+    public function getAvailableMovesAtLevel(int $level = null): array
     {
+        $level = $level ?? $this->level;
         //haalt alle moves uit moves-set
-        $allMoves = static::getAvailableMoves();
+        $allMoves = $this->getAvailableMoves();
         //sorteert moves laag naar hoog
         ksort($allMoves);
         $moves = [];
         foreach ($allMoves as $move) {
             //check of de pokemon dat level mag gebruiken op huidig level, zo ja, gooi hem in $moves array
-            if (static::isMoveAvailableAtLevel($level, $move)) {
+            $move = $this->getMove($move);
+            if ($this->isMoveAvailableAtLevel($level, $move)) {
                 $moves[] = $move;
             }
         }
@@ -245,6 +243,7 @@ abstract class Pokemon
             $results[] = $moves[$firstIndex];
             $firstIndex++;
         }
+
         return $results;
         //TODO Find 4 moves from my available list. Either the last 4, or 4 random ones
 

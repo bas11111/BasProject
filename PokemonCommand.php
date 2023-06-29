@@ -24,14 +24,14 @@ class PokemonCommand
         try {
             while (($row = fgetcsv($handle, 1000, ";")) !== false) {
                 $trainer = $row[$headers["Trainer"]];
-                $level = $row[$headers["Level"]];
-                $calc = round($level * 4);
-                $calc2 = round($level * 35);
-                $maxHealth = $row[$headers["maxHealth"]] + $calc;
+                $level = (int)$row[$headers["Level"]];
+                $calc = round((int)$level * 4);
+                $calc2 = round((int)$level * 35);
+                $maxHealth = (int)$row[$headers["maxHealth"]] + (int)$calc;
                 $health = $maxHealth;
                 $about = $row[$headers["About"]];
                 $entry = $row[$headers["Pokedex"]];
-                $CP = $row[$headers["CP"]] + $calc2;
+                $CP = (int)$row[$headers["CP"]] + (int)$calc2;
                 if (!isset($teams[$trainer])) {
                     $teams[$trainer] = [];
                 }
@@ -53,36 +53,37 @@ class PokemonCommand
                     $row[$headers["Move3"]] ?? null,
                     $row[$headers["Move4"]] ?? null,
                 ];
-                foreach ($moves as $key=>$move) {
-                    if (empty($move)){
+                foreach ($moves as $key => $move) {
+                    if (empty($move)) {
                         unset($moves[$key]);
                     }
                 }
                 /** @var Pokemon $pokemon */
                 $pokemon = new $class($level, $moves);
-                $teams[$trainer][] = new $class($level, $moves);
+                $teams[$trainer][] = $pokemon;
             }
         } catch (Exception $e) {
             Console::error("Error: ".$e->getMessage());
+            var_dump($e->getTraceAsString());
             die;
         }
-
         fclose($handle);
         $trainer1 = 'Bas';
         $trainer2 = 'Melvin';
         if (!isset($teams[$trainer1]) || !isset($teams[$trainer2])) {
-            Console::error('Error: One of the selected trainers does not have a team');
+            Console::error('Error: One of the selected trainers does not have a team. Please designate a team to this trainer.');
             die;
         }
+
 //        var_dump($teams["Bas"][6]);
 //        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
-        $this->battle($teams["Melvin"][0], clone($teams["Bas"][5]));
-//        $this->pokeDex($teams["Melvin"][1]);
+        $this->battle($teams["Melvin"][1], clone($teams["Bas"][2]));
+//        $this->pokeDex($teams["Bas"][10]);
 //        $this->raid(clone($teams["Bas"][2]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
 //        $this->wildBattle($teams[$trainer1]);
     }
 
-    private function pokeDex($pokemon)
+    private function pokeDex(Pokemon $pokemon): void
     {
         Console::info("Name: ".$pokemon->getName());
         Console::info("HP: ".$pokemon->getHealth());
@@ -93,11 +94,15 @@ class PokemonCommand
         }
         Console::info("About this Pokemon: ".$pokemon->getAbout());
         Console::info("Pokedex entry: ".$pokemon->getEntry());
+        Console::info("-------------");
+        Console::info("Move set:");
+        foreach ($pokemon->getAvailableMovesAtLevel() as $move) {
+            Console::warning($move->getName(), 1);
+        }
     }
 
 
-    private
-    function setHP(
+    private function setHP(
         Move $move,
         Pokemon $attacker,
         Pokemon $target
@@ -129,13 +134,14 @@ class PokemonCommand
             $targetHealth -= $rand;
             Console::info("Total damage: ".$damage + $rand);
         }
+        //veranderd hp van de pokemon naar wat he moet zijn na de aanval
         $target->setHealth($targetHealth);
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
         Console::info("-------------------------------");
     }
 
-    private
-    function setRaidHP(
+    private function setRaidHP(
+        //doet eigenlijk hetzelfde als de normale setHP, maar met een aantal aanpassing om het meer compatible te maken met de raid
         Move $move,
         Pokemon $attacker,
         Pokemon $target
@@ -161,8 +167,7 @@ class PokemonCommand
         return $damage;
     }
 
-    private
-    function getAlive(
+    private function getAlive(
         $pokemon
     ) {
         if ($pokemon->getHealth() > 0) {
@@ -170,23 +175,7 @@ class PokemonCommand
         }
     }
 
-    private
-    function usePotion(
-        $pokemon
-    ) {
-        if (rand(1, 10) === 10) {
-            $pokemon->setHealth(min($pokemon->getHealth() + 100, $pokemon->getMaxHealth()));
-            Console::info("The trainer has used a potion to heal 100 health back to ".$pokemon->getName().spl_object_id($pokemon));
-            Console::info("-------------------------------");
-        } else {
-            $pokemon->setHealth(min($pokemon->getHealth() + 50, $pokemon->getMaxHealth()));
-            Console::info("The trainer has used a potion to heal 50 health back to ".$pokemon->getName().spl_object_id($pokemon));
-            Console::info("-------------------------------");
-        }
-    }
-
-    private
-    function setWeather()
+    private function setWeather()
     {
         $this->weather = "";
         $dice = rand(1, 7);
@@ -258,8 +247,7 @@ class PokemonCommand
         }
     }
 
-    private
-    function setMega(
+    private function setMega(
         Pokemon $pokemon
     ) {
         $calc = round($pokemon->getCombatPower() / 2);
@@ -278,8 +266,7 @@ class PokemonCommand
         }
     }
 
-    private
-    function battle(
+    private function battle(
         Pokemon $pokemon1,
         Pokemon $pokemon2,
         bool $recursive = true,
@@ -290,58 +277,20 @@ class PokemonCommand
             $this->setEnvironment();
             $this->setMega($pokemon1);
             $this->setMega($pokemon2);
-            if ($pokemon1->isDeBuffed($this->environment)) {
-                $pokemon1->setHealth($pokemon1->getHealth() - 50);
-            }
-            if ($pokemon2->isDeBuffed($this->environment)) {
-                $pokemon2->setHealth($pokemon2->getHealth() - 50);
-            }
+            $this->DeBuff($pokemon1);
+            $this->DeBuff($pokemon2);
         }
         $moves1 = $pokemon1->getBestMove($pokemon2, $this->weather);
         $moves2 = $pokemon2->getBestMove($pokemon1, $this->weather);
         if ($pokemon1->getHealth() > 0) {
-            if ($pokemon1->getHealth() < 150) {
-                if ($pokemon1->getPotions() > 0) {
-                    if (rand(1, 3) === 1) {
-                        $this->usePotion($pokemon1);
-                        $pokemon1->setPotions($pokemon1->getPotions() - 1);
-                    } else {
-                        Console::info($pokemon1->getName().spl_object_id($pokemon1)." attacks!");
-                        Console::info("-------------------------------");
-                        $this->setHP($moves1, $pokemon1, $pokemon2);
-                    }
-                } else {
-                    Console::info($pokemon1->getName().spl_object_id($pokemon1)." attacks!");
-                    Console::info("-------------------------------");
-                    $this->setHP($moves1, $pokemon1, $pokemon2);
-                }
-            } else {
-                Console::info($pokemon1->getName().spl_object_id($pokemon1)." attacks!");
-                Console::info("-------------------------------");
-                $this->setHP($moves1, $pokemon1, $pokemon2);
-            }
+            Console::info($pokemon1->getName().spl_object_id($pokemon1)." attacks!");
+            Console::info("-------------------------------");
+            $this->setHP($moves1, $pokemon1, $pokemon2);
         }
         if ($pokemon2->getHealth() > 0) {
-            if ($pokemon2->getHealth() < 150) {
-                if ($pokemon2->getPotions() > 0) {
-                    if (rand(1, 3) === 3) {
-                        $this->usePotion($pokemon2);
-                        $pokemon2->setPotions($pokemon2->getPotions() - 1);
-                    } else {
-                        Console::info($pokemon2->getName().spl_object_id($pokemon2)." attacks!");
-                        Console::info("-------------------------------");
-                        $this->setHP($moves2, $pokemon2, $pokemon1);
-                    }
-                } else {
-                    Console::info($pokemon2->getName().spl_object_id($pokemon2)." attacks!");
-                    Console::info("-------------------------------");
-                    $this->setHP($moves2, $pokemon2, $pokemon1);
-                }
-            } else {
-                Console::info($pokemon2->getName().spl_object_id($pokemon2)." attacks!");
-                Console::info("-------------------------------");
-                $this->setHP($moves2, $pokemon2, $pokemon1);
-            }
+            Console::info($pokemon2->getName().spl_object_id($pokemon2)." attacks!");
+            Console::info("-------------------------------");
+            $this->setHP($moves2, $pokemon2, $pokemon1);
         }
         if ($pokemon1->getHealth() > 0 && $pokemon2->getHealth() > 0) {
             if ($recursive) {
@@ -360,8 +309,7 @@ class PokemonCommand
         }
     }
 
-    private
-    function raid(
+    private function raid(
         Pokemon $boss,
         Pokemon $pokemon1,
         Pokemon $pokemon2,
@@ -387,17 +335,8 @@ class PokemonCommand
         foreach ($array as $pokemon) {
             $moves = $pokemon->getBestMove($boss, $this->weather);
             if ($pokemon->getHealth() > 0) {
-                if ($pokemon->getHealth() < 150) {
-                    if (rand(1, 3) === 3) {
-                        $this->usePotion($pokemon);
-                    } else {
-                        Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
-                        $this->setRaidHP($moves, $pokemon, $boss);
-                    }
-                } else {
-                    Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
-                    $this->setRaidHP($moves, $pokemon, $boss);
-                }
+                Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
+                $this->setRaidHP($moves, $pokemon, $boss);
             }
         }
         if ($boss->gethealth() <= 0) {
@@ -425,8 +364,7 @@ class PokemonCommand
         $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, false);
     }
 
-    private
-    function teamBattle(
+    private function teamBattle(
         array $team1,
         string $trainer1,
         array $team2,
@@ -470,9 +408,16 @@ class PokemonCommand
         }
     }
 
+    /**
+     * @param  Pokemon[]  $team
+     *
+     * @return void
+     */
     public function wildBattle(array $team)
     {
+        //scant mijn complete directory waar de pokemons in staan.
         $results = scandir("models\pokemon");
+        // alles wat in die array staat word verwijderd uit de naam van de file, waardoor alleen de pokemon naam nog over is
         $invalidResults = [
             '.',
             '..',
@@ -515,10 +460,10 @@ class PokemonCommand
     {
         Console::info(".");
         sleep(1);
-        if (rand(1, round($pokemon->getLevel() / 20)) === 1) {
+        if (rand(1, round($pokemon->getLevel() / 30)) === 1) {
             Console::info("..");
             sleep(1);
-            if (rand(1, round($pokemon->getLevel() / 20)) === 1) {
+            if (rand(1, round($pokemon->getLevel() / 30)) === 1) {
                 Console::info("...");
                 sleep(1);
                 Console::succes("Gotcha! ".$pokemon->getName()." was caught!");

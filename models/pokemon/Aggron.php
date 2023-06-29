@@ -2,6 +2,13 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\HeavySlam;
+use models\moves\IronTail;
+use models\moves\RockThrow;
+use models\moves\Rollout;
+use models\moves\StoneEdge;
+
 class Aggron extends Pokemon
 {
     protected array $type = ["rock", "steel"];
@@ -13,15 +20,15 @@ class Aggron extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "BulletPunch",
-            6 => "IronTail",
-            20 => "Rollout",
-            40 => "RockThrow",
-            80 => "HeavySlam",
-            90 => "StoneEdge",
+            1 => BulletPunch::class,
+            6 => IronTail::class,
+            20 => Rollout::class,
+            40 => RockThrow::class,
+            80 => HeavySlam::class,
+            90 => StoneEdge::class,
             ];
     }
 }

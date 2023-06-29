@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\DracoMeteor;
+use models\moves\DragonBreath;
+use models\moves\DragonTail;
+use models\moves\Earthquake;
+use models\moves\MudShot;
+use models\moves\MudSlap;
+
 class Garchomp extends Pokemon
 {
     protected array $type = ["dragon", "ground"];
@@ -13,16 +21,16 @@ class Garchomp extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "DragonBreath",
-            6 => "BulletPunch",
-            21 => "MudSlap",
-            34 => "DragonTail",
-            57 => "MudShot",
-            80 => "DracoMeteor",
-            90 => "Earthquake"
+            1 => DragonBreath::class,
+            6 => BulletPunch::class,
+            21 => MudSlap::class,
+            34 => DragonTail::class,
+            57 => MudShot::class,
+            80 => DracoMeteor::class,
+            90 => Earthquake::class
         ];
     }
 }

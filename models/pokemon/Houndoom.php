@@ -2,6 +2,13 @@
 
 namespace models\pokemon;
 
+use models\moves\DarkPulse;
+use models\moves\FeintAttack;
+use models\moves\FireBreath;
+use models\moves\FlameBlast;
+use models\moves\Incinerate;
+use models\moves\Snarl;
+
 class Houndoom extends Pokemon
 {
     protected array $type = ["dark", "fire"];
@@ -13,15 +20,15 @@ class Houndoom extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Snarl",
-            8 => "Firebreath",
-            21 => "Incinerate",
-            37 => "FeintAttack",
-            80 => "DarkPulse",
-            90 => "FlameBlast",
+            1 => Snarl::class,
+            8 => FireBreath::class,
+            21 => Incinerate::class,
+            37 => FeintAttack::class,
+            80 => DarkPulse::class,
+            90 => FlameBlast::class,
         ];
     }
 }

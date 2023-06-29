@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\Acid;
+use models\moves\Astonish;
+use models\moves\Hex;
+use models\moves\PoisonJab;
+use models\moves\Poltergeist;
+use models\moves\SludgeWave;
+use models\moves\Snarl;
+
 class Gengar extends Pokemon
 {
     protected array $type = ["ghost", "poison"];
@@ -13,16 +21,16 @@ class Gengar extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Acid",
-            6 => "Snarl",
-            19 => "PoisonJab",
-            36 => "Hex",
-            50 => "Astonish",
-            80 => "SludgeBomb",
-            90 => "Poltergeist"
+            1 => Acid::class,
+            6 => Snarl::class,
+            19 => PoisonJab::class,
+            36 => Hex::class,
+            50 => Astonish::class,
+            80 => SludgeWave::class,
+            90 => Poltergeist::class
         ];
     }
 }

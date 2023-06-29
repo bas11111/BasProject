@@ -2,6 +2,13 @@
 
 namespace models\pokemon;
 
+use models\moves\Astonish;
+use models\moves\DracoMeteor;
+use models\moves\DragonBreath;
+use models\moves\DragonTail;
+use models\moves\Hex;
+use models\moves\Snarl;
+
 class Hydreigon extends Pokemon
 {
     protected array $type = ["dragon"];
@@ -13,15 +20,15 @@ class Hydreigon extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "DragonBreath",
-            15 => "Snarl",
-            30 => "Astonish",
-            45 => "Hex",
-            60 => "DragonTail",
-            80 => "DracoMeteor"
+            1 => DragonBreath::class,
+            15 => Snarl::class,
+            30 => Astonish::class,
+            45 => Hex::class,
+            60 => DragonTail::class,
+            80 => DracoMeteor::class
         ];
     }
 }

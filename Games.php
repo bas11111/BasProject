@@ -20,12 +20,12 @@ class Games
             $sum = $row[$headers["sum"]];
             $question = $row[$headers["question"]];
         }
-        $this->calc($num1, $num2, $sum);
-        $this->coinFlip();
-        $this->eightBall($question);
-        $this->counting($num3);
+//        $this->calc($num1, $num2, $sum);
+//        $this->coinFlip();
+//        $this->eightBall($question);
+//        $this->counting($num3);
         $this->story();
-        $this->randomNumberGenerator(1, 120);
+//        $this->randomNumberGenerator(1, 120);
     }
 
     public function randomNumberGenerator($num1, $num2) {
@@ -222,13 +222,6 @@ class Games
         for ($i = 1; $i <= $limit; $i++) {
             Console::info("$i");
             usleep(100000);
-        }
-    }
-
-    public function name()
-    {
-        if (rand(1,2 ) === 2) {
-
         }
     }
 }

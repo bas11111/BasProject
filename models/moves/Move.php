@@ -99,7 +99,10 @@ abstract class Move
 
     public function isBoosted(string $weather): bool
     {
-        return array_key_exists($weather, static::$weatherBoostedTypes) && in_array($this->type, static::$weatherBoostedTypes[$weather]);
+        //checkt of de 'key' $weather (dus het weer wat deze functie meekrijgt van de battle functie) in de $weatherBoostedTypes array staat.
+        return array_key_exists($weather, static::$weatherBoostedTypes)
+            //checkt of het type van de pokemon in de array staat van gebooste types bij een specifieke weather.
+            && in_array($this->type, static::$weatherBoostedTypes[$weather]);
     }
 
     abstract function getNotEffectiveAgainst(): array;

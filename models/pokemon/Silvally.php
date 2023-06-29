@@ -2,6 +2,13 @@
 
 namespace models\pokemon;
 
+use models\moves\Acid;
+use models\moves\Astonish;
+use models\moves\Hex;
+use models\moves\PoisonJab;
+use models\moves\SludgeWave;
+use models\moves\Snarl;
+
 class Silvally extends Pokemon
 {
     protected array $type = ["poison"];
@@ -13,15 +20,15 @@ class Silvally extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Acid",
-            21 => "Snarl",
-            34 => "Astonish",
-            49 => "PoisonJab",
-            61 => "Hex",
-            80 => "SludgeWave"
+            1 => Acid::class,
+            21 => Snarl::class,
+            34 => Astonish::class,
+            49 => PoisonJab::class,
+            61 => Hex::class,
+            80 => SludgeWave::class
         ];
     }
 }

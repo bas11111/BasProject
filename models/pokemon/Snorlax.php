@@ -2,6 +2,12 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\Cut;
+use models\moves\HiddenPower;
+use models\moves\HornAttack;
+use models\moves\Snarl;
+
 class Snorlax extends Pokemon
 {
     protected array $type = ["normal"];
@@ -13,14 +19,14 @@ class Snorlax extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Cut",
-            31 => "Snarl",
-            50 => "HiddenPower",
-            70 => "BulletPunch",
-            80 => "HornAttack",
+            1 => Cut::class,
+            31 => Snarl::class,
+            50 => HiddenPower::class,
+            70 => BulletPunch::class,
+            80 => HornAttack::class,
         ];
     }
 }

@@ -2,6 +2,15 @@
 
 namespace models\pokemon;
 
+use models\moves\DarkPulse;
+use models\moves\FeintAttack;
+use models\moves\Hex;
+use models\moves\MudSlap;
+use models\moves\RockThrow;
+use models\moves\Rollout;
+use models\moves\Snarl;
+use models\moves\StoneEdge;
+
 class Tyranitar extends Pokemon
 {
     protected array $type = ["rock", "dark"];
@@ -14,17 +23,17 @@ class Tyranitar extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "RockThrow",
-            12 => "Snarl",
-            25 => "Hex",
-            34 => "Rollout",
-            47 => "FeintAttack",
-            61 => "MudSlap",
-            80 => "StoneEdge",
-            90 => "DarkPulse"
+            1 => RockThrow::class,
+            12 => Snarl::class,
+            25 => Hex::class,
+            34 => Rollout::class,
+            47 => FeintAttack::class,
+            61 => MudSlap::class,
+            80 => StoneEdge::class,
+            90 => DarkPulse::class
         ];
     }
 }

@@ -2,6 +2,12 @@
 
 namespace models\pokemon;
 
+use models\moves\Charm;
+use models\moves\Confusion;
+use models\moves\DazzlingDream;
+use models\moves\FairyWind;
+use models\moves\ZenHeadbutt;
+
 class Gardevoir extends Pokemon
 {
     protected array $type = ["fairy", "psychic"];
@@ -13,14 +19,14 @@ class Gardevoir extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Confusion",
-            23 => "ZenHeadButt",
-            40 => "FairyWind",
-            53 => "Charm",
-            80 => "DazzlingDream"
+            1 => Confusion::class,
+            23 => ZenHeadbutt::class,
+            40 => FairyWind::class,
+            53 => Charm::class,
+            80 => DazzlingDream::class
         ];
     }
 }

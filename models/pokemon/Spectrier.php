@@ -2,6 +2,13 @@
 
 namespace models\pokemon;
 
+use models\moves\Astonish;
+use models\moves\FeintAttack;
+use models\moves\Hex;
+use models\moves\PoisonJab;
+use models\moves\Poltergeist;
+use models\moves\Snarl;
+
 class Spectrier extends Pokemon
 {
     protected array $type = ["ghost"];
@@ -13,14 +20,15 @@ class Spectrier extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "PoisonJab",
-            21 => "Hex",
-            36 => "Snarl",
-            47 => "FeintAttack",
-            61 => "Astonish",
-            80 => "Poltergeist"];
+            1 => PoisonJab::class,
+            21 => Hex::class,
+            36 => Snarl::class,
+            47 => FeintAttack::class,
+            61 => Astonish::class,
+            80 => Poltergeist::class
+        ];
     }
 }

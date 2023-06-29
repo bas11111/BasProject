@@ -1,6 +1,13 @@
 <?php
 
 namespace models\pokemon;
+use models\moves\AirSlash;
+use models\moves\FireBreath;
+use models\moves\FlameBlast;
+use models\moves\Gust;
+use models\moves\Hurricane;
+use models\moves\Incinerate;
+
 class Moltres extends Pokemon
 {
     protected array $type = ["fire", "fly"];
@@ -12,15 +19,15 @@ class Moltres extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "FireBreath",
-            15 => "AirSlash",
-            29 => "Incinerate",
-            45 => "Gust",
-            80 => "FlameBlast",
-            90 => "Hurricane",
+            1 => FireBreath::class,
+            15 => AirSlash::class,
+            29 => Incinerate::class,
+            45 => Gust::class,
+            80 => FlameBlast::class,
+            90 => Hurricane::class
         ];
     }
 }

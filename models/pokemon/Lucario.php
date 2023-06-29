@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\Counter;
+use models\moves\Cut;
+use models\moves\FocusBlast;
+use models\moves\HeavySlam;
+use models\moves\IronTail;
+use models\moves\RockSmash;
+
 class Lucario extends Pokemon
 {
     protected array $type = ["fighting"];
@@ -13,16 +21,16 @@ class Lucario extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Counter",
-            6 => "Cut",
-            16 => "BulletPunch",
-            30 => "IronTail",
-            55 => "RockSmash",
-            80 => "FocusBlast",
-            90 => "HeavySlam"
+            1 => Counter::class,
+            6 => Cut::class,
+            16 => BulletPunch::class,
+            30 => IronTail::class,
+            55 => RockSmash::class,
+            80 => FocusBlast::class,
+            90 => HeavySlam::class
         ];
     }
 }

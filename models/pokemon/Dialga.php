@@ -2,6 +2,14 @@
 
 namespace models\pokemon;
 
+use models\moves\BulletPunch;
+use models\moves\DracoMeteor;
+use models\moves\DragonBreath;
+use models\moves\DragonTail;
+use models\moves\HeavySlam;
+use models\moves\IronTail;
+use models\moves\RockSmash;
+
 class Dialga extends Pokemon
 {
     protected array $type = ["steel", "dragon"];
@@ -13,16 +21,16 @@ class Dialga extends Pokemon
         return false;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "BulletPunch",
-            11 => "IronTail",
-            30 => "DragonBreath",
-            41 => "DragonTail",
-            65 => "RockSmash",
-            80 => "HeavySlam",
-            90 => "DracoMeteor"
+            1 => BulletPunch::class,
+            11 => IronTail::class,
+            30 => DragonBreath::class,
+            41 => DragonTail::class,
+            65 => RockSmash::class,
+            80 => HeavySlam::class,
+            90 => DracoMeteor::class
         ];
     }
 }

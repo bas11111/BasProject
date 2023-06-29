@@ -2,6 +2,13 @@
 
 namespace models\pokemon;
 
+use models\moves\Confusion;
+use models\moves\Cut;
+use models\moves\FutureSight;
+use models\moves\LegendaryBurst;
+use models\moves\LegendarySmash;
+use models\moves\ZenHeadbutt;
+
 class Mewtwo extends Pokemon
 {
     protected array $type = ["legendary"];
@@ -13,15 +20,15 @@ class Mewtwo extends Pokemon
         return true;
     }
 
-    public static function getAvailableMoves(): array
+    public function getAvailableMoves(): array
     {
         return [
-            1 => "Confusion",
-            22 => "ZenHeadbutt",
-            40 => "LegendarySmash",
-            61 => "Cut",
-            80 => "FutureSight",
-            100 =>"LegendaryBurst",
+            1 => Confusion::class,
+            22 => ZenHeadbutt::class,
+            40 => LegendarySmash::class,
+            61 => Cut::class,
+            80 => FutureSight::class,
+            100 => LegendaryBurst::class,
         ];
     }
 }
