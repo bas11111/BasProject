@@ -135,11 +135,13 @@ class PokemonCommand
             $targetHealth -= $rand;
             Console::info("Total damage: ".$damage + $rand);
         }
-        if ($move->getType() === "fire") {
-            $rand = rand(1, 6);
-            Console::succes($target->getName(). " is now burning, gaining an aditional {$rand} damage");
-            $targetHealth -= $rand;
-            Console::info("Total damage: ".$damage + $rand);
+        if (rand(1, 5) === 5) {
+            if ($move->getType() === "fire") {
+                $rand = rand(1, 6);
+                Console::succes($target->getName(). " is now burning, gaining an aditional {$rand} damage");
+                $targetHealth -= $rand;
+                Console::info("Total damage: ".$damage + $rand);
+            }
         }
         //veranderd hp van de pokemon naar wat he moet zijn na de aanval
         $target->setHealth($targetHealth);
