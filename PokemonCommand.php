@@ -59,7 +59,7 @@ class PokemonCommand
                     }
                 }
                 /** @var Pokemon $pokemon */
-                $pokemon = new $class($level, $moves);
+                $pokemon = new $class($level, $moves, $about, $entry);
                 $teams[$trainer][] = $pokemon;
             }
         } catch (Exception $e) {
@@ -79,7 +79,8 @@ class PokemonCommand
 //        $this->teamBattle($teams[$trainer1], $trainer1, $teams[$trainer2], $trainer2);
         $this->battle($teams["Melvin"][1], clone($teams["Bas"][2]));
 //        $this->pokeDex($teams["Bas"][10]);
-//        $this->raid(clone($teams["Bas"][2]), clone($teams["Melvin"][0]), $teams["Melvin"][1], $teams["Melvin"][2], $teams["Melvin"][3], $teams["Melvin"][4], $teams["Melvin"][5]);
+//        $this->raid(clone($teams["Bas"][rand(1, 8)]), clone($teams["Bas"][0]), $teams["Bas"][1], $teams["Bas"][2], $teams["Bas"][3],
+//            $teams["Bas"][4], $teams["Bas"][5]);
 //        $this->wildBattle($teams[$trainer1]);
     }
 
@@ -134,6 +135,9 @@ class PokemonCommand
             $targetHealth -= $rand;
             Console::info("Total damage: ".$damage + $rand);
         }
+        if ($move->getType() === "fire") {
+            Console::succes("Ja, dit is vuur");
+        }
         //veranderd hp van de pokemon naar wat he moet zijn na de aanval
         $target->setHealth($targetHealth);
         Console::info($target->getName().spl_object_id($target)." now has ".$targetHealth." HP left!");
@@ -174,78 +178,74 @@ class PokemonCommand
             Console::succes($pokemon->getName().spl_object_id($pokemon)." has survived this battle with ".$pokemon->getHealth()." left!");
         }
     }
-
+    //genereerd random number, en zet weather van battle aan hand van dat nummer
     private function setWeather()
     {
         $this->weather = "";
         $dice = rand(1, 7);
-        if ($dice === 1) {
-            Console::info("The weather is sunny! Grass, ground and fire type attacks are now boosted!");
-            Console::info("--------------------------------------------------------------------------");
-            $this->weather = "sunny";
+        Console::info("---------------------------------------------------------------------------");
+        switch ($dice) {
+            case 1:
+                Console::info("The weather is sunny! Grass, ground and fire type attacks are now boosted!");
+                $this->weather = "sunny";
+                break;
+            case 2:
+                Console::info("The weather is rainy! Water, electric and bug type attacks are now boosted!");
+                $this->weather = "rainy";
+                break;
+            case 3:
+                Console::info("The weather is windy! Dragon, flying and psychic type attacks are now boosted!");
+                $this->weather = "windy";
+                break;
+            case 4:
+                Console::info("The weather is snowy! Ice and steel type attacks are now boosted!");
+                $this->weather = "snowy";
+                break;
+            case 5:
+                Console::info("The weather is foggy! Ghost and dark type attacks are now boosted!");
+                $this->weather = "foggy";
+                break;
+            case 6:
+                Console::info("The weather is cloudy! Fairy, fighting and poison type attacks are now boosted!");
+                $this->weather = "cloudy";
+                break;
+            case 7:
+                Console::info("The weather is partly cloudy! Normal and rock type attacks are now boosted!");
+                $this->weather = "partly cloudy";
+                break;
         }
-        if ($dice === 2) {
-            Console::info("The weather is rainy! Water, electric and bug type attacks are now boosted!");
-            Console::info("---------------------------------------------------------------------------");
-            $this->weather = "rainy";
-        }
-        if ($dice === 3) {
-            Console::info("The weather is windy! Dragon, flying and psychic type attacks are now boosted!");
-            Console::info("------------------------------------------------------------------------------");
-            $this->weather = "windy";
-        }
-        if ($dice === 4) {
-            Console::info("The weather is snowy! Ice and steel type attacks are now boosted!");
-            Console::info("-----------------------------------------------------------------");
-            $this->weather = "snowy";
-        }
-        if ($dice === 5) {
-            Console::info("The weather is foggy! Ghost and dark type attacks are now boosted!");
-            Console::info("------------------------------------------------------------------");
-            $this->weather = "foggy";
-        }
-        if ($dice === 6) {
-            Console::info("The weather is cloudy! Fairy, fighting and poison type attacks are now boosted!");
-            Console::info("-------------------------------------------------------------------------------");
-            $this->weather = "cloudy";
-        }
-        if ($dice === 7) {
-            Console::info("The weather is partly cloudy! Normal and rock type attacks are now boosted!");
-            Console::info("---------------------------------------------------------------------------");
-            $this->weather = "partly cloudy";
-        }
+        Console::info("---------------------------------------------------------------------------");
     }
-
+    //genereerd random number, en zet environment van battle
     public function setEnvironment()
     {
         $this->environment = "";
         $dice = rand(1, 5);
-        if ($dice === 1) {
-            Console::info("This battle takes place near the water, fire type's have been debuffed!");
-            Console::info("-----------------------------------------------------------------------");
-            $this->environment = "water";
+        switch ($dice) {
+            case 1:
+                Console::info("This battle takes place near the water, fire type's have been debuffed!");
+                $this->environment = "water";
+                break;
+            case 2:
+                Console::info("This battle takes place in the mountains, dark type's have been debuffed!");
+                $this->environment = "mountains";
+                break;
+            case 3:
+                Console::info("This battle takes place on the ground, flying type's have been debuffed!");
+                $this->environment = "ground";
+                break;
+            case 4:
+                Console::info("This battle takes place in the sky, ground type's have been debuffed!");
+                $this->environment = "sky";
+                break;
+            case 5:
+                Console::info("This battle takes place in the caves, ice and fairy types have been debuffed!");
+                $this->environment = "caves";
+                break;
         }
-        if ($dice === 2) {
-            Console::info("This battle takes place in the mountains, dark type's have been debuffed!");
-            Console::info("-------------------------------------------------------------------------");
-            $this->environment = "mountains";
-        }
-        if ($dice === 3) {
-            Console::info("This battle takes place on the ground, flying type's have been debuffed!");
-            Console::info("-----------------------------------------------------------------------");
-            $this->environment = "ground";
-        }
-        if ($dice === 4) {
-            Console::info("This battle takes place in the sky, ground type's have been debuffed!");
-            Console::info("---------------------------------------------------------------------");
-            $this->environment = "sky";
-        }
-        if ($dice === 5) {
-            Console::info("This battle takes place in the caves, ice and fairy types have been debuffed!");
-            Console::info("-----------------------------------------------------------------------------");
-            $this->environment = "caves";
-        }
+        Console::info("-----------------------------------------------------------------------------");
     }
+
 
     private function setMega(
         Pokemon $pokemon
@@ -335,12 +335,12 @@ class PokemonCommand
         foreach ($array as $pokemon) {
             $moves = $pokemon->getBestMove($boss, $this->weather);
             if ($pokemon->getHealth() > 0) {
-                Console::info($pokemon->getName().spl_object_id($pokemon)." attacks!");
+                Console::info("{$pokemon->getName()}".spl_object_id($pokemon)." attacks!");
                 $this->setRaidHP($moves, $pokemon, $boss);
             }
         }
         if ($boss->gethealth() <= 0) {
-            Console::succes($boss->getName().spl_object_id($boss)." has been defeated, the attackers have won this raid!");
+            Console::succes("{$boss->getName()}".spl_object_id($boss)."has been defeated, the attackers have won this raid!");
             Console::info("---------------------------------");
             foreach ($array as $pokemon) {
                 $this->getAlive($pokemon);
@@ -358,7 +358,7 @@ class PokemonCommand
             && $pokemon5->getHealth() <= 0
             && $pokemon6->getHealth() <= 0
         ) {
-            Console::error("All of your pokemon have fallen, ".$boss->getName()." has won this raid with ".$boss->gethealth()."HP left!");
+            Console::error("All of your pokemon have fallen, {$boss->getName()} has won this raid with {$boss->gethealth()}HP left!");
             die;
         }
         $this->raid($boss, $pokemon1, $pokemon2, $pokemon3, $pokemon4, $pokemon5, $pokemon6, false);
@@ -384,7 +384,6 @@ class PokemonCommand
             $this->setMega($pokemon2);
         }
         $this->battle($pokemon1, $pokemon2, false, false);
-
         if ($pokemon1->getHealth() <= 0) {
             unset($team1[0]);
             $team1 = array_values($team1);
@@ -441,7 +440,7 @@ class PokemonCommand
 
         $wildPokemonClass = new $wildPokemonClassPath($level);
         $pokemon1 = $team[0];
-        $pokemon2 = $team[1];
+        $pokemon2 = $wildPokemonClass;
         $pokemon2->setLevel(rand(50, 100));
         Console::info("A wild ".$pokemon2->getName().$pokemon2->getLevel()." has appeared!");
         if (rand(1, 2) === 2) {

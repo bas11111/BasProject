@@ -32,7 +32,7 @@ abstract class Pokemon
         "caves" => ["ice", "fairy"],
     ];
 
-    //de construct, initializeer een object zijn properties bij creatie
+    //de construct, initializeer een object zijn properties bij creatie.
     public function __construct(int $level, ?array $moves = null)
     {
         $this->level = $level;
@@ -75,7 +75,7 @@ abstract class Pokemon
             $move = 'models\\moves\\'.$move;
         }
         if (!class_exists($move)){
-            throw new \Exception("Move: {$move} does not exist uberhaupt");
+            throw new \Exception("Move: {$move} does not exist in the first place! Make sure the spelling is correct!");
         }
         $_move = new $move();
 
@@ -117,39 +117,39 @@ abstract class Pokemon
 
         return $bestMove ?? new Struggle();
     }
-
+    //check of een pokemon debuffed is door de environment van het gevecht
     public function isDeBuffed(string $environment): bool
     {
         return array_key_exists($environment, static::$environmentDebuffedTypes)
             && in_array($this->type, static::$environmentDebuffedTypes[$environment]);
     }
 
+    //haal type pokemon op
     public function getType(): array
     {
         return $this->type;
     }
-
+    //haal hp pokemon op
     public function getHealth(): int
     {
         return $this->health;
     }
-
+    //stel hp in voor pokemon
     public function setHealth(int $health): void
     {
         $this->health = $health;
     }
-
+    //haal about pokemon op
     public function getAbout(): string
     {
         return $this->about;
     }
-
-
+    //haal entry pokemon op
     public function getEntry(): int
     {
         return $this->entry;
     }
-
+    //haal combatpower pokemon op
     public function getCombatPower(): int
     {
         if ($this->CP === null) {
@@ -161,32 +161,32 @@ abstract class Pokemon
 
         return $this->CP;
     }
-
+    //stel combatpower pokémon in
     public function setCombatPower(int $CP): void
     {
         $this->CP = $CP;
     }
-
+    //haal level van pokémon op
     public function getLevel(): int
     {
         return $this->level;
     }
-
+    //stel level pokémon in
     public function setLevel(int $level): void
     {
         $this->level = $level;
     }
-
+    //haal aantal schilden wat pokémon heeft op
     public function getShields(): int
     {
         return $this->shields;
     }
-
+    //stel aantal schilden pokémon in
     public function setShields(int $shields): void
     {
         $this->shields = $shields;
     }
-
+    //haal het maximale hp van een pokémon op
     public function getMaxHealth(): int
     {
         if ($this->maxHealth === null) {
@@ -198,16 +198,16 @@ abstract class Pokemon
 
         return $this->maxHealth;
     }
-
+    //haal naam van de pokémon op
     public function getName(): string
     {
         $reflect = new ReflectionClass($this);
 
         return $reflect->getShortName();
     }
-
+    //in elke pokémon file staat of de pokémon een mega evolve heeft of niet
     abstract public function hasMegaEvolve(): bool;
-
+    //in elke pokémon file staat welke moves hij beschikbaar heeft.
     abstract public function getAvailableMoves(): array;
 
     /**

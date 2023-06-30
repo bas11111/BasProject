@@ -36,45 +36,50 @@ class Games
     public function story()
     {
         Console::info("You wake up.");
+        usleep(500000);
+        Console::succes("It is june 30th");
+        usleep(500000);
+        Console::succes("The only thing left, is to recieve the grade from your internship report.");
+        usleep(500000);
         $num = rand(1, 2);
         if ($num === 1) {
-            Console::succes("You decide to get out of bed.");
+            Console::succes("You open your phone, and realise your report has been approved.");
             usleep(500000);
             $num = 3;
         } elseif ($num === 2) {
-            Console::info("You hit the snooze button, and continue sleeping");
+            Console::info("You open your phone, and your boss has bad news for you.");
             usleep(500000);
             $num = 4;
         }
         if ($num === 3) {
-            Console::succes("You get ready for internship with alot of time to spare.");
+            Console::info("You wake up in a good mood, and make yourself ready for the final day on your internship.");
             usleep(500000);
             $num = 5;
         } elseif ($num === 4) {
-            Console::error("You wake up half an hour later, and realize you overslept");
+            Console::error("You go to your internship, and your boss tells you your report has been denied");
             usleep(500000);
             $num = 6;
         }
         if ($num === 5) {
-            Console::succes("You arrive on internship on time");
+            Console::info("You bring the cake you bought to celebrate the time that you have been there.");
             usleep(500000);
             $num = 7;
         } elseif ($num === 6) {
-            Console::error("You arrive to late on your internship");
+            Console::error("You have to write it all over again, and turn it in tomorrow.");
             usleep(500000);
             $num = 8;
         }
         if ($num === 7) {
-            Console::info("You work on your code the entire day");
+            Console::info("You and your co-workers enjoy the cake.");
             usleep(500000);
             $num = 9;
         } elseif ($num === 8) {
-            Console::error("You lost your internship");
+            Console::error("You realise you'll never get this done in time. You give up, and fail your internship");
             usleep(500000);
             $num = 10;
         }
         if ($num === 9) {
-            Console::info("After working the entire the day, you go home.");
+            Console::info("After eating the cake, you go on to work for one final day.");
             usleep(500000);
             $num = 11;
         } elseif ($num === 10) {
@@ -83,7 +88,7 @@ class Games
             $num = 12;
         }
         if ($num === 11) {
-            Console::info("You go to internship everyday, and eventually finish it.");
+            Console::succes("8 hours pass, and the workday is now finally over. Finally, your done with your internship");
             usleep(500000);
             $num = 13;
         } elseif ($num === 12) {
@@ -112,7 +117,7 @@ class Games
         if ($num === 17) {
             Console::info("You woke up on time, and lived a happy life because of it.");
         } elseif ($num === 18) {
-            Console::error("If only you woke up on time that day......");
+            Console::error("if only you put more effort into your report when writing");
         }
     }
 
